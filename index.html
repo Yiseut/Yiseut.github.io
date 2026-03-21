@@ -114,11 +114,21 @@ body {
 .nav.scrolled { border-bottom-color: var(--border-light); }
 
 .nav-logo {
-  font-family: var(--logo);
-  font-size: 16px; font-weight: 300;
+  display: flex; flex-direction: column; gap: 2px;
+  font-size: 12px; font-weight: 300;
   color: var(--text);
-  letter-spacing: 4px;
   text-decoration: none;
+  line-height: 1.4;
+}
+.nav-slogan-en {
+  font-family: 'Script', cursive;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+.nav-slogan-cn {
+  font-family: 'FengYa', var(--serif);
+  font-size: 12px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
@@ -601,8 +611,8 @@ a { color: inherit; }
 <!-- ── Navigation ── -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">
-    <span data-en>From Insight to Impact</span>
-    <span data-cn>研于至深 · 美以致远</span>
+    <span class="nav-slogan-en">From Insight to Impact</span>
+    <span class="nav-slogan-cn">研于至深 · 美以致远</span>
   </a>
   <div class="nav-right">
     <div class="nav-links">
