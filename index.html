@@ -105,6 +105,7 @@ body {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 0 clamp(24px, 5vw, 80px);
   height: 64px;
+  background: var(--bg);
   display: flex; align-items: center; justify-content: space-between;
   background: rgba(246,241,235,0.88);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -114,7 +115,7 @@ body {
 .nav.scrolled { border-bottom-color: var(--border-light); }
 
 .nav-logo {
-  display: flex; flex-direction: column; gap: 2px;
+  display: flex; flex-direction: column; gap: 8px;
   font-size: 12px; font-weight: 300;
   color: var(--text);
   text-decoration: none;
@@ -224,8 +225,7 @@ body {
   color: var(--secondary);
   letter-spacing: clamp(6px, 1.5vw, 14px);
   text-transform: uppercase;
-  margin-bottom: 48px;
-  opacity: 0; animation: fadeUp 0.8s ease 0.65s forwards;
+  line-height: 1;
 }
 
 /* Decorative horizontal lines around CONSULTING */
@@ -616,8 +616,10 @@ a { color: inherit; }
   </a>
   <div class="nav-right">
     <div class="nav-links">
+      <a href="./blog/"><span data-cn>研美思维</span><span data-en>Blog</span></a>
+      <a href="./library/"><span data-cn>研值文献</span><span data-en>Literature</span></a>
+      <a href="./tools/"><span data-cn>工具集</span><span data-en>Utilities</span></a>
       <a href="#about"><span data-cn>关于</span><span data-en>About</span></a>
-      <a href="#explore"><span data-cn>探索</span><span data-en>Explore</span></a>
     </div>
     <button class="lang-switch" onclick="toggleLang()">
       <span data-cn>EN</span><span data-en>中文</span>
@@ -682,155 +684,6 @@ a { color: inherit; }
   </div>
 </section>
 
-<!-- ── Explore ── -->
-<section class="section grid-section" id="explore">
-  <div class="section-header">
-    <div class="section-num">002 — EXPLORE</div>
-    <h2 class="section-title">
-      <span data-cn>探 索</span><span data-en>Explore</span>
-    </h2>
-    <p class="section-sub">
-      <span data-cn>洞察、工具与资源</span>
-      <span data-en>Insights, Tools & Resources</span>
-    </p>
-  </div>
-
-  <div class="content-grid">
-
-    <a class="card card-feature reveal" href="./blog/">
-      <div class="card-num">01</div>
-      <div class="card-title">
-        <span data-cn>Giselle's Blog</span><span data-en>Giselle's Blog</span>
-      </div>
-      <div class="card-title-en">
-        <span data-cn>研美思维 · 行业深度观察</span>
-        <span data-en>YanMei SiWei · Industry Deep Dives</span>
-      </div>
-      <div class="card-desc">
-        <span data-cn>来自行业一线的独立思考——关于医美市场的底层逻辑、品牌战略、渠道变迁与全球趋势。不讨好、不从众、不回避争议。</span>
-        <span data-en>Independent thinking from the frontline — market logic, brand strategy, channel dynamics and global trends in aesthetic medicine. Honest, contrarian, unfiltered.</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-tag">Long-form · Opinions</span>
-        <span class="card-count">20+ <span data-cn>篇</span><span data-en>articles</span></span>
-        <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
-    <a class="card card-side reveal reveal-d1" href="./library/">
-      <div class="card-num">02</div>
-      <div class="card-title">
-        <span data-cn>研值文献</span><span data-en>Literature Hub</span>
-      </div>
-      <div class="card-title-en">
-        <span data-cn>Literature for Sales Teams</span>
-        <span data-en>Medical Literature → Sales Enablement</span>
-      </div>
-      <div class="card-desc">
-        <span data-cn>将医学文献转化为销售团队能直接使用的工具——不是科普，是武器。</span>
-        <span data-en>Transforming medical literature into actionable sales tools — not education, but enablement.</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-tag">Literature · B2B</span>
-        <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
-    <a class="card card-side reveal reveal-d1" href="./toolkit/">
-      <div class="card-num">03</div>
-      <div class="card-title">
-        <span data-cn>销售工具站</span><span data-en>Sales Toolkit</span>
-      </div>
-      <div class="card-title-en">
-        <span data-cn>Client Sales Toolkits</span>
-        <span data-en>Interactive Client Tools</span>
-      </div>
-      <div class="card-desc">
-        <span data-cn>为合作品牌定制的互动式销售工具——FAQ手册、产品对比器、话术卡片。比PDF好用，比培训高效。</span>
-        <span data-en>Custom interactive sales tools for partner brands — FAQ handbooks, product comparators, talk tracks. Better than PDFs, faster than training.</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-tag">Interactive · Clients</span>
-        <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
-    <a class="card card-feature reveal reveal-d2" href="./brief/">
-      <div class="card-num">04</div>
-      <div class="card-title">
-        <span data-cn>全球医美快报</span><span data-en>Global Aesthetics Brief</span>
-      </div>
-      <div class="card-title-en">
-        <span data-cn>Global Aesthetics Daily Brief</span>
-        <span data-en>Daily Industry Intelligence</span>
-      </div>
-      <div class="card-desc">
-        <span data-cn>覆盖全球 380+ 信息源，每日追踪医美行业的投融资、收并购、新品上市、监管变动与临床突破。来自金融、学术与产业的多维情报视角。</span>
-        <span data-en>Tracking 380+ global sources daily — M&A, fundraising, product launches, regulatory shifts and clinical breakthroughs across aesthetic medicine. Multi-dimensional intelligence from finance, academia and industry.</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-tag">Daily · Intelligence</span>
-        <span class="card-count">384 RSS</span>
-        <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
-    <a class="card card-third reveal reveal-d2" href="./tools/">
-      <div class="card-num">05</div>
-      <div class="card-title">
-        <span data-cn>工具集</span><span data-en>Utilities</span>
-      </div>
-      <div class="card-title-en">
-        <span data-cn>市场部实用工具</span>
-        <span data-en>Marketing Productivity Tools</span>
-      </div>
-      <div class="card-desc">
-        <span data-cn>字体管理、图片去背、色板生成等市场部日常工具。</span>
-        <span data-en>Font manager, background remover, palette generator and other daily marketing utilities.</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-tag">Tools</span>
-        <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
-    <a class="card card-third reveal reveal-d3" href="./database/">
-      <div class="card-num">06</div>
-      <div class="card-title">
-        <span data-cn>行业数据库</span><span data-en>Industry Database</span>
-      </div>
-      <div class="card-title-en">
-        <span data-cn>全球医美企业与产品线</span>
-        <span data-en>Global Companies & Product Lines</span>
-      </div>
-      <div class="card-desc">
-        <span data-cn>390+ 企业，976 产品线。</span>
-        <span data-en>390+ companies, 976 product lines.</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-tag">Data · Research</span>
-        <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
-    <a class="card card-third reveal reveal-d4" href="https://github.com/Yiseut">
-      <div class="card-num">07</div>
-      <div class="card-title">
-        <span data-cn>开源项目</span><span data-en>Open Source</span>
-      </div>
-      <div class="card-title-en">GitHub</div>
-      <div class="card-desc">
-        <span data-cn>技术项目与代码仓库——行业数据采集、内容自动化工程。</span>
-        <span data-en>Technical projects — industry data collection, content automation pipelines.</span>
-      </div>
-      <div class="card-footer">
-        <span class="card-tag">Code · GitHub</span>
-        <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
-
-  </div>
-</section>
 
 <!-- ── Giselle ── -->
 
