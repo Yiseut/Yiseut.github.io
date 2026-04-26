@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giselle Ding - CV</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+@font-face {
+  font-family: 'SourceHanSerif';
+  font-display: swap;
+  src: local('Source Han Serif SC'),
+       local('Noto Serif SC'),
+       local('Songti SC'),
+       url('../思源宋体.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'AESTRATLogo';
+  font-weight: 200;
+  font-display: swap;
+  src: local('Montserrat Alternates Light'),
+       local('Helvetica Neue UltraLight'),
+       url('../MontserratAlt1-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'AESTRATLogo';
+  font-weight: 300;
+  font-display: swap;
+  src: local('Montserrat Alternates Light'),
+       local('Helvetica Neue Light'),
+       url('../MontserratAlt1-Light.ttf') format('truetype');
+}
+
+:root {
+  --ink: #1a1a1a;
+  --ink-light: #4a4a4a;
+  --ink-muted: #777;
+  --cream: #faf8f5;
+  --cream-dark: #f0ece6;
+  --accent: #7f0f1c;
+  --border: #d8d2c8;
+  --sidebar-bg: #2c2421;
+  --sidebar-text: #e8e2db;
+  --sidebar-muted: #a89e93;
+  --sidebar-accent: #c9a96e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 14.5px; }
+
+body {
+  font-family: "Cormorant Garamond", "SourceHanSerif", "Songti SC", "SimSun", serif;
+  background: #e8e2db;
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: var(--cream);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  display: grid;
+  grid-template-columns: 274px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 46px 24px 38px;
+  position: relative;
+}
+.sidebar::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 1px; height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--sidebar-accent), transparent);
+}
+
+.photo-wrapper {
+  width: 148px; height: 148px;
+  margin: 0 auto 26px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+.sidebar h1 {
+  font-size: 1.75rem; font-weight: 400; text-align: center;
+  letter-spacing: 0.15em; margin-bottom: 3px; color: #fff;
+}
+.sidebar .name-en {
+  font-family: 'AESTRATLogo', "Helvetica Neue", sans-serif;
+  text-align: center; font-size: 0.85rem; letter-spacing: 0.25em;
+  color: var(--sidebar-muted); margin-bottom: 30px; text-transform: uppercase;
+}
+
+.sidebar-section { margin-bottom: 24px; }
+.sidebar-section h3 {
+  font-family: 'AESTRATLogo', "Helvetica Neue", sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--sidebar-accent); border-bottom: 1px solid rgba(201, 169, 110, 0.35);
+  padding-bottom: 5px; margin-bottom: 11px; font-weight: 300;
+}
+
+.sidebar-section ul { list-style: none; padding: 0; }
+.sidebar-section li {
+  font-size: 0.88rem; color: var(--sidebar-text); line-height: 1.55;
+  padding: 3px 0 3px 14px; position: relative;
+}
+.sidebar-section li::before {
+  content: "—"; position: absolute; left: 0; color: var(--sidebar-accent); font-size: 0.65rem;
+}
+.sidebar-section .bi { display: block; font-size: 0.8rem; color: var(--sidebar-muted); margin-top: 1px; }
+
+.contact-item {
+  display: flex; align-items: center; gap: 9px; padding: 4px 0;
+  font-size: 0.84rem; color: var(--sidebar-muted);
+}
+.contact-item .icon { width: 15px; text-align: center; color: var(--sidebar-accent); font-size: 0.75rem; }
+
+.edu-item { margin-bottom: 13px; }
+.edu-item .year { font-size: 0.75rem; color: var(--sidebar-muted); }
+.edu-item .school { font-size: 0.88rem; font-weight: 500; color: #fff; }
+.edu-item .degree { font-size: 0.82rem; color: var(--sidebar-text); }
+
+/* ─── MAIN ─── */
+.main { padding: 46px 38px 38px; }
+
+.summary {
+  margin-bottom: 32px; padding: 22px 26px;
+  background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%);
+  border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0;
+}
+.summary p {
+  font-size: 0.97rem; line-height: 1.72; color: var(--ink-light); font-style: italic;
+}
+.summary .bi { font-size: 0.9rem; color: var(--ink-muted); margin-top: 10px; font-style: italic; }
+
+.section { margin-bottom: 30px; }
+.section-title {
+  font-family: 'AESTRATLogo', "Helvetica Neue", sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); font-weight: 300; padding-bottom: 7px;
+  border-bottom: 1px solid var(--border); margin-bottom: 20px;
+}
+
+.role { margin-bottom: 26px; position: relative; padding-left: 16px; }
+.role::before {
+  content: ""; position: absolute; left: 0; top: 8px;
+  width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+}
+
+.role-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 7px; margin-bottom: 2px;
+}
+.role-title { font-size: 1.0rem; font-weight: 600; color: var(--ink); }
+.role-period { font-size: 0.78rem; color: var(--ink-muted); letter-spacing: 0.05em; white-space: nowrap; }
+
+.role-company { font-size: 0.92rem; color: var(--accent); margin-bottom: 2px; font-weight: 500; }
+.role-intro { font-size: 0.82rem; color: var(--ink-muted); margin-bottom: 3px; font-style: italic; }
+.role-scope { font-size: 0.8rem; color: var(--ink-muted); margin-bottom: 10px; font-style: italic; }
+
+.role ul { list-style: none; padding: 0; }
+.role li {
+  font-size: 0.9rem; line-height: 1.62; color: var(--ink-light);
+  padding: 3px 0 3px 15px; position: relative;
+}
+.role li::before {
+  content: "\2022"; position: absolute; left: 0; color: var(--accent);
+  font-size: 0.68rem; top: 5px;
+}
+.role li .bi { display: block; font-size: 0.82rem; color: var(--ink-muted); margin-top: 1px; }
+
+.client-logos {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 18px;
+  margin: 10px 0; padding: 11px 15px; background: var(--cream-dark); border-radius: 4px;
+}
+.client-logos .logo-text { font-size: 0.78rem; color: var(--ink-muted); font-weight: 500; letter-spacing: 0.06em; }
+
+.competency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-top: 12px; }
+.comp-card {
+  padding: 13px 15px; background: var(--cream-dark); border-radius: 4px;
+  border-left: 2px solid var(--accent);
+}
+.comp-card h4 { font-family: 'AESTRATLogo', "Helvetica Neue", sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 5px; font-weight: 300; text-transform: uppercase; }
+.comp-card p { font-size: 0.82rem; color: var(--ink-light); line-height: 1.52; }
+
+@media print { body { background: white; } .page { box-shadow: none; margin: 0; max-width: 100%; } }
+@media (max-width: 700px) {
+  .page { grid-template-columns: 1fr; margin: 0; }
+  .sidebar { padding: 28px 20px; }
+  .main { padding: 28px 20px; }
+  .competency-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<aside class="sidebar">
+  <div class="photo-wrapper">
+    <img src="data:image/jpeg;base64,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" alt="Giselle Ding">
+  </div>
+  <h1>丁研赟</h1>
+  <div class="name-en">Giselle Ding</div>
+
+  <div class="sidebar-section">
+    <h3>Contact</h3>
+    <div class="contact-item"><span class="icon">&#9742;</span> 135-0182-3214</div>
+    <div class="contact-item"><span class="icon">&#9993;</span> Giselle.Ding@gmail.com</div>
+    <div class="contact-item"><span class="icon">&#9673;</span> Shanghai, China</div>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>Education 教育背景</h3>
+    <div class="edu-item">
+      <div class="year">2016 – 2018</div>
+      <div class="school">中欧国际工商学院 CEIBS</div>
+      <div class="degree">Executive MBA</div>
+    </div>
+    <div class="edu-item">
+      <div class="year">1996 – 2001</div>
+      <div class="school">上海交通大学医学院</div>
+      <div class="degree">Clinical Medicine, B.Med 临床医学本科</div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>Core Strengths 核心能力</h3>
+    <ul>
+      <li>医学背景 + 商业战略双轨思维<span class="bi">Clinical + Commercial Dual-Track</span></li>
+      <li>注射填充与能量源设备跨品类操盘<span class="bi">Cross-Category: Injectables &amp; Energy Devices</span></li>
+      <li>新产品注册到上市全周期管理<span class="bi">Full Lifecycle: Registration to Launch</span></li>
+      <li>国内外KOL学术网络搭建与维护<span class="bi">Domestic &amp; Int'l KOL Network</span></li>
+      <li>ToB专业推广 + ToC消费者营销<span class="bi">B2B Professional + B2C Consumer Marketing</span></li>
+      <li>AI驱动的行业研究与效率体系<span class="bi">AI-Powered Research &amp; Productivity Systems</span></li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>Languages 语言</h3>
+    <ul>
+      <li>中文 Chinese（母语 Native）</li>
+      <li>英文 English（工作语言 Working）</li>
+    </ul>
+  </div>
+</aside>
+
+<main class="main">
+
+  <div class="summary">
+    <p>拥有20余年医疗与医美行业经验的市场战略专家，具备临床医学与CEIBS EMBA双重背景。深耕玻尿酸、再生类填充剂（CaHA/PLLA）、肉毒毒素及能量源设备等多品类产品的中国市场全生命周期管理，兼具ToB专业市场推广和ToC消费者数字营销的双重实战经验。主导过多款新产品从临床注册到商业化上市的完整操盘，以及成熟型产品的第二增长曲线分析与策略制定，建立了覆盖国内外顶级医美学术网络的深度关系。在AI应用上具备工程化深度——超越通用工具调用的层面，自主设计领域专属的AI基础设施与人机协作架构，将20余年行业判断力转化为系统化、可规模化的专业产能。</p>
+    <p class="bi">20+ years in healthcare &amp; medical aesthetics. Clinical Medicine degree + CEIBS EMBA. Deep expertise across HA fillers, bio-stimulators (CaHA/PLLA), neurotoxins, and energy-based devices in China. Proven B2B professional marketing and B2C consumer/digital marketing experience. Full product lifecycle from registration to launch for new products, plus second-growth-curve strategy for mature brands — backed by extensive domestic and international KOL networks. Operates at engineering-grade depth in AI application — beyond general-purpose tooling, architects domain-specific AI infrastructure and human-AI collaboration systems, translating 20+ years of expert judgment into scalable professional capacity.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Professional Experience 工作经历</div>
+
+    <!-- AESTRAT -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">创始人 · Managing Director</span>
+        <span class="role-period">2025.5 – Present</span>
+      </div>
+      <div class="role-company">AESTRAT 上海研和美企业管理咨询 &nbsp;|&nbsp; "研美思维" IP</div>
+      <div class="role-intro">Boutique strategic advisory for China's medical aesthetics upstream sector 医美上游战略咨询</div>
+      <div class="role-scope">战略咨询 · 行业研究 · 品牌内容平台 · 顾问团队 / Strategy · Research · Content Platform · Advisory Team</div>
+      <ul>
+        <li>创立医美行业战略咨询品牌，组建专业顾问团队，为企业提供市场调研、竞品分析、产品定位、市场策略、医学策略、运营策略、品牌策略与设计、公众号/小红书内容运营，以及互动式销售与产品资料设计等全方位咨询服务
+          <span class="bi">Founded MedAes advisory with expert team; full-spectrum consulting across market research, competitive analysis, product positioning, market/medical/operational strategy, brand strategy &amp; design, WeChat &amp; Xiaohongshu content operations, and interactive sales/product collateral design</span></li>
+        <li>为企业输出体系化专业培训——涵盖医学培训、产品培训、运营培训三大维度，搭建从专业知识到团队执行力的转化路径
+          <span class="bi">Delivered structured corporate training programs across three pillars — medical, product, and operational — translating domain expertise into team execution capability</span></li>
+        <li>打造"研美思维"个人IP与行业内容平台，在中国医美上游管理层中建立广泛行业影响力
+          <span class="bi">Built "AESTRAT Insights" personal brand and content platform, establishing thought leadership among China MedAes upstream executives</span></li>
+        <li>自主搭建AI驱动的行业情报基础设施——结构化数据库覆盖390+企业、976条产品线，以人机深度分工，实现全自动的规模化输出
+          <span class="bi">Architected AI-powered industry intelligence infrastructure — structured database covering 390+ companies / 976 product lines, with deep human-AI division of labor enabling fully automated, scalable output</span></li>
+        <li>咨询覆盖注册前新材料到成熟品牌全阶段，包括II/III类胶原蛋白、壳聚糖、生物活性玻璃、ECM、丝素蛋白等前沿品类
+          <span class="bi">Advisory spans pre-registration to established brands: Type II/III collagen, chitosan, bioactive glass, ECM, silk fibroin, and other novel biomaterial categories</span></li>
+      </ul>
+      <div class="client-logos">
+        <span class="logo-text">Peninsula 半岛</span>
+        <span class="logo-text">键凯科技</span>
+        <span class="logo-text">IMCAS</span>
+        <span class="logo-text">吴中美学</span>
+        <span class="logo-text">美沃斯</span>
+        <span class="logo-text">美呗</span>
+      </div>
+    </div>
+
+    <!-- Moyang -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">市场·医学·品牌总监 Marketing, Medical &amp; Brand Director</span>
+        <span class="role-period">2024.4 – 2025.4</span>
+      </div>
+      <div class="role-company">上海摩漾生物科技有限公司 Moyang Biotech</div>
+      <div class="role-intro">Maker of Alphanel — China's first NMPA-approved Class III CaHA facial filler 优法兰Alphanel · 中国首款合规械三CaHA填充剂研发企业</div>
+      <div class="role-scope">团队 Team: Marketing 4 + Brand 3 + Regional 4 + Medical 4 + International Dept</div>
+      <ul>
+        <li>主导中国首款合规械三CaHA面部填充剂（优法兰Alphanel）完整上市操盘——从临床后期介入，协同研发完成三期临床报告，2025年2月获NMPA注册证
+          <span class="bi">Led full commercialization of Alphanel (优法兰) — China's first Class III CaHA filler: joined at late clinical stage, co-completed Phase III report, obtained NMPA registration Feb 2025</span></li>
+        <li>独立完成行业分析、市场策略、产品定位、定价策略、预算规划全套商业化方案；医学治疗策略被申请专利权和著作权
+          <span class="bi">Independently developed complete go-to-market strategy; treatment protocol filed for patent and copyright</span></li>
+        <li>搭建国内外专家学术网络——全国CaHA专家共识会、巴西/中东专家沟通会；主导IMCAS巴黎·泰国·上海及AMWC参展
+          <span class="bi">Built domestic &amp; international KOL network; organized national CaHA expert consensus, Brazil/Middle East expert exchanges; led IMCAS &amp; AMWC exhibitions</span></li>
+        <li>获证首日完成上市宣发与媒体合作，创造品类全行业热度第一
+          <span class="bi">Achieved industry-leading buzz on Day 1 of approval through precise project management despite budget constraints and repeated delays</span></li>
+        <li>主导品牌资产全案设计——从产品命名（优法兰Alphanel）、视觉识别体系到"骨相优生美学"品牌概念，获得市场良好反响
+          <span class="bi">Led full brand asset design — from product naming (Alphanel) and visual identity system to the "Bone Structure Aesthetics" brand concept, with strong market reception</span></li>
+        <li>主导品牌出海，业务触达拉美（墨西哥、哥伦比亚、巴西）、中东及欧洲多地市场
+          <span class="bi">Led international expansion reaching Latin America (Mexico, Colombia, Brazil), Middle East, and Europe</span></li>
+      </ul>
+    </div>
+
+    <!-- Songxi -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">总经理 General Manager</span>
+        <span class="role-period">2022.1 – 2024.4</span>
+      </div>
+      <div class="role-company">上海松析管理咨询有限公司 Songxi Consulting</div>
+      <div class="role-intro">Medical aesthetics upstream marketing services agency 医美上游专业营销服务机构</div>
+      <div class="role-scope">团队7人 Team of 7: Sales Dept + Medical Marketing Dept</div>
+      <ul>
+        <li>负责公司整体业务运营，为多家医美品牌提供中国市场全链路营销——代理商销售业务、产品策略、医学策略、专业培训、专家与KOL合作
+          <span class="bi">Managed overall operations as China distributor for multiple MedAes brands — full-funnel coverage: sales, product strategy, medical strategy, professional training, expert &amp; KOL partnerships</span></li>
+        <li>搭建小红书、公众号等数字内容矩阵，输出产品白皮书与医学课件，主导专业培训体系
+          <span class="bi">Built Xiaohongshu &amp; WeChat content ecosystem; produced product white papers and medical training curriculum</span></li>
+        <li>获2022年医美产业新锐代理商奖；承办中整协新媒体KOL培训班及抗衰老大会新媒体合作
+          <span class="bi">Awarded 2022 Emerging MedAes Distributor; hosted CSAPS social media KOL training and anti-aging conference media partnership</span></li>
+      </ul>
+      <div class="client-logos">
+        <span class="logo-text">法国美帕 MEDSPA Lab</span>
+        <span class="logo-text">SkinTech</span>
+        <span class="logo-text">美迪迈 EndyMed</span>
+        <span class="logo-text">Cellese 乔洛诗</span>
+        <span class="logo-text">Arhanna 阿尔汉娜</span>
+        <span class="logo-text">Ellien 翊霖</span>
+      </div>
+    </div>
+
+    <!-- MedSPA -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">医学市场培训总监 Medical Marketing &amp; Training Director</span>
+        <span class="role-period">2021.8 – 2021.12</span>
+      </div>
+      <div class="role-company">法国美帕 MedSPA</div>
+      <div class="role-intro">French dermocosmetics brand with B2B (clinic) and B2C (DTC/e-commerce) dual channels 法国皮肤学级护肤品牌，双渠道模式</div>
+      <div class="role-scope">直接汇报CEO Reporting to Group CEO · 管理医学/市场/培训 Medical, Marketing &amp; Training Depts</div>
+      <ul>
+        <li>负责全系列产品在医美机构的专业推广（ToB），同时主导消费端品牌建设与数字营销（ToC）
+          <span class="bi">Managed both B2B professional promotion in aesthetic clinics and B2C brand building &amp; digital marketing for consumer channels</span></li>
+        <li>主导小红书种草内容策略与电商渠道运营，推动品牌在消费端的认知度提升
+          <span class="bi">Led Xiaohongshu seeding content strategy and e-commerce channel operations, driving consumer brand awareness</span></li>
+        <li>短期内推出涂抹式肉毒毒素新品等多个品项，快速落地市场活动与机构铺货
+          <span class="bi">Launched multiple new SKUs including topical neurotoxin; rapidly executed market activation and clinic onboarding</span></li>
+      </ul>
+    </div>
+
+    <!-- Innoaesthetics -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">集团市场总监 Group Marketing Director</span>
+        <span class="role-period">2020.6 – 2021.7</span>
+      </div>
+      <div class="role-company">英诺皮肤世家 Innoaesthetics</div>
+      <div class="role-intro">Spanish professional mesotherapy and skincare brand for aesthetic medicine 西班牙专业中胚层与医美护肤品牌</div>
+      <div class="role-scope">汇报CEO Reporting to Group CEO · 管理市场/数字营销/品牌/培训 Marketing, Digital, Brand &amp; Training</div>
+      <ul>
+        <li>集团管理层身份主管医美事业部——负责包括全系列Skin Boost水光类产品在内的5个成熟产品线及4个新品的市场推广
+          <span class="bi">Group-level senior management; led the Medical Aesthetics BU — oversaw marketing for 5 established product lines (including the full Skin Boost skin-booster series) and 4 new products</span></li>
+        <li>在集团层面同时指导头皮、审美及电商事业部的市场管理工作，参与集团整体战略决策
+          <span class="bi">Concurrently directed marketing operations across the group's Hair, Aesthetic Care, and E-commerce business units; contributed to group-wide strategic decisions</span></li>
+        <li>主导爆品/疗程品项/联合套盒推广方案设计，推动非交联玻尿酸等新品类投资决策
+          <span class="bi">Designed hero product/treatment/combo campaigns; drove investment decisions for non-crosslinked HA and other new categories</span></li>
+        <li>打造消费端品牌影响力（ToC）——培养KOC导流代言，获多项品牌大奖；开拓美团、新氧、小红书全渠道合作
+          <span class="bi">Built B2C brand influence: cultivated KOC endorsements, won brand awards; expanded Meituan, SoYoung, Xiaohongshu partnerships</span></li>
+      </ul>
+    </div>
+
+    <!-- Galderma -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">市场总监 · 医美事业部 Marketing Director, Aesthetics BU</span>
+        <span class="role-period">2018.10 – 2019.6</span>
+      </div>
+      <div class="role-company">高德美中国 Galderma China</div>
+      <div class="role-intro">Global leader in injectable aesthetics 全球注射医美领导者</div>
+      <div class="role-scope">管理9人团队 Team of 9: Brand / Professional Education / New Products / Consumer &amp; Digital</div>
+      <ul>
+        <li>负责瑞蓝Restylane全系列玻尿酸产品组合的中国市场战略与整体营销，覆盖法思丽等成熟产品线
+          <span class="bi">Led China strategy &amp; marketing for Galderma's full Restylane HA portfolio, including established product lines (法思丽) and new launches</span></li>
+        <li>主导丽瑅Restylane Lyft和唯瑅Restylane Vital两款瑞蓝玻尿酸新品的中国Pre-launch及上市推广，从策略到落地完整操盘新品上市
+          <span class="bi">Led China pre-launch and full commercialization of two new Restylane HA products — Lyft (丽瑅) and Vital (唯瑅) — end-to-end ownership from strategy to execution</span></li>
+        <li>推进吉适Dysport（肉毒毒素）及塑颜萃Sculptra（PLLA再生类填充剂）两条新产品线的中国Pre-launch筹备
+          <span class="bi">Drove China pre-launch preparation for Dysport (neurotoxin) and Sculptra (PLLA bio-stimulator) — two new product lines</span></li>
+        <li>与欧洲总部及瑞典研发中心紧密协作，代表中国市场参与产品设计与全球战略项目
+          <span class="bi">Collaborated with European HQ &amp; Swedish R&amp;D center, representing China in product design and global strategic initiatives</span></li>
+      </ul>
+    </div>
+
+    <!-- Baxter -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">治疗经理 → 产品经理 → 高级产品经理 → 市场部经理（肾科）</span>
+        <span class="role-period">2009.6 – 2017.10</span>
+      </div>
+      <div class="role-company">百特（中国）投资有限公司 Baxter China</div>
+      <div class="role-intro">Global medtech leader in renal care; devices, consumables &amp; pharmaceuticals 全球肾科医疗领导企业</div>
+      <div class="role-scope">Therapy Mgr → Product Mgr → Sr. Product Mgr → Marketing Mgr, Renal · 8-Year Progressive Career</div>
+      <ul>
+        <li>逐步晋升至市场部经理，管理产品/治疗/大客户/品牌/数字营销/战略/业务创新团队
+          <span class="bi">Progressively promoted to Marketing Manager; led product, therapy, key account, brand, digital, strategy, and innovation teams</span></li>
+        <li>负责设备、耗材、药品多品类新产品中国上市，主导产品组合长期战略规划和定价策略
+          <span class="bi">Launched multiple new products across devices, consumables, and pharmaceuticals; led portfolio strategy and pricing</span></li>
+        <li>跨部门供应链协作（欧洲/国内工厂）；认证培训师培训全国销售团队
+          <span class="bi">Cross-functional supply chain collaboration (EU &amp; domestic factories); certified trainer for national sales force</span></li>
+        <li>2010年获百特中国市场部项目大奖；获评百特优秀员工与高潜力人才，多次被选为年度员工代表与CEO对话
+          <span class="bi">Awarded Baxter China Marketing Project Award (2010); recognized as Outstanding Employee and High Potential talent; selected multiple years as employee representative for annual CEO dialogue</span></li>
+      </ul>
+    </div>
+
+    <!-- J&J -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">高级产品专员 · 神经介入 Sr. Product Specialist, Neuro-Intervention, Cordis</span>
+        <span class="role-period">2004.9 – 2007.1</span>
+      </div>
+      <div class="role-company">强生（中国）医疗器械 Johnson &amp; Johnson Medical Devices</div>
+      <div class="role-intro">Global medtech leader 全球医疗器械领导企业</div>
+      <ul>
+        <li>负责Cordis神经介入产品线的专业教育与市场推广
+          <span class="bi">Professional education and marketing for Cordis neuro-intervention product line</span></li>
+      </ul>
+    </div>
+
+    <!-- Earlier -->
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">早期职业经历 Early Career</span>
+        <span class="role-period">2001 – 2004</span>
+      </div>
+      <ul>
+        <li><strong>默沙东 MSD</strong> — 泰能 Tienam Sales Representative（2002 – 2004）</li>
+        <li><strong>上海东方医院 Shanghai East Hospital</strong> — 妇产科住院医师 OB/GYN Resident（2001 – 2002）</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Competency -->
+  <div class="section">
+    <div class="section-title">Competency Model 能力矩阵</div>
+    <div class="competency-grid">
+      <div class="comp-card">
+        <h4>精准市场策略 Market Strategy</h4>
+        <p>市场环境与竞争分析 · 定位策略与商业模式设计 · 产品策略与定价路径 · 目标客户与定制推广 · KPI分解与团队架构</p>
+      </div>
+      <div class="comp-card">
+        <h4>专业医学支持 Medical Affairs</h4>
+        <p>医学文献汇编与解读 · 临床报告分析 · 专家共识与适应症打法 · AE处理建议 · 注射打法设计与课件开发</p>
+      </div>
+      <div class="comp-card">
+        <h4>品牌渠道赋能 Brand &amp; Channel</h4>
+        <p>品牌战略与VI全案 · 全渠道传播策略 · 小红书内容运营 · KOL/KOC投放合作 · 渠道活动落地 · 机构入院培训</p>
+      </div>
+      <div class="comp-card">
+        <h4>国际化拓展 Global Expansion</h4>
+        <p>细分赛道研究 · 材料趋势分析 · 国际品牌体系规划 · 企业出海资源对接 · 独立站搭建运营</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+</body>
+</html>
