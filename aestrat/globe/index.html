@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AESTRAT — Global landscape</title>
+<style>
+  :root{ --bg:#233245; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:var(--bg); }
+  #globe{ position:fixed; inset:0; }
+  /* globe.gl draws the canvas; keep it transparent over the slate body */
+  #globe canvas{ background:transparent !important; }
+
+  /* ── City / company dot (ported from the v3 globe) ───────────────────── */
+  .globe-city-dot{ position:absolute; pointer-events:none; }
+  .globe-city-dot .core{
+    position:absolute; top:0; left:0;
+    width:var(--dot-size); height:var(--dot-size);
+    background:var(--dot-color); border-radius:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 8px var(--dot-color), 0 0 18px var(--dot-color), inset 0 0 4px rgba(255,255,255,.6);
+    z-index:3;
+  }
+  .globe-city-dot .core::after{
+    content:''; position:absolute; inset:22%;
+    background:rgba(255,255,255,.92); border-radius:50%; filter:blur(.5px);
+  }
+  .globe-city-dot .halo{
+    position:absolute; top:0; left:0;
+    border:1.5px solid var(--dot-color); border-radius:50%;
+    transform:translate(-50%,-50%); pointer-events:none;
+  }
+  .globe-city-dot .halo-1{ width:calc(var(--dot-size)*2.2); height:calc(var(--dot-size)*2.2); animation:globe-pulse 2.6s ease-out infinite; opacity:.55; }
+  .globe-city-dot .halo-2{ width:calc(var(--dot-size)*3);   height:calc(var(--dot-size)*3);   animation:globe-pulse 2.6s ease-out infinite 1s; opacity:.35; }
+  @keyframes globe-pulse{
+    0%{ transform:translate(-50%,-50%) scale(.55); opacity:.65; }
+    60%{ opacity:.18; }
+    100%{ transform:translate(-50%,-50%) scale(1.4); opacity:0; }
+  }
+  .globe-city-dot .city-label{
+    position:absolute; top:calc(var(--dot-size)*.6 + 8px); left:0;
+    transform:translateX(-50%) translateY(-4px);
+    white-space:nowrap;
+    font-family:Georgia,'Times New Roman',serif; font-style:italic; font-weight:500;
+    font-size:14px; color:#fff; letter-spacing:.02em;
+    background:rgba(20,14,28,.82); padding:5px 12px; border-radius:999px;
+    border:1px solid rgba(232,201,197,.28);
+    backdrop-filter:blur(8px) saturate(1.05); -webkit-backdrop-filter:blur(8px) saturate(1.05);
+    box-shadow:0 8px 20px -10px rgba(0,0,0,.7); text-shadow:0 1px 6px rgba(0,0,0,.6);
+    opacity:0; pointer-events:none;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .globe-city-dot.label-above .city-label{ top:auto; bottom:calc(var(--dot-size)*.6 + 8px); }
+  .globe-city-dot.label-on .city-label{ opacity:1; transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<div id="globe"></div>
+
+<script src="./assets/three.min.js"></script>
+<script src="./assets/globe.gl.min.js"></script>
+<script src="./companies.js"></script>
+<script>
+(function(){
+  var TRACK_COLORS = {
+    "EBD":"#8E3A3A", "Injectables":"#6B5A75", "Skincare":"#D9AE91",
+    "Regenerative":"#A8B59A", "Consumables":"#5A6878", "Implants":"#CFB58E",
+    "Diagnostics":"#C76B68", "Surgical":"#8C7B91", "Pharma":"#EC9B73",
+    "Services":"#C8B8D0", "Other":"#9aa3b0"
+  };
+  var DATA = (window.AESTRAT_GLOBE_COMPANIES || []).slice();
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function buildDot(d){
+    var el = document.createElement('div');
+    el.className = 'globe-city-dot' + (d.lat > 18 ? ' label-above' : '');
+    var size = 13;
+    el.style.setProperty('--dot-color', TRACK_COLORS[d.track] || TRACK_COLORS.Other);
+    el.style.setProperty('--dot-size', size + 'px');
+    el.innerHTML =
+      '<span class="halo halo-1"></span>' +
+      '<span class="halo halo-2"></span>' +
+      '<span class="core"></span>' +
+      '<span class="city-label">' + esc(d.name) + '</span>';
+    d.__el = el;
+    return el;
+  }
+
+  function start(){
+    if (typeof Globe !== 'function' || typeof THREE === 'undefined'){ return setTimeout(start, 120); }
+
+    var el = document.getElementById('globe');
+    var globe = Globe({ rendererConfig:{ antialias:true, alpha:true } })
+      .width(window.innerWidth)
+      .height(window.innerHeight)
+      .backgroundColor('rgba(0,0,0,0)')
+      .globeImageUrl('./assets/earth-blue-marble.jpg')
+      .bumpImageUrl('./assets/earth-topology.png')
+      .showAtmosphere(true)
+      .atmosphereColor('#b85957')
+      .atmosphereAltitude(0.20)
+      .htmlElementsData(DATA)
+      .htmlLat(function(d){ return d.lat; })
+      .htmlLng(function(d){ return d.lon; })
+      .htmlAltitude(0.005)
+      .htmlElement(buildDot)
+      (el);
+
+    // Subtle country outlines
+    fetch('./assets/world.geojson').then(function(r){ return r.ok ? r.json() : Promise.reject(); }).then(function(geo){
+      var feats = (geo.features || []).filter(function(f){ return f.properties && f.properties.name !== 'Antarctica'; });
+      globe.polygonsData(feats)
+        .polygonAltitude(0.003)
+        .polygonCapColor(function(){ return 'rgba(247,241,230,0.03)'; })
+        .polygonSideColor(function(){ return 'rgba(184,89,87,0.06)'; })
+        .polygonStrokeColor(function(){ return 'rgba(232,201,197,0.18)'; })
+        .polygonLabel(function(){ return ''; });
+    }).catch(function(){});
+
+    // Camera + auto-rotate (decorative background: no user interaction)
+    var controls = globe.controls();
+    if (controls){
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.45;
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.enableRotate = false;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
+    }
+    globe.pointOfView({ lat: 18, lng: -40, altitude: 2.3 });
+
+    // Drifting cloud layer for liveliness
+    try {
+      var R = globe.getGlobeRadius();
+      var clouds = new THREE.Mesh(
+        new THREE.SphereGeometry(R * 1.012, 64, 64),
+        new THREE.MeshPhongMaterial({
+          map: new THREE.TextureLoader().load('./assets/earth-clouds.png'),
+          transparent: true, opacity: 0.40, depthWrite: false
+        })
+      );
+      globe.scene().add(clouds);
+      (function spin(){ clouds.rotation.y += 0.0006; requestAnimationFrame(spin); })();
+    } catch(e){}
+
+    // ── Front-face detection: hide labels on the far side of the globe ────
+    var camDir = new THREE.Vector3();
+    function updateFront(){
+      globe.camera().getWorldPosition(camDir); camDir.normalize();
+      for (var i=0;i<DATA.length;i++){
+        var d = DATA[i];
+        var c = globe.getCoords(d.lat, d.lon, 0);
+        var len = Math.sqrt(c.x*c.x + c.y*c.y + c.z*c.z) || 1;
+        d.__front = (c.x/len)*camDir.x + (c.y/len)*camDir.y + (c.z/len)*camDir.z > 0.22;
+        if (!d.__front && d.__el && d.__el.classList.contains('label-on')){
+          d.__el.classList.remove('label-on');
+          var idx = active.indexOf(d); if (idx>=0) active.splice(idx,1);
+        }
+      }
+      requestAnimationFrame(updateFront);
+    }
+
+    // ── Organic label churn: continuously fade a rotating subset in/out ───
+    var active = [];          // currently-labelled companies (FIFO)
+    var pool = 0;
+    var MAX_LABELS = 9;
+    function churn(){
+      // retire oldest when at capacity, or occasionally for gentle turnover
+      if (active.length >= MAX_LABELS || (active.length && Math.random() < 0.45)){
+        var old = active.shift(); if (old && old.__el) old.__el.classList.remove('label-on');
+      }
+      // bring in the next front-facing company not already shown
+      var tries = 0;
+      while (tries < DATA.length){
+        var d = DATA[pool % DATA.length]; pool++; tries++;
+        if (d.__front && active.indexOf(d) === -1 && d.__el){
+          d.__el.classList.add('label-on'); active.push(d); break;
+        }
+      }
+    }
+
+    requestAnimationFrame(updateFront);
+    setTimeout(function(){ for (var k=0;k<6;k++) churn(); }, 600);  // seed a few quickly
+    setInterval(churn, 820);
+
+    window.addEventListener('resize', function(){
+      globe.width(window.innerWidth).height(window.innerHeight);
+    });
+  }
+  start();
+})();
+</script>
+</body>
+</html>
