@@ -1,0 +1,24 @@
+# Yesterday's repo / old drafts — not part of the live site
+_repo/
+
+# Local scratch (screenshots, temp previews, font subsets)
+_shots/
+_tmp/
+*.b64
+
+# Claude Code local settings — internal, not for the public site
+.claude/
+
+# Founder's personal photo — Founder section removed; keep her photo off the public repo
+assets/founder-giselle.png
+
+# Unused leftovers (old video-background approach, alternate logo marks)
+assets/hero-globe-hd.mp4
+assets/hero-globe-hd.jpg
+assets/ar-brain-only.png
+assets/ar-logo-vertical.png
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini

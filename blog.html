@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="robots" content="noindex"><!-- pre-launch preview: remove before public launch -->
+<meta name="description" content="Reflections · 研美思维 — long-form strategic writing on China's medical-aesthetics market by AESTRAT Consulting.">
+<meta property="og:title" content="Reflections · 研美思维 · AESTRAT Consulting">
+<meta property="og:description" content="Notes from the upstream — long-form strategic writing on China's medical-aesthetics market.">
+<meta property="og:type" content="website">
+<title>Reflections · 研美思维 · AESTRAT Consulting</title>
+<link rel="icon" href="assets/aestrat-wordmark-on-light.png">
+
+<!-- Foundation tokens (five brand colors, type scale, spacing) -->
+<link rel="stylesheet" href="colors_and_type.css">
+<!-- Slogan script face, subset + embedded so it renders on every device (incl. mobile) -->
+<link rel="stylesheet" href="fonts/aestr-script.css">
+
+<style>
+/* ── Real brand fonts, wired to the local files in fonts/ ─────────────── */
+@font-face { font-family:'AestrLogo';   src:url('fonts/logo-sans.ttf') format('truetype');  font-weight:200 400; font-display:swap; }
+@font-face { font-family:'AestrSerif';  src:url('fonts/serif-cn.ttf')  format('truetype');  font-weight:200 700; font-display:swap; }
+@font-face { font-family:'AestrFengYa'; src:url('fonts/fengya-cn.ttf') format('truetype');  font-weight:400;     font-display:swap; }
+/* 'AestrScript' (slogan) is defined in fonts/aestr-script.css — embedded so it works on mobile too */
+
+/* ── Page-local roles built on the brand stacks ──────────────────────── */
+:root{
+  --logo:    'AestrLogo','Montserrat Alternates','Helvetica Neue',sans-serif;
+  --serif:   'AestrSerif','Noto Serif SC','Songti SC',serif;
+  --sans:    var(--font-body);
+  --mono:    var(--font-number);          /* Special Elite — numerals/stamps */
+  --script:  'AestrScript',cursive;
+  --fengya:  'AestrFengYa',var(--serif);
+  --gutter:  clamp(24px,7vw,120px);
+}
+
+*,*::before,*::after{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--c-paper);
+  color:var(--c-ink-2);
+  font-family:var(--sans);
+  font-size:var(--type-body);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  min-height:100svh; display:flex; flex-direction:column;
+}
+::selection{ background:var(--c-oxblood); color:var(--c-bone); }
+a{ color:inherit; text-decoration:none; border:0; }
+img{ display:block; max-width:100%; }
+
+/* Shared editorial primitives ─────────────────────────────────────────── */
+.eyebrow{
+  font-family:var(--mono); font-size:var(--type-stamp);
+  letter-spacing:.22em; text-transform:uppercase; color:var(--c-ink-3);
+}
+.num{ font-family:var(--mono); font-variant-numeric:tabular-nums; }
+
+/* ── Nav (same component as the homepage) ─────────────────────────────── */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:100; height:62px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 var(--gutter);
+  background:rgba(224,214,202,0); border-bottom:1px solid transparent;
+  transition:background var(--t-base) var(--ease-quiet), border-color var(--t-base) var(--ease-quiet);
+}
+.nav.scrolled{
+  background:rgba(224,214,202,.82);
+  backdrop-filter:blur(14px) saturate(1.05); -webkit-backdrop-filter:blur(14px) saturate(1.05);
+  border-bottom-color:var(--c-hairline);
+}
+.nav-brand{ display:flex; align-items:center; gap:11px; opacity:1; transition:opacity var(--t-base) var(--ease-quiet); }
+.nav-brand .ip{ width:24px; height:auto; flex:none; }
+.nav-brand .mark{ font-family:var(--logo); font-weight:300; letter-spacing:.34em; font-size:14px; color:var(--c-bone); transition:color var(--t-base) var(--ease-quiet); }
+.nav-brand .cn{ font-family:var(--serif); font-size:12px; letter-spacing:.18em; color:var(--c-sand-2); transition:color var(--t-base) var(--ease-quiet); }
+.nav-links{ display:flex; align-items:center; gap:clamp(18px,2.4vw,34px); }
+.nav-links a{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--c-slate-4); transition:color var(--t-fast) var(--ease-quiet);
+}
+.nav-links a.here{ color:var(--c-sand-2); }
+.nav-links a:hover{ color:var(--c-sand-2); }
+.nav.scrolled .nav-brand .mark{ color:var(--c-slate); }
+.nav.scrolled .nav-brand .cn{ color:var(--c-ink-3); }
+.nav.scrolled .nav-links a{ color:var(--c-ink-3); }
+.nav.scrolled .nav-links a.here{ color:var(--c-oxblood); }
+.nav.scrolled .nav-links a:hover{ color:var(--c-oxblood); }
+@media(max-width:780px){ .nav-links a.hide-sm{ display:none; } }
+
+/* ── Blog masthead + empty state (dusk register) ──────────────────────── */
+.blog{
+  position:relative; flex:1;
+  background:var(--c-slate); color:var(--c-bone); overflow:hidden;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(150px,18vw,210px) var(--gutter) clamp(80px,12vw,140px);
+}
+.blog::before{
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5;
+  background-image:radial-gradient(var(--c-slate-3) 1px, transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(ellipse 78% 70% at 50% 38%, #000 0%, transparent 72%);
+          mask-image:radial-gradient(ellipse 78% 70% at 50% 38%, #000 0%, transparent 72%);
+}
+.blog-inner{ position:relative; z-index:1; max-width:760px; margin:0 auto; text-align:center; }
+.blog .eyebrow{ color:var(--c-sand-2); margin-bottom:24px; }
+.blog-title{
+  font-family:var(--serif); font-weight:200; font-size:clamp(34px,5vw,60px); line-height:1.1;
+  letter-spacing:.01em; color:var(--c-bone);
+}
+.blog-title .cn{ display:block; font-family:var(--fengya); font-size:.4em; letter-spacing:.32em; color:var(--c-sand-2); margin-top:18px; padding-left:.32em; }
+.blog-lead{
+  margin:clamp(26px,3.4vw,40px) auto 0; max-width:52ch;
+  font-size:16px; line-height:1.95; color:var(--c-sand-2); font-weight:300;
+}
+.blog-status{
+  display:inline-flex; align-items:center; gap:12px; margin-top:clamp(34px,5vw,52px);
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--c-slate-4);
+}
+.blog-status::before{ content:''; width:7px; height:7px; border-radius:50%; background:var(--c-sand-1); animation:blogpulse 2.6s var(--ease-quiet) infinite; }
+@keyframes blogpulse{ 0%,100%{ opacity:.35; transform:scale(1); } 50%{ opacity:1; transform:scale(1.5); } }
+.blog-channels{
+  margin-top:clamp(30px,4vw,44px); display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+}
+.blog-chip{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  padding:11px 22px; border:1px solid rgba(224,214,202,.22); color:var(--c-bone);
+  transition:border-color var(--t-base) var(--ease-quiet), color var(--t-base) var(--ease-quiet);
+}
+.blog-chip:hover{ border-color:var(--c-sand-1); color:var(--c-sand-2); }
+
+/* ── Footer (same component as the homepage) ──────────────────────────── */
+.footer{ background:var(--c-slate-1); color:var(--c-paper-light); padding:clamp(48px,6vw,72px) var(--gutter) clamp(28px,4vw,40px); }
+.footer-top{ display:flex; flex-wrap:wrap; align-items:center; gap:30px 72px; max-width:1180px; margin:0 auto; }
+.f-qr{ display:flex; flex-direction:column; gap:9px; align-items:center; flex:none; }
+.f-qr img{ width:118px; height:118px; display:block; }
+.f-qr .cap{ font-family:var(--mono); font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--c-slate-4); }
+.f-connect{ flex:1; min-width:240px; }
+.footer-top .f-channels{ display:flex; flex-wrap:wrap; gap:16px 38px; }
+.footer-top .f-channels li{ margin:0; }
+.footer-top .f-chan{ display:inline-flex; align-items:center; gap:9px; color:var(--c-sand-2); font-size:13px; transition:color var(--t-fast) var(--ease-quiet); }
+.footer-top .f-chan svg{ width:16px; height:16px; fill:currentColor; flex:none; opacity:.92; }
+.footer-top a.f-chan:hover{ color:var(--c-bone); }
+.footer h4{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-slate-4); margin-bottom:18px; font-weight:400; }
+.footer .f-brand{ font-family:var(--logo); font-weight:300; letter-spacing:.3em; text-transform:uppercase; font-size:17px; color:var(--c-bone); }
+.footer .f-brand-cn{ font-family:var(--serif); font-size:13px; letter-spacing:.14em; color:var(--c-slate-4); margin-top:10px; }
+.footer .f-slogan{ font-family:var(--script); font-size:21px; color:var(--c-sand-2); margin-top:20px; }
+.footer ul{ list-style:none; }
+.footer li{ margin-bottom:11px; font-size:13px; }
+.footer li a, .footer li span{ color:var(--c-paper-light); transition:color var(--t-fast) var(--ease-quiet); }
+.footer li a:hover{ color:var(--c-sand-2); }
+.footer .k{ font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--c-slate-4); display:block; }
+.footer-bottom{ max-width:1180px; margin:clamp(36px,5vw,56px) auto 0; padding-top:22px; border-top:1px solid rgba(224,214,202,.12);
+  display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+.footer-bottom span{ font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--c-slate-4); }
+@media(max-width:760px){ .footer-top{ grid-template-columns:1fr; gap:30px; } }
+</style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-brand">
+    <img class="ip" src="assets/ip-brain-mark.png" alt="">
+    <span class="mark">AESTRAT</span>
+    <span class="cn">研美咨询</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="hide-sm">Home</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html" class="here">Blog</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── Blog (empty state — content coming) ──────────────────────────────── -->
+<main class="blog">
+  <div class="blog-inner">
+    <div class="eyebrow">Reflections · 研美思维</div>
+    <h1 class="blog-title">Notes from the upstream.<span class="cn">研于至深</span></h1>
+    <p class="blog-lead">Long-form strategic writing on China's medical-aesthetics market — the perspective behind every recommendation we make. The full column is being prepared for the web.</p>
+    <div class="blog-status">Coming soon</div>
+    <div class="blog-channels">
+      <a class="blog-chip" href="#" aria-disabled="true">WeChat 公众号 · 研美思维</a>
+      <a class="blog-chip" href="https://www.linkedin.com/company/aestrat-consulting/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="f-qr">
+      <img src="assets/qr-wechat.png" alt="WeChat QR code — scan to add on WeChat">
+    </div>
+    <div class="f-connect">
+      <h4>Connect</h4>
+      <ul class="f-channels">
+        <li><a class="f-chan" href="mailto:contact@aestrat.co"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>contact@aestrat.co</a></li>
+        <li><a class="f-chan" href="https://www.linkedin.com/company/aestrat-consulting/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45C23.2 24 24 23.22 24 22.27V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a></li>
+        <li><span class="f-chan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.69 2.19c-4.8 0-8.69 3.29-8.69 7.34 0 2.21 1.17 4.2 3 5.55a.59.59 0 0 1 .21.66l-.39 1.48c-.02.07-.05.14-.05.21 0 .16.13.3.29.3a.33.33 0 0 0 .17-.06l1.9-1.11a.86.86 0 0 1 .72-.1c.91.26 1.86.4 2.84.4.17 0 .34-.01.51-.02a4.9 4.9 0 0 1-.25-1.54c0-3.4 3.3-6.16 7.38-6.16l.42.01c-.62-3.2-3.95-5.96-7.96-5.96zM5.79 6c.64 0 1.16.53 1.16 1.18a1.17 1.17 0 1 1-2.33 0C4.62 6.52 5.14 6 5.79 6zm5.81 0c.64 0 1.16.53 1.16 1.18a1.17 1.17 0 1 1-2.33 0C10.43 6.52 10.95 6 11.6 6zm5.34 4.5c-3.27 0-5.94 2.24-5.94 5.02 0 2.78 2.67 5.03 5.94 5.03.7 0 1.38-.1 2.01-.29a.72.72 0 0 1 .6.08l1.3.76a.23.23 0 0 0 .12.04c.11 0 .2-.09.2-.2 0-.05-.02-.1-.03-.15l-.27-1.01a.48.48 0 0 1-.02-.13.4.4 0 0 1 .17-.33c1.3-.96 2.13-2.35 2.13-3.9 0-2.78-2.67-5.02-5.94-5.02zm-1.97 2.66c.44 0 .8.36.8.81a.81.81 0 1 1-1.6 0c0-.45.36-.81.8-.81zm3.96 0c.44 0 .8.36.8.81a.81.81 0 1 1-1.6 0c0-.45.36-.81.8-.81z"/></svg>YanMeiChat</span></li>
+        <li><span class="f-chan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Shanghai, China</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 AESTRAT Consulting · 研美咨询. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+</script>
+</body>
+</html>
