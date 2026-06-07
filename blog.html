@@ -87,6 +87,9 @@ img{ display:block; max-width:100%; }
 }
 .nav-links a.here{ color:var(--c-sand-2); }
 .nav-links a:hover{ color:var(--c-sand-2); }
+.lang-toggle{ background:none; border:0; cursor:pointer; font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--c-sand-2); padding:4px 0 4px clamp(12px,1.8vw,26px); transition:color var(--t-fast) var(--ease-quiet); }
+.lang-toggle:hover{ color:var(--c-bone); }
+.nav.scrolled .lang-toggle{ color:var(--c-oxblood); }
 .nav.scrolled .nav-brand .nav-logo{ background-color:var(--c-slate); }
 .nav.scrolled .nav-links a{ color:var(--c-ink-3); }
 .nav.scrolled .nav-links a.here{ color:var(--c-oxblood); }
@@ -222,10 +225,11 @@ img{ display:block; max-width:100%; }
     <span class="nav-logo" role="img" aria-label="AESTRAT Consulting 研美咨询"></span>
   </a>
   <div class="nav-links">
-    <a href="index.html" class="hide-sm">Home</a>
-    <a href="services.html">Services</a>
-    <a href="blog.html" class="here">Blog</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="index.html" class="hide-sm" data-i18n="nav.home">Home</a>
+    <a href="services.html" data-i18n="nav.services">Services</a>
+    <a href="blog.html" class="here" data-i18n="nav.blog">Blog</a>
+    <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+    <button class="lang-toggle" type="button" aria-label="切换语言 / Switch language">中文</button>
   </div>
 </nav>
 
@@ -233,13 +237,13 @@ img{ display:block; max-width:100%; }
 <main class="blog">
   <div class="blog-inner">
     <img class="blog-logo" src="assets/logo-reflections-cream.png" alt="Aesthetic Reflections 研美思维">
-    <div class="blog-status">Coming soon</div>
+    <div class="blog-status" data-i18n="blog.soon">Coming soon</div>
     <h1 class="blog-slogan">
       <span class="en">From insight to impact</span>
       <span class="cn">研于至深，美以致远</span>
     </h1>
     <div class="blog-channels">
-      <a class="blog-chip" href="#" aria-disabled="true">WeChat 公众号 · 研美思维</a>
+      <a class="blog-chip" href="#" aria-disabled="true" data-i18n="blog.wechat">Aesthetic Reflections · WeChat</a>
       <a class="blog-chip" href="https://www.linkedin.com/company/aestrat-consulting/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </div>
@@ -252,17 +256,17 @@ img{ display:block; max-width:100%; }
       <img src="assets/qr-wechat.png" alt="WeChat QR code — scan to add on WeChat">
     </div>
     <div class="f-connect">
-      <h4>Connect</h4>
+      <h4 data-i18n="f.connect">Connect</h4>
       <ul class="f-channels">
         <li><a class="f-chan" href="mailto:contact@aestrat.co"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>contact@aestrat.co</a></li>
         <li><a class="f-chan" href="https://www.linkedin.com/company/aestrat-consulting/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45C23.2 24 24 23.22 24 22.27V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a></li>
         <li><span class="f-chan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.69 2.19c-4.8 0-8.69 3.29-8.69 7.34 0 2.21 1.17 4.2 3 5.55a.59.59 0 0 1 .21.66l-.39 1.48c-.02.07-.05.14-.05.21 0 .16.13.3.29.3a.33.33 0 0 0 .17-.06l1.9-1.11a.86.86 0 0 1 .72-.1c.91.26 1.86.4 2.84.4.17 0 .34-.01.51-.02a4.9 4.9 0 0 1-.25-1.54c0-3.4 3.3-6.16 7.38-6.16l.42.01c-.62-3.2-3.95-5.96-7.96-5.96zM5.79 6c.64 0 1.16.53 1.16 1.18a1.17 1.17 0 1 1-2.33 0C4.62 6.52 5.14 6 5.79 6zm5.81 0c.64 0 1.16.53 1.16 1.18a1.17 1.17 0 1 1-2.33 0C10.43 6.52 10.95 6 11.6 6zm5.34 4.5c-3.27 0-5.94 2.24-5.94 5.02 0 2.78 2.67 5.03 5.94 5.03.7 0 1.38-.1 2.01-.29a.72.72 0 0 1 .6.08l1.3.76a.23.23 0 0 0 .12.04c.11 0 .2-.09.2-.2 0-.05-.02-.1-.03-.15l-.27-1.01a.48.48 0 0 1-.02-.13.4.4 0 0 1 .17-.33c1.3-.96 2.13-2.35 2.13-3.9 0-2.78-2.67-5.02-5.94-5.02zm-1.97 2.66c.44 0 .8.36.8.81a.81.81 0 1 1-1.6 0c0-.45.36-.81.8-.81zm3.96 0c.44 0 .8.36.8.81a.81.81 0 1 1-1.6 0c0-.45.36-.81.8-.81z"/></svg>YanMeiChat</span></li>
-        <li><span class="f-chan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Shanghai, China</span></li>
+        <li><span class="f-chan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg><span data-i18n="f.loc">Shanghai, China</span></span></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 AESTRAT Consulting · 研美咨询. All rights reserved.</span>
+    <span data-i18n="f.copy">© 2026 AESTRAT Consulting. All rights reserved.</span>
   </div>
 </footer>
 
@@ -330,6 +334,15 @@ onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
   fab.onclick=()=> panel.classList.contains('open')?close():open();
   closeBtn.onclick=close;
   form.addEventListener('submit',e=>{ e.preventDefault(); const v=text.value.trim(); if(!v) return; add('me',v); text.value=''; reply(v); });
+})();
+</script>
+
+<script>
+(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "blog.soon": "即将上线", "blog.wechat": "公众号 · 研美思维", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。"};
+var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));var en=nodes.map(function(n){return n.innerHTML;});
+function apply(lang){root.setAttribute("data-lang",lang);nodes.forEach(function(n,i){var z=I18N[n.getAttribute("data-i18n")];n.innerHTML=(lang==="zh"&&z!=null)?z:en[i];});try{localStorage.setItem(KEY,lang);}catch(e){}[].forEach.call(document.querySelectorAll(".lang-toggle"),function(b){b.textContent=lang==="zh"?"EN":"中文";});}
+var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved);
+document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest(".lang-toggle");if(t){e.preventDefault();apply(root.getAttribute("data-lang")==="zh"?"en":"zh");}});
 })();
 </script>
 </body>
