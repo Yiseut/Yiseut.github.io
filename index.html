@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 <meta name="robots" content="noindex"><!-- pre-launch preview: remove before public launch -->
-<meta name="description" content="AESTRAT Consulting · 研美咨询 — a boutique strategic advisory firm working exclusively with upstream medical-aesthetics brands in China. From insight to impact.">
-<meta property="og:title" content="AESTRAT Consulting · 研美咨询">
+<meta name="description" content="AESTRAT Consulting — a boutique strategic advisory firm working exclusively with upstream medical-aesthetics brands in China. From insight to impact.">
+<meta property="og:title" content="AESTRAT Consulting">
 <meta property="og:description" content="Strategic advisory for aesthetic medicine. Where clinical evidence meets brand.">
 <meta property="og:type" content="website">
-<title>AESTRAT Consulting · 研美咨询</title>
+<title>AESTRAT Consulting</title>
 <link rel="icon" href="assets/aestrat-wordmark-on-light.png">
 
 <!-- Foundation tokens (five brand colors, type scale, spacing) -->
@@ -89,19 +89,23 @@ img{ display:block; max-width:100%; }
   border-bottom-color:var(--c-hairline);
 }
 /* Brand stays hidden while over the hero (big AESTRAT showing); fades in once scrolled past it */
-.nav-brand{ display:flex; align-items:baseline; gap:10px; opacity:0; pointer-events:none; transition:opacity var(--t-base) var(--ease-quiet); }
+.nav-brand{ display:flex; align-items:center; opacity:0; pointer-events:none; transition:opacity var(--t-base) var(--ease-quiet); }
 .nav.scrolled .nav-brand{ opacity:1; pointer-events:auto; }
 /* Default: nav sits over the dark hero — light text. Scrolled onto paper — dark text. */
-.nav-brand .mark{ font-family:var(--logo); font-weight:300; letter-spacing:.34em; font-size:14px; color:var(--c-bone); transition:color var(--t-base) var(--ease-quiet); }
-.nav-brand .cn{ font-family:var(--serif); font-size:12px; letter-spacing:.18em; color:var(--c-sand-2); transition:color var(--t-base) var(--ease-quiet); }
+.nav-brand .nav-logo{
+  display:block; width:116px; height:46px;
+  background-color:var(--c-bone);
+  -webkit-mask:url('assets/aestrat-wordmark-on-light.png') left center/contain no-repeat;
+          mask:url('assets/aestrat-wordmark-on-light.png') left center/contain no-repeat;
+  transition:background-color var(--t-base) var(--ease-quiet);
+}
 .nav-links{ display:flex; align-items:center; gap:clamp(18px,2.4vw,34px); }
 .nav-links a{
   font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
   color:var(--c-slate-4); transition:color var(--t-fast) var(--ease-quiet);
 }
 .nav-links a:hover{ color:var(--c-sand-2); }
-.nav.scrolled .nav-brand .mark{ color:var(--c-slate); }
-.nav.scrolled .nav-brand .cn{ color:var(--c-ink-3); }
+.nav.scrolled .nav-brand .nav-logo{ background-color:var(--c-slate); }
 .nav.scrolled .nav-links a{ color:var(--c-ink-3); }
 .nav.scrolled .nav-links a:hover{ color:var(--c-oxblood); }
 @media(max-width:780px){ .nav-links a.hide-sm{ display:none; } }
@@ -191,6 +195,37 @@ img{ display:block; max-width:100%; }
 @media(max-width:760px){ .stat-grid{ grid-template-columns:repeat(2,1fr); } .stat:nth-child(2n){ border-right:0; } }
 @media(max-width:420px){ .stat-grid{ grid-template-columns:1fr; } .stat{ border-right:0; border-bottom:1px solid rgba(224,214,202,.12); padding-bottom:20px; } }
 
+/* Intelligence — 2-col: stats (left) + live data-card collage (right) */
+.intel-layout{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,440px); gap:clamp(40px,5vw,80px); align-items:center; }
+.intel-left .section-head{ margin-bottom:clamp(28px,4vw,44px); }
+.intel-left .stat-grid{ grid-template-columns:repeat(2,1fr); border-top:0; }
+.intel-left .stat{ border-right:0; border-top:1px solid rgba(224,214,202,.14); padding:20px 22px 16px 0; }
+.intel-left .stat .fig{ font-size:clamp(28px,3.4vw,44px); }
+@media(max-width:980px){ .intel-layout{ grid-template-columns:1fr; gap:46px; } }
+@media(max-width:520px){ .intel-left .stat-grid{ grid-template-columns:1fr; } }
+
+/* Live data-card collage — real dashboard screenshots (China & Global registry) */
+.mast-viz{ position:relative; width:100%; max-width:440px; justify-self:end; }
+@keyframes vizUp{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:none; } }
+.intel-head{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; }
+.intel-eyebrow{ font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-sand-2); }
+.intel-badge{ font-family:var(--mono); font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:var(--c-bone); border:1px solid rgba(206,181,156,.4); border-radius:999px; padding:3px 10px; white-space:nowrap; }
+.intel-stack{ position:relative; height:470px; }
+.ishot{ position:absolute; border:1px solid rgba(206,181,156,.32); border-radius:12px; overflow:hidden; background:var(--c-paper); box-shadow:0 24px 50px -26px rgba(8,12,20,.8); animation:cardIn .85s var(--ease-quiet) backwards; transition:transform .55s var(--ease-quiet), box-shadow .55s var(--ease-quiet), border-color var(--t-base); }
+.ishot img{ display:block; width:100%; height:auto; }
+.ish-in{ display:block; animation:floaty 8s ease-in-out infinite; }
+.ishot:hover{ transform:translateY(-12px) scale(1.03); z-index:20; border-color:rgba(206,181,156,.6); box-shadow:0 42px 78px -28px rgba(8,12,20,.92); }
+.is-sun{ width:244px; top:0; right:0; z-index:1; animation-delay:.06s; }
+.is-sun .ish-in{ animation-duration:7.5s; }
+.is-bars{ width:210px; left:0; bottom:0; z-index:2; animation-delay:.34s; }
+.is-bars .ish-in{ animation-duration:8.4s; animation-delay:-1.5s; }
+.is-donut{ width:168px; top:120px; left:96px; z-index:3; animation-delay:.2s; }
+.is-donut .ish-in{ animation-duration:9.2s; animation-delay:-3s; }
+@keyframes cardIn{ from{ opacity:0; transform:translateY(24px) scale(.95); } to{ opacity:1; transform:none; } }
+@keyframes floaty{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-8px); } }
+@media (prefers-reduced-motion: reduce){ .ishot, .ish-in{ animation:none; } }
+.intel-cap{ margin-top:14px; font-family:var(--mono); font-size:8px; letter-spacing:.05em; line-height:1.65; color:var(--c-slate-4); }
+
 /* ── Founder ──────────────────────────────────────────────────────────── */
 .founder{ background:var(--c-paper); }
 .founder-grid{ display:grid; grid-template-columns:300px 1fr; gap:clamp(36px,5vw,72px); align-items:start; }
@@ -267,11 +302,10 @@ img{ display:block; max-width:100%; }
 
 <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
 <nav class="nav" id="nav">
-  <a href="#top" class="nav-brand">
-    <span class="mark">AESTRAT</span>
+  <a href="#top" class="nav-brand" aria-label="AESTRAT Consulting">
+    <span class="nav-logo" role="img" aria-label="AESTRAT Consulting"></span>
   </a>
   <div class="nav-links">
-    <a href="#what" class="hide-sm">What we do</a>
     <a href="services.html">Services</a>
     <a href="blog.html">Blog</a>
     <a href="#contact">Contact</a>
@@ -288,7 +322,7 @@ img{ display:block; max-width:100%; }
   </div>
   <div class="hero-inner">
     <div class="hero-stack">
-      <img class="hero-logo" src="assets/aestrat-wordmark-on-dark.png" alt="AESTRAT Consulting · 研美咨询">
+      <img class="hero-logo" src="assets/aestrat-wordmark-on-dark.png" alt="AESTRAT Consulting">
       <div class="hero-slogan">
         <div class="en">From insight to impact</div>
       </div>
@@ -296,95 +330,32 @@ img{ display:block; max-width:100%; }
   </div>
 </header>
 
-<!-- ── Positioning ──────────────────────────────────────────────────────── -->
-<section class="section positioning" id="what">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-index">001 — What we do</div>
-    </div>
-    <div class="pos-grid">
-      <h2 class="pos-lead reveal">
-        Where clinical evidence meets brand.
-        <span class="cn">让临床证据成为品牌资产。</span>
-      </h2>
-      <div class="pos-body">
-        <div class="reveal">
-          <p>AESTRAT is a boutique strategic advisory firm working exclusively with upstream medical-aesthetics brands in China — device makers, injectable manufacturers, clinic groups and post-market product owners.</p>
-          <div class="pos-meta">
-            <span class="chip">Upstream brands</span>
-            <span class="chip">China market</span>
-          </div>
-        </div>
-        <div class="reveal">
-          <p>Two disciplines under one roof — <span class="accent">medical strategy</span> and <span class="accent">marketing strategy</span>, held in the same room. Engagements are led by the founder, a physician turned strategic operator. Most run twelve to twenty weeks.</p>
-          <div class="pos-meta">
-            <span class="chip">12–20 weeks</span>
-            <span class="chip">Founder-led</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Service matrix ───────────────────────────────────────────────────── -->
-<section class="section services" id="framework">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-index">002 — The framework</div>
-      <h2 class="section-title">Four disciplines, across the product lifecycle <span class="cn">四大职能 × 三大周期</span></h2>
-    </div>
-    <div class="matrix-scroll reveal">
-      <table class="matrix">
-        <thead>
-          <tr>
-            <th class="phase"></th>
-            <th><span class="disc-no">01</span><span class="disc-en">Market strategy</span><span class="disc-cn">市场策略</span></th>
-            <th><span class="disc-no">02</span><span class="disc-en">Medical support</span><span class="disc-cn">医学支持</span></th>
-            <th><span class="disc-no">03</span><span class="disc-en">Sales management</span><span class="disc-cn">销售管理</span></th>
-            <th><span class="disc-no">04</span><span class="disc-en">Organization development</span><span class="disc-cn">组织发展</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="phase"><span class="ph-no">00</span><span class="ph-en">Pre-launch</span><span class="ph-cn">上市前期</span></td>
-            <td class="cell">Research, segmentation, business model, pricing path, promotion plan</td>
-            <td class="cell">Literature, clinical reports, KOL consensus, indication &amp; AE protocol design</td>
-            <td class="cell">Sales org architecture, KPI allocation, bonus policy, sales planning</td>
-            <td class="cell">Executive hiring, performance &amp; incentive systems, crisis PR, culture</td>
-          </tr>
-          <tr>
-            <td class="phase"><span class="ph-no">01</span><span class="ph-en">Post-launch</span><span class="ph-cn">上市后</span></td>
-            <td class="cell">Promotion decks, sales collateral, competitive testing</td>
-            <td class="cell">Speaker systems, medical courses, expert content</td>
-            <td class="cell">Activity management, capability models, KA &amp; distributor training</td>
-            <td class="cell">Talent training, job-level optimization, executive development</td>
-          </tr>
-          <tr>
-            <td class="phase"><span class="ph-no">02</span><span class="ph-en">Scale</span><span class="ph-cn">持续赋能</span></td>
-            <td class="cell">Operational review, business-model innovation, portfolio strategy</td>
-            <td class="cell">Ongoing scientific support</td>
-            <td class="cell">As-needed enablement</td>
-            <td class="cell">Org diagnostic, talent inventory, diversified incentives</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
 <!-- ── Intelligence ─────────────────────────────────────────────────────── -->
 <section class="section intel" id="intelligence">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-index">003 — Proprietary intelligence</div>
-      <h2 class="section-title">A database refreshed daily <span class="cn">每日更新的自有数据库</span></h2>
+  <div class="wrap intel-layout">
+    <div class="intel-left">
+      <div class="section-head">
+        <div class="section-index">001 — Proprietary intelligence</div>
+        <h2 class="section-title">A database refreshed daily</h2>
+      </div>
+      <div class="stat-grid reveal">
+        <div class="stat"><div class="fig num">390+</div><div class="lbl">Companies tracked</div><div class="desc">Brands, clinic groups &amp; distributors — domestic and multinational</div></div>
+        <div class="stat"><div class="fig num">970+</div><div class="lbl">Product lines</div><div class="desc">Injectables, devices, skincare, regenerative — by indication</div></div>
+        <div class="stat"><div class="fig num">380+</div><div class="lbl">Daily intel sources</div><div class="desc">Regulatory filings, conference output, press, primary interviews</div></div>
+        <div class="stat"><div class="fig num">6+</div><div class="lbl">Years of coverage</div><div class="desc">Continuous since 2020 — a multi-year time series</div></div>
+      </div>
     </div>
-    <div class="stat-grid reveal">
-      <div class="stat"><div class="fig num">390+</div><div class="lbl">Companies tracked</div><div class="desc">Brands, clinic groups &amp; distributors — domestic and multinational</div></div>
-      <div class="stat"><div class="fig num">970+</div><div class="lbl">Product lines</div><div class="desc">Injectables, devices, skincare, regenerative — by indication</div></div>
-      <div class="stat"><div class="fig num">380+</div><div class="lbl">Daily intel sources</div><div class="desc">Regulatory filings, conference output, press, primary interviews</div></div>
-      <div class="stat"><div class="fig num">6+</div><div class="lbl">Years of coverage</div><div class="desc">Continuous since 2020 — a multi-year time series</div></div>
+    <div class="mast-viz">
+      <div class="intel-head">
+        <span class="intel-eyebrow">Live registry</span>
+        <span class="intel-badge">China · Global</span>
+      </div>
+      <div class="intel-stack" aria-hidden="true">
+        <figure class="ishot is-sun"><span class="ish-in"><img src="assets/intel/sunburst.png" alt=""></span></figure>
+        <figure class="ishot is-donut"><span class="ish-in"><img src="assets/intel/donut975.png" alt=""></span></figure>
+        <figure class="ishot is-bars"><span class="ish-in"><img src="assets/intel/trackbars.png" alt=""></span></figure>
+      </div>
+      <p class="intel-cap">975 product lines across 9 tracks · 567 global filings · updated Jun 2026</p>
     </div>
   </div>
 </section>
@@ -393,14 +364,14 @@ img{ display:block; max-width:100%; }
 <section class="section voice" id="voice">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-index">004 — The voice</div>
-      <h2 class="section-title">Two channels, one point of view <span class="cn">研美思维 · 研速</span></h2>
+      <div class="section-index">002 — The voice</div>
+      <h2 class="section-title">Two channels, one point of view</h2>
     </div>
     <div class="channels reveal">
       <!-- Aesthetic Reflections -->
       <div class="channel">
-        <div class="tag"><span class="seal-sq"></span> Long-form · WeChat 公众号</div>
-        <div class="ch-name">研美思维<span class="en">Aesthetic Reflections</span></div>
+        <div class="tag"><span class="seal-sq"></span> Long-form · WeChat</div>
+        <div class="ch-name">Aesthetic Reflections</div>
         <div class="ch-desc">The firm's flagship content IP — long-form strategic analysis of China's medical-aesthetics industry, read weekly by senior industry leaders. Where the firm's expert voice lives.</div>
         <div class="metrics">
           <div class="m"><div class="v num">6,000+</div><div class="t">C-suite &amp; senior leaders following</div></div>
@@ -409,15 +380,15 @@ img{ display:block; max-width:100%; }
           <div class="m"><div class="v num">&gt;10%</div><div class="t">Engagement rate</div></div>
         </div>
         <div class="channel-foot">
-          <img src="assets/qr-reflections.png" alt="WeChat QR code for Aesthetic Reflections 研美思维">
-          <div class="qr-cap"><b>研美思维</b>Scan to follow the long-form column on WeChat.</div>
+          <img src="assets/qr-reflections.png" alt="WeChat QR code for Aesthetic Reflections">
+          <div class="qr-cap"><b>Aesthetic Reflections</b>Scan to follow the long-form column on WeChat.</div>
         </div>
       </div>
       <!-- Yansu -->
       <div class="channel">
-        <div class="tag"><span class="seal-sq"></span> Daily news · WeChat 公众号</div>
-        <div class="ch-name">研速<span class="en">Yansu · Global News</span></div>
-        <div class="ch-desc">A fast feed of global medical-aesthetics news and 资讯 — regulatory moves, deals, product launches and conference output, tracked as it breaks and curated for the China industry.</div>
+        <div class="tag"><span class="seal-sq"></span> Daily news · WeChat</div>
+        <div class="ch-name">Yansu · Global News</div>
+        <div class="ch-desc">A fast feed of global medical-aesthetics news — regulatory moves, deals, product launches and conference output, tracked as it breaks and curated for the China industry.</div>
         <div class="metrics">
           <div class="m"><div class="v num">Daily</div><div class="t">Global news cadence</div></div>
           <div class="m"><div class="v num">380+</div><div class="t">Sources monitored</div></div>
@@ -425,19 +396,12 @@ img{ display:block; max-width:100%; }
           <div class="m"><div class="v num">Global</div><div class="t">Cross-market scope</div></div>
         </div>
         <div class="channel-foot">
-          <img src="assets/qr-yansu.png" alt="WeChat QR code for 研速 Yansu global news">
-          <div class="qr-cap"><b>研速 Yansu</b>Scan to follow the global news feed on WeChat.</div>
+          <img src="assets/qr-yansu.png" alt="WeChat QR code for Yansu global news">
+          <div class="qr-cap"><b>Yansu</b>Scan to follow the global news feed on WeChat.</div>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ── Closing ──────────────────────────────────────────────────────────── -->
-<section class="closing">
-  <img class="seal-brain" src="assets/ar-brain-mark.png" alt="">
-  <div class="en">From insight to impact</div>
-  <div class="cn">研于至深　美以致远</div>
 </section>
 
 <!-- ── Footer ───────────────────────────────────────────────────────────── -->
@@ -457,7 +421,7 @@ img{ display:block; max-width:100%; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 AESTRAT Consulting · 研美咨询. All rights reserved.</span>
+    <span>© 2026 AESTRAT Consulting. All rights reserved.</span>
   </div>
 </footer>
 

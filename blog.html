@@ -71,10 +71,15 @@ img{ display:block; max-width:100%; }
   backdrop-filter:blur(14px) saturate(1.05); -webkit-backdrop-filter:blur(14px) saturate(1.05);
   border-bottom-color:var(--c-hairline);
 }
-.nav-brand{ display:flex; align-items:center; gap:11px; opacity:1; transition:opacity var(--t-base) var(--ease-quiet); }
-.nav-brand .ip{ width:24px; height:auto; flex:none; }
-.nav-brand .mark{ font-family:var(--logo); font-weight:300; letter-spacing:.34em; font-size:14px; color:var(--c-bone); transition:color var(--t-base) var(--ease-quiet); }
-.nav-brand .cn{ font-family:var(--serif); font-size:12px; letter-spacing:.18em; color:var(--c-sand-2); transition:color var(--t-base) var(--ease-quiet); }
+.nav-brand{ display:flex; align-items:center; opacity:1; transition:opacity var(--t-base) var(--ease-quiet); }
+/* AESTRAT Consulting lockup: one image (incl. 研美咨询), recoloured via CSS mask so it reads on both nav states */
+.nav-brand .nav-logo{
+  display:block; width:116px; height:46px;
+  background-color:var(--c-bone);
+  -webkit-mask:url('assets/aestrat-wordmark-on-light.png') left center/contain no-repeat;
+          mask:url('assets/aestrat-wordmark-on-light.png') left center/contain no-repeat;
+  transition:background-color var(--t-base) var(--ease-quiet);
+}
 .nav-links{ display:flex; align-items:center; gap:clamp(18px,2.4vw,34px); }
 .nav-links a{
   font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
@@ -82,8 +87,7 @@ img{ display:block; max-width:100%; }
 }
 .nav-links a.here{ color:var(--c-sand-2); }
 .nav-links a:hover{ color:var(--c-sand-2); }
-.nav.scrolled .nav-brand .mark{ color:var(--c-slate); }
-.nav.scrolled .nav-brand .cn{ color:var(--c-ink-3); }
+.nav.scrolled .nav-brand .nav-logo{ background-color:var(--c-slate); }
 .nav.scrolled .nav-links a{ color:var(--c-ink-3); }
 .nav.scrolled .nav-links a.here{ color:var(--c-oxblood); }
 .nav.scrolled .nav-links a:hover{ color:var(--c-oxblood); }
@@ -208,10 +212,8 @@ img{ display:block; max-width:100%; }
 
 <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
 <nav class="nav" id="nav">
-  <a href="index.html" class="nav-brand">
-    <img class="ip" src="assets/ip-brain-mark.png" alt="">
-    <span class="mark">AESTRAT</span>
-    <span class="cn">研美咨询</span>
+  <a href="index.html" class="nav-brand" aria-label="AESTRAT Consulting 研美咨询">
+    <span class="nav-logo" role="img" aria-label="AESTRAT Consulting 研美咨询"></span>
   </a>
   <div class="nav-links">
     <a href="index.html" class="hide-sm">Home</a>

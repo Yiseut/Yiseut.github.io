@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 <meta name="robots" content="noindex"><!-- pre-launch preview: remove before public launch -->
-<meta name="description" content="AESTRAT Consulting · 研美咨询 — three ways across the bridge between global medical-aesthetics brands and China: market entry, sourcing & partnership, and proprietary intelligence.">
+<meta name="description" content="AESTRAT Consulting — three ways across the bridge between global medical-aesthetics brands and China: market entry, sourcing & partnership, and proprietary intelligence.">
 <meta property="og:title" content="Services · AESTRAT Consulting">
 <meta property="og:description" content="The strategic bridge to medical aesthetics in China — and back out to the world.">
 <meta property="og:type" content="website">
-<title>Services · AESTRAT Consulting · 研美咨询</title>
+<title>Services · AESTRAT Consulting</title>
 <link rel="icon" href="assets/aestrat-wordmark-on-light.png">
 
 <!-- Foundation tokens (five brand colors, type scale, spacing) -->
@@ -91,10 +91,15 @@ img{ display:block; max-width:100%; }
   border-bottom-color:var(--c-hairline);
 }
 /* Subpage: brand is always visible (no big hero wordmark to defer to) */
-.nav-brand{ display:flex; align-items:center; gap:11px; opacity:1; transition:opacity var(--t-base) var(--ease-quiet); }
-.nav-brand .ip{ width:24px; height:auto; flex:none; }
-.nav-brand .mark{ font-family:var(--logo); font-weight:300; letter-spacing:.34em; font-size:14px; color:var(--c-bone); transition:color var(--t-base) var(--ease-quiet); }
-.nav-brand .cn{ font-family:var(--serif); font-size:12px; letter-spacing:.18em; color:var(--c-sand-2); transition:color var(--t-base) var(--ease-quiet); }
+.nav-brand{ display:flex; align-items:center; opacity:1; transition:opacity var(--t-base) var(--ease-quiet); }
+/* AESTRAT Consulting lockup: one image (incl. 研美咨询), recoloured via CSS mask so it reads on both nav states */
+.nav-brand .nav-logo{
+  display:block; width:116px; height:46px;
+  background-color:var(--c-bone);
+  -webkit-mask:url('assets/aestrat-wordmark-on-light.png') left center/contain no-repeat;
+          mask:url('assets/aestrat-wordmark-on-light.png') left center/contain no-repeat;
+  transition:background-color var(--t-base) var(--ease-quiet);
+}
 .nav-links{ display:flex; align-items:center; gap:clamp(18px,2.4vw,34px); }
 .nav-links a{
   font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
@@ -102,8 +107,7 @@ img{ display:block; max-width:100%; }
 }
 .nav-links a.here{ color:var(--c-sand-2); }
 .nav-links a:hover{ color:var(--c-sand-2); }
-.nav.scrolled .nav-brand .mark{ color:var(--c-slate); }
-.nav.scrolled .nav-brand .cn{ color:var(--c-ink-3); }
+.nav.scrolled .nav-brand .nav-logo{ background-color:var(--c-slate); }
 .nav.scrolled .nav-links a{ color:var(--c-ink-3); }
 .nav.scrolled .nav-links a.here{ color:var(--c-oxblood); }
 .nav.scrolled .nav-links a:hover{ color:var(--c-oxblood); }
@@ -122,6 +126,34 @@ img{ display:block; max-width:100%; }
           mask-image:radial-gradient(ellipse 80% 70% at 75% 25%, #000 0%, transparent 70%);
 }
 .masthead-inner{ position:relative; z-index:1; max-width:1180px; margin:0 auto; }
+.mast-copy{ min-width:0; }
+
+/* ── Proprietary intelligence — real dashboard views, layered (China & Global registries) ── */
+.mast-viz{ position:relative; width:100%; max-width:440px; justify-self:end; }
+@keyframes vizUp{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:none; } }
+.intel-head{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; }
+.intel-eyebrow{ font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-sand-2); }
+.intel-badge{ font-family:var(--mono); font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:var(--c-bone);
+  border:1px solid rgba(206,181,156,.4); border-radius:999px; padding:3px 10px; white-space:nowrap; }
+.intel-stack{ position:relative; height:470px; }
+.ishot{ position:absolute; border:1px solid rgba(206,181,156,.32); border-radius:12px; overflow:hidden;
+  background:var(--c-paper); box-shadow:0 24px 50px -26px rgba(8,12,20,.8);
+  animation:cardIn .85s var(--ease-quiet) backwards;
+  transition:transform .55s var(--ease-quiet), box-shadow .55s var(--ease-quiet), border-color var(--t-base); }
+.ishot img{ display:block; width:100%; height:auto; }
+.ish-in{ display:block; animation:floaty 8s ease-in-out infinite; }   /* gentle idle drift */
+.ishot:hover{ transform:translateY(-12px) scale(1.03); z-index:20; border-color:rgba(206,181,156,.6);
+  box-shadow:0 42px 78px -28px rgba(8,12,20,.92); }
+.is-sun{ width:244px; top:0; right:0; z-index:1; animation-delay:.06s; }
+.is-sun .ish-in{ animation-duration:7.5s; }
+.is-bars{ width:210px; left:0; bottom:0; z-index:2; animation-delay:.34s; }
+.is-bars .ish-in{ animation-duration:8.4s; animation-delay:-1.5s; }
+.is-donut{ width:168px; top:120px; left:96px; z-index:3; animation-delay:.2s; }
+.is-donut .ish-in{ animation-duration:9.2s; animation-delay:-3s; }
+@keyframes cardIn{ from{ opacity:0; transform:translateY(24px) scale(.95); } to{ opacity:1; transform:none; } }
+@keyframes floaty{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-8px); } }
+@media (prefers-reduced-motion: reduce){ .ishot, .ish-in{ animation:none; } }
+.intel-cap{ margin-top:14px; font-family:var(--mono); font-size:8px; letter-spacing:.05em; line-height:1.65; color:var(--c-slate-4); }
 .masthead .eyebrow{ color:var(--c-sand-2); margin-bottom:22px; }
 .mast-title{
   font-family:var(--serif); font-weight:200; font-size:var(--type-h1); line-height:1.08;
@@ -163,6 +195,35 @@ img{ display:block; max-width:100%; }
   .svc-row{ grid-template-columns:1fr; gap:28px; }
   .svc-lead{ position:static; }
 }
+
+/* ── Consolidated services — one section, three columns ────────────────── */
+.svc-all{ background:var(--c-paper); }
+.svc-all-head{ margin-bottom:clamp(34px,5vw,60px); }
+.svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(28px,3.5vw,56px); }
+.svc-col{ display:flex; flex-direction:column; }
+.svc-grid .svc-name{ font-size:clamp(21px,1.9vw,27px); margin-top:13px; }
+.svc-grid .svc-for{ margin-top:14px; }
+.svc-grid .svc-desc{ font-size:14px; line-height:1.8; margin-top:16px; max-width:none; }
+.svc-mini{ list-style:none; margin-top:auto; padding-top:22px; }
+.svc-mini li{ font-size:12.5px; line-height:1.5; color:var(--c-slate); padding:11px 0;
+  border-top:1px solid var(--c-hairline); display:flex; gap:11px; align-items:baseline; }
+.svc-mini li::before{ content:''; flex:none; width:5px; height:5px; background:var(--c-oxblood); margin-top:6px; }
+@media(max-width:860px){ .svc-grid{ grid-template-columns:1fr; gap:38px; } .svc-mini{ margin-top:18px; } }
+
+/* ── Framework matrix (four disciplines × three lifecycle) ────────────── */
+.matrix-sec{ background:var(--c-paper-light); border-top:1px solid var(--c-hairline); border-bottom:1px solid var(--c-hairline); }
+.matrix{ width:100%; border-collapse:collapse; }
+.matrix th, .matrix td{ text-align:left; vertical-align:top; padding:22px 22px; border-bottom:1px solid var(--c-hairline); }
+.matrix thead th{ border-bottom:1px solid var(--c-sand-1); }
+.matrix .disc-no{ font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--c-oxblood); display:block; margin-bottom:6px; }
+.matrix .disc-en{ font-family:var(--serif); font-weight:300; font-size:16px; color:var(--c-slate); letter-spacing:.01em; display:block; }
+.matrix .phase{ width:140px; }
+.matrix .phase .ph-no{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; color:var(--c-ink-4); display:block; }
+.matrix .phase .ph-en{ font-family:var(--serif); font-weight:300; font-size:14px; color:var(--c-slate); display:block; margin-top:4px; }
+.matrix td.cell{ font-size:13px; line-height:1.7; color:var(--c-ink-3); }
+.matrix tbody tr:hover td{ background:var(--c-paper); }
+.matrix-scroll{ overflow-x:auto; }
+@media(max-width:820px){ .matrix .phase{ width:auto; } .matrix th,.matrix td{ padding:16px 14px; } .matrix td.cell{ font-size:12px; } }
 
 /* ── Closing CTA (dusk register) ──────────────────────────────────────── */
 .cta{ background:var(--c-slate); color:var(--c-bone); text-align:center; padding:clamp(80px,12vw,150px) var(--gutter); }
@@ -260,10 +321,8 @@ img{ display:block; max-width:100%; }
 
 <!-- ── Nav ──────────────────────────────────────────────────────────────── -->
 <nav class="nav" id="nav">
-  <a href="index.html" class="nav-brand">
-    <img class="ip" src="assets/ip-brain-mark.png" alt="">
-    <span class="mark">AESTRAT</span>
-    <span class="cn">研美咨询</span>
+  <a href="index.html" class="nav-brand" aria-label="AESTRAT Consulting">
+    <span class="nav-logo" role="img" aria-label="AESTRAT Consulting"></span>
   </a>
   <div class="nav-links">
     <a href="index.html" class="hide-sm">Home</a>
@@ -276,71 +335,100 @@ img{ display:block; max-width:100%; }
 <!-- ── Masthead ─────────────────────────────────────────────────────────── -->
 <header class="masthead">
   <div class="masthead-inner">
-    <div class="eyebrow">Services · 服务</div>
-    <h1 class="mast-title">Three ways across <em>the bridge.</em></h1>
-    <p class="mast-lead">We help international brands enter China's medical-aesthetics market — and connect global buyers with China's best upstream products. Every engagement starts from the same premise: <span class="accent">you need someone who operates inside this market, not someone who studies it from outside.</span></p>
+    <div class="mast-copy">
+      <div class="eyebrow">Services</div>
+      <h1 class="mast-title">Three ways across <em>the bridge.</em></h1>
+      <p class="mast-lead">We help international brands enter China's medical-aesthetics market — and connect global buyers with China's best upstream products. Every engagement starts from the same premise: <span class="accent">you need someone who operates inside this market, not someone who studies it from outside.</span></p>
+    </div>
   </div>
 </header>
 
-<!-- ── 001 · China Market Entry ─────────────────────────────────────────── -->
-<section class="section svc" id="entry">
+<!-- ── Services — three ways, one section ────────────────────────────────── -->
+<section class="section svc-all" id="services">
   <div class="wrap">
-    <div class="svc-row">
-      <div class="svc-lead reveal">
-        <span class="svc-no num">001</span>
-        <h2 class="svc-name">China Market Entry<span class="cn">进入中国</span></h2>
-        <div class="svc-for">For global brands entering China</div>
-      </div>
-      <div class="svc-detail reveal">
-        <p class="svc-desc">You have a product that works. You need to understand how it lands in China — the <span class="accent">regulatory pathway</span>, the competitive landscape, the distribution architecture, the KOL ecosystem. We map the route, then walk it with you.</p>
-        <ul class="svc-caps">
-          <li><span class="k num">01</span><span class="v">NMPA regulatory strategy &amp; timeline<small>The registration pathway, evidence requirements, and a realistic runway to approval.</small></span></li>
-          <li><span class="k num">02</span><span class="v">Market sizing &amp; competitive intelligence<small>Where the demand is, who already owns it, and the opening you can credibly take.</small></span></li>
-          <li><span class="k num">03</span><span class="v">Distribution &amp; channel architecture<small>The right partners, pricing and positioning to reach clinics and KOLs at scale.</small></span></li>
+    <div class="svc-all-head reveal">
+      <div class="eyebrow">What we do</div>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-col reveal">
+        <span class="svc-no num">01</span>
+        <h2 class="svc-name">China Market Entry</h2>
+        <div class="svc-for">Global brands entering China</div>
+        <p class="svc-desc">We map the route in — <span class="accent">regulatory pathway</span>, competitive landscape, distribution and KOLs — then walk it with you.</p>
+        <ul class="svc-mini">
+          <li>NMPA regulatory strategy &amp; timeline</li>
+          <li>Market sizing &amp; competitive intelligence</li>
+          <li>Distribution &amp; channel architecture</li>
         </ul>
-      </div>
+      </article>
+      <article class="svc-col reveal">
+        <span class="svc-no num">02</span>
+        <h2 class="svc-name">Sourcing &amp; Partnership</h2>
+        <div class="svc-for">Buyers seeking Chinese products</div>
+        <p class="svc-desc">China's upstream has matured in <span class="accent">quality, innovation and cost</span>. We connect you with vetted manufacturers and OEM / ODM partners — and stand between you and the risk.</p>
+        <ul class="svc-mini">
+          <li>Product scouting &amp; supplier vetting</li>
+          <li>OEM · ODM matchmaking</li>
+          <li>Quality assessment &amp; due diligence</li>
+        </ul>
+      </article>
+      <article class="svc-col reveal">
+        <span class="svc-no num">03</span>
+        <h2 class="svc-name">Market Intelligence</h2>
+        <div class="svc-for">Anyone decoding this market</div>
+        <p class="svc-desc">Six years of coverage, <span class="accent">390+ companies tracked</span>. Proprietary dashboards on China and the global upstream — the evidence behind every call.</p>
+        <ul class="svc-mini">
+          <li>Proprietary interactive dashboards</li>
+          <li>Custom research &amp; briefings</li>
+          <li>Periodic industry reports</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ── 002 · Sourcing & Partnership ─────────────────────────────────────── -->
-<section class="section svc" id="sourcing">
+<!-- ── The framework — four disciplines × three lifecycle ───────────────── -->
+<section class="section matrix-sec" id="framework">
   <div class="wrap">
-    <div class="svc-row">
-      <div class="svc-lead reveal">
-        <span class="svc-no num">002</span>
-        <h2 class="svc-name">Sourcing &amp; Partnership<span class="cn">采购中国产品</span></h2>
-        <div class="svc-for">For distributors &amp; brands seeking Chinese products</div>
-      </div>
-      <div class="svc-detail reveal">
-        <p class="svc-desc">China's medical-aesthetics upstream has matured rapidly — in <span class="accent">production quality, clinical innovation, and cost efficiency</span>. We connect you with vetted manufacturers, raw materials, and OEM / ODM partners, and stand between you and the risk.</p>
-        <ul class="svc-caps">
-          <li><span class="k num">01</span><span class="v">Product scouting &amp; supplier vetting<small>A shortlist of credible manufacturers matched to your category and market.</small></span></li>
-          <li><span class="k num">02</span><span class="v">OEM / ODM matchmaking<small>Introductions and structuring for private-label and co-development partnerships.</small></span></li>
-          <li><span class="k num">03</span><span class="v">Quality assessment &amp; due diligence<small>Independent checks on capability, compliance and export readiness before you commit.</small></span></li>
-        </ul>
-      </div>
+    <div class="section-head">
+      <div class="section-index">The framework</div>
+      <h2 class="section-title">Four disciplines, across the product lifecycle</h2>
     </div>
-  </div>
-</section>
-
-<!-- ── 003 · Market Intelligence ────────────────────────────────────────── -->
-<section class="section svc" id="intelligence">
-  <div class="wrap">
-    <div class="svc-row">
-      <div class="svc-lead reveal">
-        <span class="svc-no num">003</span>
-        <h2 class="svc-name">Market Intelligence<span class="cn">市场情报</span></h2>
-        <div class="svc-for">For anyone who needs to understand this market</div>
-      </div>
-      <div class="svc-detail reveal">
-        <p class="svc-desc">Six years of continuous coverage. <span class="accent">390+ companies tracked.</span> Proprietary dashboards on China's enterprise landscape and the global upstream distribution map — the evidence base behind every recommendation we make.</p>
-        <ul class="svc-caps">
-          <li><span class="k num">01</span><span class="v">Proprietary interactive dashboards<small>Registration, investment and competitive dynamics, refreshed continuously.</small></span></li>
-          <li><span class="k num">02</span><span class="v">Custom research &amp; competitive briefings<small>Focused answers to a specific question, scoped to your decision.</small></span></li>
-          <li><span class="k num">03</span><span class="v">Periodic industry reports<small>The multi-year time series, read across the sector's senior leadership.</small></span></li>
-        </ul>
-      </div>
+    <div class="matrix-scroll reveal">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th class="phase"></th>
+            <th><span class="disc-no">01</span><span class="disc-en">Market strategy</span></th>
+            <th><span class="disc-no">02</span><span class="disc-en">Medical support</span></th>
+            <th><span class="disc-no">03</span><span class="disc-en">Sales management</span></th>
+            <th><span class="disc-no">04</span><span class="disc-en">Organization development</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="phase"><span class="ph-no">00</span><span class="ph-en">Pre-launch</span></td>
+            <td class="cell">Research, segmentation, business model, pricing path, promotion plan</td>
+            <td class="cell">Literature, clinical reports, KOL consensus, indication &amp; AE protocol design</td>
+            <td class="cell">Sales org architecture, KPI allocation, bonus policy, sales planning</td>
+            <td class="cell">Executive hiring, performance &amp; incentive systems, crisis PR, culture</td>
+          </tr>
+          <tr>
+            <td class="phase"><span class="ph-no">01</span><span class="ph-en">Post-launch</span></td>
+            <td class="cell">Promotion decks, sales collateral, competitive testing</td>
+            <td class="cell">Speaker systems, medical courses, expert content</td>
+            <td class="cell">Activity management, capability models, KA &amp; distributor training</td>
+            <td class="cell">Talent training, job-level optimization, executive development</td>
+          </tr>
+          <tr>
+            <td class="phase"><span class="ph-no">02</span><span class="ph-en">Scale</span></td>
+            <td class="cell">Operational review, business-model innovation, portfolio strategy</td>
+            <td class="cell">Ongoing scientific support</td>
+            <td class="cell">As-needed enablement</td>
+            <td class="cell">Org diagnostic, talent inventory, diversified incentives</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -370,7 +458,7 @@ img{ display:block; max-width:100%; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 AESTRAT Consulting · 研美咨询. All rights reserved.</span>
+    <span>© 2026 AESTRAT Consulting. All rights reserved.</span>
   </div>
 </footer>
 
@@ -394,7 +482,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 <section class="chat-panel" id="chatPanel" aria-live="polite">
   <div class="chat-head">
     <img src="assets/ip-brain-mark.png" alt="">
-    <div class="t"><b>AESTRAT Assistant</b><span>研美 · AI · Preview</span></div>
+    <div class="t"><b>AESTRAT Assistant</b><span>AESTRAT · AI · Preview</span></div>
     <button class="x" id="chatClose" aria-label="Close">×</button>
   </div>
   <div class="chat-body" id="chatBody"></div>
@@ -418,7 +506,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   const CANNED=[
     {q:'Who is AESTRAT?',
-     a:"AESTRAT Consulting (研美咨询) is a boutique strategic advisory — the bridge between global medical-aesthetics brands and China. From insight to impact."},
+     a:"AESTRAT Consulting is a boutique strategic advisory — the bridge between global medical-aesthetics brands and China. From insight to impact."},
     {q:'What do you do?',
      a:"Three ways across the bridge:\n· China Market Entry — for global brands entering China\n· Sourcing & Partnership — for buyers seeking Chinese products\n· Market Intelligence — proprietary data on the sector"},
     {q:'How can I reach you?',
@@ -437,7 +525,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   }
   function start(){
     if(started) return; started=true;
-    add('bot',"Hi 👋 I’m AESTRAT’s assistant. Ask me who we are, what we do, or how to connect — in any language. 你好，可以用任何语言和我聊。");
+    add('bot',"Hi 👋 I’m AESTRAT’s assistant. Ask me who we are, what we do, or how to connect.");
     CANNED.forEach(c=>{ const b=document.createElement('button'); b.className='chat-chip'; b.type='button'; b.textContent=c.q; b.onclick=()=>{ add('me',c.q); reply(c.q); }; chips.appendChild(b); });
   }
   function open(){ panel.classList.add('open'); fab.classList.add('open'); start(); setTimeout(()=>text.focus(),300); }
