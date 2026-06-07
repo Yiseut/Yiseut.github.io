@@ -226,6 +226,38 @@ img{ display:block; max-width:100%; }
 @media (prefers-reduced-motion: reduce){ .ishot, .ish-in{ animation:none; } }
 .intel-cap{ margin-top:14px; font-family:var(--mono); font-size:8px; letter-spacing:.05em; line-height:1.65; color:var(--c-slate-4); }
 
+/* ── Proprietary intelligence — three databases, introduced separately ── */
+.db-dusk{ background:var(--c-slate); color:var(--c-bone); }
+.db-cream{ background:var(--c-paper-light); border-top:1px solid var(--c-hairline); border-bottom:1px solid var(--c-hairline); }
+.db-dusk .section-index{ color:var(--c-slate-4); }
+.db-dusk .section-index::after{ background:rgba(224,214,202,.16); }
+.db-dusk .section-title{ color:var(--c-bone); }
+.db-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(40px,5vw,84px); align-items:center; }
+.db-tag{ font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-oxblood); }
+.db-dusk .db-tag{ color:var(--c-sand-2); }
+.db-name{ font-family:var(--serif); font-weight:200; font-size:clamp(26px,3vw,38px); line-height:1.14; margin:12px 0 16px; color:var(--c-slate); }
+.db-dusk .db-name{ color:var(--c-bone); }
+.db-desc{ font-size:14.5px; line-height:1.85; max-width:46ch; color:var(--c-ink-2); }
+.db-dusk .db-desc{ color:var(--c-sand-2); }
+.db-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px 18px; margin-top:32px; }
+.db-stats b{ display:block; font-family:var(--serif); font-weight:200; font-size:clamp(24px,2.5vw,32px); line-height:1; color:var(--c-slate); }
+.db-dusk .db-stats b{ color:var(--c-bone); }
+.db-stats span{ display:block; margin-top:8px; font-family:var(--mono); font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-oxblood-soft); }
+.db-dusk .db-stats span{ color:var(--c-sand-2); }
+.db-figs{ columns:2; column-gap:14px; }
+.dbshot{ display:block; break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 14px;
+  border:1px solid rgba(206,181,156,.3); border-radius:12px; overflow:hidden; background:var(--c-paper);
+  box-shadow:0 22px 48px -28px rgba(8,12,20,.55); transition:transform .5s var(--ease-quiet), box-shadow .5s var(--ease-quiet); }
+.dbshot img{ display:block; width:100%; }
+.dbshot:hover{ transform:translateY(-6px); box-shadow:0 36px 64px -30px rgba(8,12,20,.72); position:relative; z-index:2; }
+.db-figs-single{ columns:1; max-width:460px; margin:0 auto; }
+@media(max-width:900px){
+  .db-row{ grid-template-columns:1fr; gap:38px; }
+  .db-figs-left .db-figs{ order:2; }
+  .db-figs{ columns:1; max-width:460px; margin:0 auto; }
+}
+@media(max-width:520px){ .db-stats{ grid-template-columns:repeat(2,1fr); } }
+
 /* ── Founder ──────────────────────────────────────────────────────────── */
 .founder{ background:var(--c-paper); }
 .founder-grid{ display:grid; grid-template-columns:300px 1fr; gap:clamp(36px,5vw,72px); align-items:start; }
@@ -249,6 +281,7 @@ img{ display:block; max-width:100%; }
 .channel + .channel{ border-left:1px solid var(--c-hairline); }
 .channel .tag{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-ink-4); margin-bottom:18px; display:flex; align-items:center; gap:9px; }
 .channel .ch-name{ font-family:var(--serif); font-weight:200; font-size:26px; color:var(--c-slate); line-height:1.2; }
+.channel .ch-logo{ height:50px; width:auto; display:block; }
 .channel .ch-name .en{ display:block; font-size:.5em; letter-spacing:.18em; text-transform:uppercase; color:var(--c-oxblood); font-family:var(--mono); margin-top:10px; }
 .channel .ch-desc{ font-size:14px; line-height:1.85; color:var(--c-ink-3); margin-top:18px; flex:1; }
 .metrics{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--c-hairline); margin-top:26px; border:1px solid var(--c-hairline); }
@@ -330,32 +363,82 @@ img{ display:block; max-width:100%; }
   </div>
 </header>
 
-<!-- ── Intelligence ─────────────────────────────────────────────────────── -->
-<section class="section intel" id="intelligence">
-  <div class="wrap intel-layout">
-    <div class="intel-left">
-      <div class="section-head">
-        <div class="section-index">001 — Proprietary intelligence</div>
-        <h2 class="section-title">A database refreshed daily</h2>
+<!-- ── Proprietary intelligence — three databases ───────────────────────── -->
+<section class="section db-dusk" id="intelligence">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-index">Proprietary intelligence</div>
+      <h2 class="section-title">Three databases behind every call</h2>
+    </div>
+    <div class="db-row">
+      <div class="db-copy">
+        <span class="db-tag">Global landscape</span>
+        <h3 class="db-name">The worldwide upstream, mapped</h3>
+        <p class="db-desc">Listed-company financials, registration approvals across regulatory systems, indications and channel expansion — the global medical-aesthetics upstream, continuously updated.</p>
+        <div class="db-stats">
+          <div><b>359</b><span>Upstream companies</span></div>
+          <div><b>36</b><span>Countries &amp; regions</span></div>
+          <div><b>192</b><span>Cities</span></div>
+          <div><b>975</b><span>Product lines</span></div>
+          <div><b>61</b><span>Listed entities</span></div>
+          <div><b>1,603</b><span>Registration records</span></div>
+        </div>
       </div>
-      <div class="stat-grid reveal">
-        <div class="stat"><div class="fig num">390+</div><div class="lbl">Companies tracked</div><div class="desc">Brands, clinic groups &amp; distributors — domestic and multinational</div></div>
-        <div class="stat"><div class="fig num">970+</div><div class="lbl">Product lines</div><div class="desc">Injectables, devices, skincare, regenerative — by indication</div></div>
-        <div class="stat"><div class="fig num">380+</div><div class="lbl">Daily intel sources</div><div class="desc">Regulatory filings, conference output, press, primary interviews</div></div>
-        <div class="stat"><div class="fig num">6+</div><div class="lbl">Years of coverage</div><div class="desc">Continuous since 2020 — a multi-year time series</div></div>
+      <div class="db-figs reveal">
+        <figure class="dbshot"><img src="assets/intel/sunburst.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/donut567.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/worldmap.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/trackbars.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/donut62.png" alt=""></figure>
       </div>
     </div>
-    <div class="mast-viz">
-      <div class="intel-head">
-        <span class="intel-eyebrow">Live registry</span>
-        <span class="intel-badge">China · Global</span>
+  </div>
+</section>
+
+<!-- ── DB2 · China market access ────────────────────────────────────────── -->
+<section class="section db-cream">
+  <div class="wrap">
+    <div class="db-row db-figs-left">
+      <div class="db-figs reveal">
+        <figure class="dbshot"><img src="assets/intel/chinadonut.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/chinacurve.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/chinabars.png" alt=""></figure>
       </div>
-      <div class="intel-stack" aria-hidden="true">
-        <figure class="ishot is-sun"><span class="ish-in"><img src="assets/intel/sunburst.png" alt=""></span></figure>
-        <figure class="ishot is-donut"><span class="ish-in"><img src="assets/intel/donut975.png" alt=""></span></figure>
-        <figure class="ishot is-bars"><span class="ish-in"><img src="assets/intel/trackbars.png" alt=""></span></figure>
+      <div class="db-copy">
+        <span class="db-tag">China · NMPA</span>
+        <h3 class="db-name">China market-access monitor</h3>
+        <p class="db-desc">NMPA Class III device &amp; drug registrations — who is approved, for which indication, and the pace of market access across China.</p>
+        <div class="db-stats">
+          <div><b>176</b><span>Registration certs</span></div>
+          <div><b>146</b><span>Class III devices</span></div>
+          <div><b>9</b><span>Drugs</span></div>
+          <div><b>93</b><span>Companies &amp; groups</span></div>
+          <div><b>32</b><span>Indications &amp; areas</span></div>
+        </div>
       </div>
-      <p class="intel-cap">975 product lines across 9 tracks · 567 global filings · updated Jun 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── DB3 · Daily intelligence brief ───────────────────────────────────── -->
+<section class="section db-dusk">
+  <div class="wrap">
+    <div class="db-row">
+      <div class="db-copy">
+        <span class="db-tag">Daily</span>
+        <h3 class="db-name">The global industry, every day</h3>
+        <p class="db-desc">An AI-assisted daily brief of the global medical-aesthetics industry — financials, regulatory moves, frontier devices and science, curated for the China market.</p>
+        <div class="db-stats">
+          <div><b>Daily</b><span>Refresh cadence</span></div>
+          <div><b>1,500+</b><span>Tracked keywords</span></div>
+          <div><b>280+</b><span>Companies</span></div>
+          <div><b>460+</b><span>Brands</span></div>
+        </div>
+      </div>
+      <div class="db-figs db-figs-single reveal">
+        <figure class="dbshot"><img src="assets/intel/dailyreport.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/dailybrief.png" alt=""></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -364,14 +447,14 @@ img{ display:block; max-width:100%; }
 <section class="section voice" id="voice">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-index">002 — The voice</div>
+      <div class="section-index">The voice</div>
       <h2 class="section-title">Two channels, one point of view</h2>
     </div>
     <div class="channels reveal">
       <!-- Aesthetic Reflections -->
       <div class="channel">
         <div class="tag"><span class="seal-sq"></span> Long-form · WeChat</div>
-        <div class="ch-name">Aesthetic Reflections</div>
+        <div class="ch-name"><img class="ch-logo" src="assets/logo-reflections.png" alt="Aesthetic Reflections 研美思维"></div>
         <div class="ch-desc">The firm's flagship content IP — long-form strategic analysis of China's medical-aesthetics industry, read weekly by senior industry leaders. Where the firm's expert voice lives.</div>
         <div class="metrics">
           <div class="m"><div class="v num">6,000+</div><div class="t">C-suite &amp; senior leaders following</div></div>
@@ -387,7 +470,7 @@ img{ display:block; max-width:100%; }
       <!-- Yansu -->
       <div class="channel">
         <div class="tag"><span class="seal-sq"></span> Daily news · WeChat</div>
-        <div class="ch-name">Yansu · Global News</div>
+        <div class="ch-name"><img class="ch-logo" src="assets/logo-yansu.png" alt="研速 AestraSpeed Daily"></div>
         <div class="ch-desc">A fast feed of global medical-aesthetics news — regulatory moves, deals, product launches and conference output, tracked as it breaks and curated for the China industry.</div>
         <div class="metrics">
           <div class="m"><div class="v num">Daily</div><div class="t">Global news cadence</div></div>
