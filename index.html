@@ -14,6 +14,8 @@
 
 <!-- Foundation tokens (five brand colors, type scale, spacing) -->
 <link rel="stylesheet" href="colors_and_type.css">
+<!-- Modern geometric face for big data figures (high-end business numerals) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap">
 <!-- Slogan script face, subset + embedded so it renders on every device (incl. mobile) -->
 <link rel="stylesheet" href="fonts/aestr-script.css">
 
@@ -30,6 +32,7 @@
   --serif:   'AestrSerif','Noto Serif SC','Songti SC',serif;
   --sans:    var(--font-body);
   --mono:    var(--font-number);          /* Special Elite — numerals/stamps */
+  --fig:     'Montserrat','AestrLogo','Helvetica Neue',Arial,sans-serif;  /* modern figures */
   --script:  'AestrScript',cursive;
   --fengya:  'AestrFengYa',var(--serif);
   --gutter:  clamp(24px,7vw,120px);
@@ -105,8 +108,10 @@ img{ display:block; max-width:100%; }
   color:var(--c-slate-4); transition:color var(--t-fast) var(--ease-quiet);
 }
 .nav-links a:hover{ color:var(--c-sand-2); }
+.nav-links a.here{ color:var(--c-sand-2); }
 .nav.scrolled .nav-brand .nav-logo{ background-color:var(--c-slate); }
 .nav.scrolled .nav-links a{ color:var(--c-ink-3); }
+.nav.scrolled .nav-links a.here{ color:var(--c-oxblood); }
 .nav.scrolled .nav-links a:hover{ color:var(--c-oxblood); }
 @media(max-width:780px){ .nav-links a.hide-sm{ display:none; } }
 
@@ -240,7 +245,7 @@ img{ display:block; max-width:100%; }
 .db-desc{ font-size:14.5px; line-height:1.85; max-width:46ch; color:var(--c-ink-2); }
 .db-dusk .db-desc{ color:var(--c-sand-2); }
 .db-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px 18px; margin-top:32px; }
-.db-stats b{ display:block; font-family:var(--serif); font-weight:200; font-size:clamp(24px,2.5vw,32px); line-height:1; color:var(--c-slate); }
+.db-stats b{ display:block; font-family:var(--fig); font-weight:600; font-size:clamp(24px,2.5vw,33px); line-height:1; letter-spacing:-.01em; color:var(--c-slate); }
 .db-dusk .db-stats b{ color:var(--c-bone); }
 .db-stats span{ display:block; margin-top:8px; font-family:var(--mono); font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-oxblood-soft); }
 .db-dusk .db-stats span{ color:var(--c-sand-2); }
@@ -296,19 +301,20 @@ img{ display:block; max-width:100%; }
 .featured{ margin-top:clamp(36px,4.5vw,60px); }
 .featured-head{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-ink-4); margin-bottom:24px; display:flex; align-items:center; gap:14px; }
 .featured-head::after{ content:''; flex:1; height:1px; background:var(--c-hairline); }
-.featured-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
-.fa-img{ border:1px solid var(--c-hairline); border-radius:8px; overflow:hidden; aspect-ratio:16/7; background:var(--c-paper); }
-.fa-img img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s var(--ease-quiet); }
-.fa:hover .fa-img img{ transform:scale(1.05); }
-.fa figcaption{ margin-top:11px; display:flex; align-items:baseline; gap:6px; }
-.fa figcaption b{ font-family:var(--mono); font-weight:700; font-size:18px; color:var(--c-oxblood); letter-spacing:-.01em; line-height:1; }
-.fa figcaption span{ font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--c-ink-3); }
+.featured-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; align-items:start; }
+.fa{ border:1px solid var(--c-hairline); border-radius:8px; overflow:hidden; background:var(--c-paper);
+  transition:transform .5s var(--ease-quiet), box-shadow .5s var(--ease-quiet); }
+.fa img{ width:100%; height:auto; display:block; }
+.fa figcaption{ display:flex; align-items:baseline; gap:6px; padding:10px 13px; border-top:1px solid var(--c-hairline); }
+.fa figcaption b{ font-family:var(--fig); font-weight:600; font-size:16px; color:var(--c-oxblood); letter-spacing:-.01em; line-height:1; }
+.fa figcaption span{ font-family:var(--mono); font-size:8.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--c-ink-3); }
+.fa:hover{ transform:translateY(-6px); box-shadow:0 24px 46px -26px rgba(8,12,20,.5); }
 @media(max-width:760px){ .featured-grid{ grid-template-columns:repeat(2,1fr); } }
 .channel .ch-name .en{ display:block; font-size:.5em; letter-spacing:.18em; text-transform:uppercase; color:var(--c-oxblood); font-family:var(--mono); margin-top:10px; }
-.channel .ch-desc{ font-size:14px; line-height:1.85; color:var(--c-ink-3); margin-top:18px; flex:1; }
+.channel .ch-desc{ font-size:14px; line-height:1.85; color:var(--c-ink-3); margin-top:18px; }
 .metrics{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--c-hairline); margin-top:26px; border:1px solid var(--c-hairline); }
 .metrics .m{ background:var(--c-paper); padding:16px 18px; }
-.metrics .m .v{ font-family:var(--mono); font-weight:700; font-size:24px; color:var(--c-oxblood); letter-spacing:-.02em; line-height:1; }
+.metrics .m .v{ font-family:var(--fig); font-weight:600; font-size:25px; color:var(--c-oxblood); letter-spacing:-.01em; line-height:1; }
 .metrics .m .t{ font-size:11px; color:var(--c-ink-3); margin-top:8px; line-height:1.4; }
 .channel-foot{ display:flex; align-items:center; gap:18px; margin-top:28px; padding-top:22px; border-top:1px solid var(--c-hairline); }
 .channel-foot img{ width:84px; height:84px; border:1px solid var(--c-border); background:#fff; padding:5px; }
@@ -361,6 +367,7 @@ img{ display:block; max-width:100%; }
     <span class="nav-logo" role="img" aria-label="AESTRAT Consulting"></span>
   </a>
   <div class="nav-links">
+    <a href="#top" class="here">Home</a>
     <a href="services.html">Services</a>
     <a href="blog.html">Blog</a>
     <a href="#contact">Contact</a>
@@ -422,7 +429,8 @@ img{ display:block; max-width:100%; }
   <div class="wrap">
     <div class="db-row db-figs-left">
       <div class="db-figs reveal">
-        <figure class="dbshot"><img src="assets/intel/chinadonut.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/chinamap.png" alt=""></figure>
+        <figure class="dbshot"><img src="assets/intel/chinamatrix.png" alt=""></figure>
         <figure class="dbshot"><img src="assets/intel/chinacurve.png" alt=""></figure>
         <figure class="dbshot"><img src="assets/intel/chinabars.png" alt=""></figure>
       </div>
@@ -475,12 +483,12 @@ img{ display:block; max-width:100%; }
     <div class="channels reveal">
       <!-- Aesthetic Reflections -->
       <div class="channel">
-        <div class="tag"><span class="seal-sq"></span> Long-form · WeChat</div>
+        <div class="tag"><span class="seal-sq"></span> Original · Long-form · WeChat</div>
         <div class="ch-head">
           <div class="ch-name"><img class="ch-logo" src="assets/logo-reflections.png" alt="Aesthetic Reflections 研美思维"></div>
           <img class="ch-qr" src="assets/qr-reflections-t.png" alt="Aesthetic Reflections WeChat QR code">
         </div>
-        <div class="ch-desc">The firm's flagship content IP — <span class="accent">entirely original, in-house</span> long-form analysis of China's medical-aesthetics industry, read weekly by senior leaders. Every piece is written from primary research, not aggregated — the industry's most influential strategic voice.</div>
+        <div class="ch-desc">The firm's flagship content IP — <span class="accent">entirely original, in-house</span> long-form analysis of China's medical-aesthetics industry, written from primary research and never aggregated. It is read by the people who run the sector — <span class="accent">C-suite decision-makers, clinic &amp; distributor owners, and the heads of Medical Affairs &amp; Marketing</span> — which makes it the industry's most influential strategic voice.</div>
         <div class="ch-cred"><img src="assets/imcas-navyblue.svg" alt="IMCAS"><span>China Media Partner</span></div>
         <div class="metrics">
           <div class="m"><div class="v num">6,000+</div><div class="t">C-suite &amp; senior leaders following</div></div>
@@ -488,41 +496,30 @@ img{ display:block; max-width:100%; }
           <div class="m"><div class="v num">2,000+</div><div class="t">Avg. reads per article</div></div>
           <div class="m"><div class="v num">&gt;10%</div><div class="t">Engagement rate</div></div>
         </div>
-        <div class="ch-aud">
-          <div class="a"><b>C-suite decision makers</b><span>~80% of upstream CEOs, GMs &amp; directors — near-complete coverage at director level and above.</span></div>
-          <div class="a"><b>Clinics &amp; distributors</b><span>Clinic-chain owners, distributors &amp; physician-entrepreneurs with personal brands.</span></div>
-          <div class="a"><b>Functional leadership</b><span>Heads of Medical Affairs &amp; Marketing driving strategy across the value chain.</span></div>
-        </div>
       </div>
       <!-- Yansu -->
       <div class="channel">
-        <div class="tag"><span class="seal-sq"></span> Daily news · WeChat</div>
+        <div class="tag"><span class="seal-sq"></span> Curated · Daily brief · WeChat</div>
         <div class="ch-head">
           <div class="ch-name"><img class="ch-logo" src="assets/logo-yansu.png" alt="研速 AestraSpeed Daily"></div>
           <img class="ch-qr" src="assets/qr-yansu-t.png" alt="研速 AestraSpeed Daily WeChat QR code">
         </div>
-        <div class="ch-desc">A fast feed of global medical-aesthetics news — regulatory moves, deals, product launches and conference output, tracked as it breaks and curated for the China industry.</div>
-        <div class="metrics">
-          <div class="m"><div class="v num">Daily</div><div class="t">Global news cadence</div></div>
-          <div class="m"><div class="v num">380+</div><div class="t">Sources monitored</div></div>
-          <div class="m"><div class="v num">6yr</div><div class="t">Continuous coverage</div></div>
-          <div class="m"><div class="v num">Global</div><div class="t">Cross-market scope</div></div>
-        </div>
+        <div class="ch-desc">Published every morning at <span class="accent">8:30</span> — a <span class="accent">curated</span> selection distilled from our full daily-report engine down to the few signals that actually matter. Its signature: a <span class="accent">real-time snapshot of the global medical-aesthetics market</span>.</div>
         <div class="ch-aud">
-          <div class="a"><b>Listed-company financials</b><span>Earnings, filings &amp; market moves across global public players.</span></div>
-          <div class="a"><b>Frontier news, deals &amp; launches</b><span>Regulatory action, M&amp;A and product debuts as they break.</span></div>
-          <div class="a"><b>Clinical science &amp; longevity</b><span>Research frontier, anti-aging and consumer-health signals.</span></div>
+          <div class="a"><b>Real-time global newsflash</b><span>Breaking news worldwide, country-level trends &amp; social-media hotspots.</span></div>
+          <div class="a"><b>Companies, markets &amp; regulation</b><span>Corporate moves, listed-company swings, financial-market and regulatory shifts.</span></div>
+          <div class="a"><b>Science, literature &amp; longevity</b><span>Clinical research, R&amp;D and the latest papers with expert interpretation — plus anti-aging &amp; wellness.</span></div>
         </div>
       </div>
     </div>
     <div class="featured reveal">
       <div class="featured-head">Aesthetic Reflections · featured articles</div>
       <div class="featured-grid">
-        <figure class="fa"><div class="fa-img"><img src="assets/intel/article1.png" alt=""></div><figcaption><b>15,000+</b><span>reads</span></figcaption></figure>
-        <figure class="fa"><div class="fa-img"><img src="assets/intel/article2.png" alt=""></div><figcaption><b>10,000+</b><span>reads</span></figcaption></figure>
-        <figure class="fa"><div class="fa-img"><img src="assets/intel/article3.png" alt=""></div><figcaption><b>9,321</b><span>reads</span></figcaption></figure>
-        <figure class="fa"><div class="fa-img"><img src="assets/intel/article4.png" alt=""></div><figcaption><b>4,871</b><span>reads</span></figcaption></figure>
-        <figure class="fa"><div class="fa-img"><img src="assets/intel/article5.png" alt=""></div><figcaption><b>3,942</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><img src="assets/intel/article1.png" alt="Featured article"><figcaption><b>15,000+</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><img src="assets/intel/article2.png" alt="Featured article"><figcaption><b>10,000+</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><img src="assets/intel/article3.png" alt="Featured article"><figcaption><b>9,321</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><img src="assets/intel/article4.png" alt="Featured article"><figcaption><b>4,871</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><img src="assets/intel/article5.png" alt="Featured article"><figcaption><b>3,942</b><span>reads</span></figcaption></figure>
       </div>
     </div>
   </div>
