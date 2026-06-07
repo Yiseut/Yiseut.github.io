@@ -282,6 +282,28 @@ img{ display:block; max-width:100%; }
 .channel .tag{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-ink-4); margin-bottom:18px; display:flex; align-items:center; gap:9px; }
 .channel .ch-name{ font-family:var(--serif); font-weight:200; font-size:26px; color:var(--c-slate); line-height:1.2; }
 .channel .ch-logo{ height:50px; width:auto; display:block; }
+.channel .ch-head{ display:flex; justify-content:space-between; align-items:center; gap:18px; }
+.channel .ch-qr{ width:84px; height:84px; flex:none; }
+.channel .ch-cred{ display:flex; align-items:center; gap:11px; margin-top:18px; padding:11px 14px; background:var(--c-paper-light); border:1px solid var(--c-hairline); border-radius:8px; }
+.channel .ch-cred img{ height:21px; width:auto; flex:none; }
+.channel .ch-cred span{ font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--c-oxblood); }
+.channel .ch-aud{ margin-top:22px; padding-top:18px; border-top:1px solid var(--c-hairline); }
+.channel .ch-aud .a{ padding:11px 0; border-bottom:1px solid var(--c-hairline); }
+.channel .ch-aud .a:last-child{ border-bottom:0; padding-bottom:0; }
+.channel .ch-aud .a b{ font-family:var(--serif); font-weight:400; font-size:14px; color:var(--c-slate); display:block; margin-bottom:3px; }
+.channel .ch-aud .a span{ font-size:12px; color:var(--c-ink-3); line-height:1.55; }
+/* Featured articles — engagement proof (Aesthetic Reflections) */
+.featured{ margin-top:clamp(36px,4.5vw,60px); }
+.featured-head{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--c-ink-4); margin-bottom:24px; display:flex; align-items:center; gap:14px; }
+.featured-head::after{ content:''; flex:1; height:1px; background:var(--c-hairline); }
+.featured-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+.fa-img{ border:1px solid var(--c-hairline); border-radius:8px; overflow:hidden; aspect-ratio:16/7; background:var(--c-paper); }
+.fa-img img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s var(--ease-quiet); }
+.fa:hover .fa-img img{ transform:scale(1.05); }
+.fa figcaption{ margin-top:11px; display:flex; align-items:baseline; gap:6px; }
+.fa figcaption b{ font-family:var(--mono); font-weight:700; font-size:18px; color:var(--c-oxblood); letter-spacing:-.01em; line-height:1; }
+.fa figcaption span{ font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--c-ink-3); }
+@media(max-width:760px){ .featured-grid{ grid-template-columns:repeat(2,1fr); } }
 .channel .ch-name .en{ display:block; font-size:.5em; letter-spacing:.18em; text-transform:uppercase; color:var(--c-oxblood); font-family:var(--mono); margin-top:10px; }
 .channel .ch-desc{ font-size:14px; line-height:1.85; color:var(--c-ink-3); margin-top:18px; flex:1; }
 .metrics{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--c-hairline); margin-top:26px; border:1px solid var(--c-hairline); }
@@ -454,23 +476,31 @@ img{ display:block; max-width:100%; }
       <!-- Aesthetic Reflections -->
       <div class="channel">
         <div class="tag"><span class="seal-sq"></span> Long-form · WeChat</div>
-        <div class="ch-name"><img class="ch-logo" src="assets/logo-reflections.png" alt="Aesthetic Reflections 研美思维"></div>
-        <div class="ch-desc">The firm's flagship content IP — long-form strategic analysis of China's medical-aesthetics industry, read weekly by senior industry leaders. Where the firm's expert voice lives.</div>
+        <div class="ch-head">
+          <div class="ch-name"><img class="ch-logo" src="assets/logo-reflections.png" alt="Aesthetic Reflections 研美思维"></div>
+          <img class="ch-qr" src="assets/qr-reflections-t.png" alt="Aesthetic Reflections WeChat QR code">
+        </div>
+        <div class="ch-desc">The firm's flagship content IP — <span class="accent">entirely original, in-house</span> long-form analysis of China's medical-aesthetics industry, read weekly by senior leaders. Every piece is written from primary research, not aggregated — the industry's most influential strategic voice.</div>
+        <div class="ch-cred"><img src="assets/imcas-navyblue.svg" alt="IMCAS"><span>China Media Partner</span></div>
         <div class="metrics">
           <div class="m"><div class="v num">6,000+</div><div class="t">C-suite &amp; senior leaders following</div></div>
           <div class="m"><div class="v num">~80%</div><div class="t">Upstream C-suite reach</div></div>
           <div class="m"><div class="v num">2,000+</div><div class="t">Avg. reads per article</div></div>
           <div class="m"><div class="v num">&gt;10%</div><div class="t">Engagement rate</div></div>
         </div>
-        <div class="channel-foot">
-          <img src="assets/qr-reflections.png" alt="WeChat QR code for Aesthetic Reflections">
-          <div class="qr-cap"><b>Aesthetic Reflections</b>Scan to follow the long-form column on WeChat.</div>
+        <div class="ch-aud">
+          <div class="a"><b>C-suite decision makers</b><span>~80% of upstream CEOs, GMs &amp; directors — near-complete coverage at director level and above.</span></div>
+          <div class="a"><b>Clinics &amp; distributors</b><span>Clinic-chain owners, distributors &amp; physician-entrepreneurs with personal brands.</span></div>
+          <div class="a"><b>Functional leadership</b><span>Heads of Medical Affairs &amp; Marketing driving strategy across the value chain.</span></div>
         </div>
       </div>
       <!-- Yansu -->
       <div class="channel">
         <div class="tag"><span class="seal-sq"></span> Daily news · WeChat</div>
-        <div class="ch-name"><img class="ch-logo" src="assets/logo-yansu.png" alt="研速 AestraSpeed Daily"></div>
+        <div class="ch-head">
+          <div class="ch-name"><img class="ch-logo" src="assets/logo-yansu.png" alt="研速 AestraSpeed Daily"></div>
+          <img class="ch-qr" src="assets/qr-yansu-t.png" alt="研速 AestraSpeed Daily WeChat QR code">
+        </div>
         <div class="ch-desc">A fast feed of global medical-aesthetics news — regulatory moves, deals, product launches and conference output, tracked as it breaks and curated for the China industry.</div>
         <div class="metrics">
           <div class="m"><div class="v num">Daily</div><div class="t">Global news cadence</div></div>
@@ -478,10 +508,21 @@ img{ display:block; max-width:100%; }
           <div class="m"><div class="v num">6yr</div><div class="t">Continuous coverage</div></div>
           <div class="m"><div class="v num">Global</div><div class="t">Cross-market scope</div></div>
         </div>
-        <div class="channel-foot">
-          <img src="assets/qr-yansu.png" alt="WeChat QR code for Yansu global news">
-          <div class="qr-cap"><b>Yansu</b>Scan to follow the global news feed on WeChat.</div>
+        <div class="ch-aud">
+          <div class="a"><b>Listed-company financials</b><span>Earnings, filings &amp; market moves across global public players.</span></div>
+          <div class="a"><b>Frontier news, deals &amp; launches</b><span>Regulatory action, M&amp;A and product debuts as they break.</span></div>
+          <div class="a"><b>Clinical science &amp; longevity</b><span>Research frontier, anti-aging and consumer-health signals.</span></div>
         </div>
+      </div>
+    </div>
+    <div class="featured reveal">
+      <div class="featured-head">Aesthetic Reflections · featured articles</div>
+      <div class="featured-grid">
+        <figure class="fa"><div class="fa-img"><img src="assets/intel/article1.png" alt=""></div><figcaption><b>15,000+</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><div class="fa-img"><img src="assets/intel/article2.png" alt=""></div><figcaption><b>10,000+</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><div class="fa-img"><img src="assets/intel/article3.png" alt=""></div><figcaption><b>9,321</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><div class="fa-img"><img src="assets/intel/article4.png" alt=""></div><figcaption><b>4,871</b><span>reads</span></figcaption></figure>
+        <figure class="fa"><div class="fa-img"><img src="assets/intel/article5.png" alt=""></div><figcaption><b>3,942</b><span>reads</span></figcaption></figure>
       </div>
     </div>
   </div>
