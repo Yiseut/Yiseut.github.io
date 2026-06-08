@@ -254,6 +254,10 @@ img{ display:block; max-width:100%; }
 .db-dusk .db-stats b{ color:var(--c-bone); }
 .db-stats span{ display:block; margin-top:8px; font-family:var(--mono); font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-oxblood-soft); }
 .db-dusk .db-stats span{ color:var(--c-sand-2); }
+.db-cols{ display:flex; flex-wrap:wrap; gap:11px 12px; margin-top:32px; max-width:540px; }
+.db-col{ display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-size:13px; color:var(--c-bone); padding:9px 17px; border:1px solid rgba(206,181,156,.35); border-radius:999px; background:rgba(206,181,156,.05); transition:border-color var(--t-base) var(--ease-quiet), background var(--t-base) var(--ease-quiet); }
+.db-col::before{ content:""; width:5px; height:5px; border-radius:50%; background:var(--c-sand-2); flex:none; }
+.db-col:hover{ border-color:rgba(206,181,156,.6); background:rgba(206,181,156,.12); }
 .db-figs{ columns:2; column-gap:14px; }
 .dbshot{ display:block; break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 14px;
   border:1px solid rgba(206,181,156,.3); border-radius:12px; overflow:hidden; background:var(--c-paper);
@@ -464,14 +468,16 @@ img{ display:block; max-width:100%; }
   <div class="wrap">
     <div class="db-row">
       <div class="db-copy">
-        <span class="db-tag" data-i18n="db3.tag">See the global industry first, every morning</span>
-        <h3 class="db-name" data-i18n="db3.name">Global medical-aesthetics, every day</h3>
-        <p class="db-desc" data-i18n="db3.desc">An AI-assisted intelligence system — earnings, regulation, frontier devices, clinical and science — distilled into a brief you can read, use and act on.</p>
-        <div class="db-stats">
-          <div><b data-i18n="db3.v1">Daily</b><span data-i18n="db3.s1">Refresh cadence</span></div>
-          <div><b>1,500+</b><span data-i18n="db3.s2">Tracked keywords</span></div>
-          <div><b>280+</b><span data-i18n="db3.s3">Companies</span></div>
-          <div><b>460+</b><span data-i18n="db3.s4">Brands</span></div>
+        <span class="db-tag" data-i18n="db3.tag">Updated daily · a step ahead</span>
+        <h3 class="db-name" data-i18n="db3.name">The global medical-aesthetics intelligence system</h3>
+        <p class="db-desc" data-i18n="db3.desc">We distil each day's flood of industry information into the few signals that actually matter — so brands, investors and operators decide faster.</p>
+        <div class="db-cols">
+          <span class="db-col" data-i18n="db3.c1">Frontier tech &amp; products</span>
+          <span class="db-col" data-i18n="db3.c2">Research &amp; clinical</span>
+          <span class="db-col" data-i18n="db3.c3">Access &amp; regulation</span>
+          <span class="db-col" data-i18n="db3.c4">Key-market hotspots</span>
+          <span class="db-col" data-i18n="db3.c5">Listed companies &amp; capital</span>
+          <span class="db-col" data-i18n="db3.c6">Brands &amp; social trends</span>
         </div>
       </div>
       <div class="db-figs db-figs-single reveal">
@@ -568,7 +574,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 <script>
-(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"hero.pos": "专注中国医美 · 精品战略咨询", "nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "hero.slogan": "<span style=\"font-family:var(--fengya);letter-spacing:.28em\">研于至深　美以致远</span>", "intel.eyebrow": "自研数据底座 · 专注医美", "intel.title": "自研全球医美数据库，让每一次决策有理有据、逻辑严谨。", "db1.tag": "看见产品、注册、渠道与资本变化", "db1.name": "全球医美上游产业图谱", "db1.desc": "面向医美产业决策的全球上游情报系统——把分散、零碎的产业动态，结构化为可查询、可比较、可判断的情报视野。", "db1.s1": "上游企业", "db1.s2": "国家与地区", "db1.s3": "城市", "db1.s4": "产品线", "db1.s5": "上市主体", "db1.s6": "注册证据", "db2.tag": "看清中国医美准入与竞争格局", "db2.name": "中国医美市场全景地图", "db2.desc": "聚焦准入版图、赛道机会、产品布局与竞争演变，帮助品牌、投资人和产业决策者更快识别增长方向、判断市场位置、捕捉下一步机会。", "db2.s1": "注册企业集团", "db2.s2": "战略子赛道", "db2.s3": "核心赛道", "db2.s4": "准入产品", "db2.s5": "适应症与部位", "db3.tag": "每天，第一时间看见全球行业动态", "db3.name": "全球医美每日情报系统", "db3.desc": "AI 辅助的全球医美情报系统，覆盖财报、监管、前沿器械、临床与科研，把海量信息提炼为可读、可用、可决策的精选。", "db3.v1": "每日", "db3.s1": "更新频率", "db3.s2": "追踪关键词", "db3.s3": "覆盖企业", "db3.s4": "覆盖品牌", "voice.eyebrow": "行业影响力", "voice.title": "中国深度，世界广度", "ch1.tag": "<span class=\"seal-sq\"></span> 原创 · 长文 · 公众号", "ch1.desc": "公司旗舰内容 IP——<span class=\"accent\">100% 原创、完全自有</span>的中国医美深度长文，每一篇都源自一手研究、绝非聚合搬运。读者，是真正主导行业的人——<span class=\"accent\">C-level 决策者、机构与渠道负责人、医学与市场负责人</span>，因而成为行业最具影响力的战略声音。", "ch1.cred": "中国媒体合作伙伴", "ch1.m1": "C-level 及资深行业人士关注", "ch1.m2": "上游高管触达", "ch1.m3": "篇均阅读", "ch1.m4": "互动率", "ch2.tag": "<span class=\"seal-sq\"></span> 精选 · 每日早报 · 公众号", "ch2.desc": "每天早上 <span class=\"accent\">8:30</span>，从完整日报系统中<span class=\"accent\">精选</span>出真正重要的少数信号——为医美人准备的全球行业<span class=\"accent\">实时快照</span>。", "ch2.a1b": "全球实时快讯", "ch2.a1s": "全球突发新闻、各国动态趋势与社媒热点。", "ch2.a2b": "企业、市场与监管", "ch2.a2s": "企业动作、上市公司走势、金融市场与法规变动。", "ch2.a3b": "科研、文献与抗衰", "ch2.a3s": "临床研究、研发与最新文献及专家解读——以及抗衰与健康。", "voice.featured": "研美思维 · 热门文章", "reads": "阅读", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。", "db2.s6": "合规注册证"};
+(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"hero.pos": "专注中国医美 · 精品战略咨询", "nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "hero.slogan": "<span style=\"font-family:var(--fengya);letter-spacing:.28em\">研于至深　美以致远</span>", "intel.eyebrow": "自研数据底座 · 专注医美", "intel.title": "自研全球医美数据库，让每一次决策有理有据、逻辑严谨。", "db1.tag": "看见产品、注册、渠道与资本变化", "db1.name": "全球医美上游产业图谱", "db1.desc": "面向医美产业决策的全球上游情报系统——把分散、零碎的产业动态，结构化为可查询、可比较、可判断的情报视野。", "db1.s1": "上游企业", "db1.s2": "国家与地区", "db1.s3": "城市", "db1.s4": "产品线", "db1.s5": "上市主体", "db1.s6": "注册证据", "db2.tag": "看清中国医美准入与竞争格局", "db2.name": "中国医美市场全景地图", "db2.desc": "聚焦准入版图、赛道机会、产品布局与竞争演变，帮助品牌、投资人和产业决策者更快识别增长方向、判断市场位置、捕捉下一步机会。", "db2.s1": "注册企业集团", "db2.s2": "战略子赛道", "db2.s3": "核心赛道", "db2.s4": "准入产品", "db2.s5": "适应症与部位", "db3.tag": "每天更新，先人一步", "db3.name": "全球医美行业情报系统", "db3.desc": "把每天海量的行业信息，提炼为真正值得关注的少数信号，帮助品牌方、投资人与产业决策者更快做出判断。", "db3.v1": "每日", "db3.s1": "更新频率", "db3.s2": "追踪关键词", "db3.s3": "覆盖企业", "db3.s4": "覆盖品牌", "voice.eyebrow": "行业影响力", "voice.title": "中国深度，全球广度", "ch1.tag": "<span class=\"seal-sq\"></span> 原创 · 长文 · 公众号", "ch1.desc": "公司旗舰内容 IP——<span class=\"accent\">100% 原创、完全自有</span>的中国医美深度长文，每一篇都源自一手研究、绝非聚合搬运。读者，是真正主导行业的人——<span class=\"accent\">C-level 决策者、机构与渠道负责人、医学与市场负责人</span>，因而成为行业最具影响力的战略声音。", "ch1.cred": "中国媒体合作伙伴", "ch1.m1": "C-level 及资深行业人士关注", "ch1.m2": "上游高管触达", "ch1.m3": "篇均阅读", "ch1.m4": "互动率", "ch2.tag": "<span class=\"seal-sq\"></span> 精选 · 每日早报 · 公众号", "ch2.desc": "每天早上 <span class=\"accent\">8:30</span>，从完整日报系统中<span class=\"accent\">精选</span>出真正重要的少数信号——为医美人准备的全球行业<span class=\"accent\">实时快照</span>。", "ch2.a1b": "全球实时快讯", "ch2.a1s": "全球突发新闻、各国动态趋势与社媒热点。", "ch2.a2b": "企业、市场与监管", "ch2.a2s": "企业动作、上市公司走势、金融市场与法规变动。", "ch2.a3b": "科研、文献与抗衰", "ch2.a3s": "临床研究、研发与最新文献及专家解读——以及抗衰与健康。", "voice.featured": "研美思维 · 热门文章", "reads": "阅读", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。", "db2.s6": "合规注册证", "db3.c1": "前沿技术与产品动向", "db3.c2": "科研与临床观察", "db3.c3": "准入与监管进展", "db3.c4": "重点国家市场热点", "db3.c5": "上市公司与资本信号", "db3.c6": "品牌与传播趋势"};
 var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));var en=nodes.map(function(n){return n.innerHTML;});
 function apply(lang){root.setAttribute("data-lang",lang);nodes.forEach(function(n,i){var z=I18N[n.getAttribute("data-i18n")];n.innerHTML=(lang==="zh"&&z!=null)?z:en[i];});try{localStorage.setItem(KEY,lang);}catch(e){}[].forEach.call(document.querySelectorAll(".lang-toggle"),function(b){b.textContent=lang==="zh"?"EN":"中文";});}
 var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved);
