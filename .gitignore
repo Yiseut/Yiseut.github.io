@@ -22,3 +22,10 @@ assets/ar-logo-vertical.png
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
