@@ -8,6 +8,7 @@ _tmp/
 
 # Claude Code local settings — internal, not for the public site
 .claude/
+.codex/
 
 # Founder's personal photo — Founder section removed; keep her photo off the public repo
 assets/founder-giselle.png

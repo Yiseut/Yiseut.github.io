@@ -47,7 +47,9 @@ export async function onRequestOptions() {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!env.DEEPSEEK_API_KEY) {
+  const deepseekApiKey = await readSecret(env.DEEPSEEK_API_KEY);
+
+  if (!deepseekApiKey) {
     return json({ error: 'not_configured' }, 503);
   }
 
@@ -72,7 +74,7 @@ export async function onRequestPost({ request, env }) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${env.DEEPSEEK_API_KEY}`,
+        'Authorization': `Bearer ${deepseekApiKey}`,
       },
       body: JSON.stringify({
         model: 'deepseek-chat',
@@ -121,6 +123,13 @@ export async function onRequestPost({ request, env }) {
   return new Response(stream, {
     headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', ...CORS },
   });
+}
+
+async function readSecret(value) {
+  if (!value) return '';
+  if (typeof value === 'string') return value;
+  if (typeof value.get === 'function') return value.get();
+  return String(value);
 }
 
 function json(obj, status) {
