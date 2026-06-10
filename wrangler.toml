@@ -7,3 +7,11 @@ compatibility_flags = ["nodejs_compat"]
 directory = "."
 binding = "ASSETS"
 run_worker_first = ["/api/*"]
+
+# Visit-counter database (free D1). Create it once, then paste its id here:
+#   wrangler d1 create aestrat-analytics
+#   wrangler d1 execute aestrat-analytics --remote --file=./schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "aestrat-analytics"
+database_id = "PASTE_D1_DATABASE_ID_HERE"

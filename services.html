@@ -486,5 +486,6 @@ var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved)
 document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest(".lang-toggle");if(t){e.preventDefault();apply(root.getAttribute("data-lang")==="zh"?"en":"zh");}});
 })();
 </script>
+<script src="assets/analytics.js" defer></script>
 </body>
 </html>
