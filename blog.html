@@ -128,7 +128,8 @@ img{ display:block; max-width:100%; }
   font-size:16px; line-height:1.95; color:var(--c-sand-2); font-weight:300;
 }
 .blog-status{
-  display:flex; justify-content:center; align-items:center; gap:12px; margin-top:clamp(34px,5vw,52px);
+  min-height:clamp(420px,56vh,780px);
+  display:flex; justify-content:center; align-items:center; gap:12px; margin-top:clamp(28px,4vw,44px);
   font-family:var(--mono); font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--c-slate-4);
 }
 .blog-status::before{ content:''; width:7px; height:7px; border-radius:50%; background:var(--c-sand-1); animation:blogpulse 2.6s var(--ease-quiet) infinite; }
