@@ -136,12 +136,15 @@ img{ display:block; max-width:100%; }
 .blog-channels{
   margin-top:clamp(30px,4vw,44px); display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
 }
-.blog-chip{
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
-  padding:11px 22px; border:1px solid rgba(224,214,202,.22); color:var(--c-bone);
-  transition:border-color var(--t-base) var(--ease-quiet), color var(--t-base) var(--ease-quiet);
+.blog-ic{
+  display:inline-flex; align-items:center; justify-content:center; padding:9px; color:var(--c-sand-2);
+  transition:color var(--t-base) var(--ease-quiet), transform var(--t-base) var(--ease-quiet);
 }
-.blog-chip:hover{ border-color:var(--c-sand-1); color:var(--c-sand-2); }
+.blog-ic:hover{ color:var(--c-sand-3); transform:translateY(-2px); }
+.blog-ic svg{ width:27px; height:27px; fill:currentColor; display:block; }
+.blog-ic .oa{ display:block; width:28px; height:28px; background-color:currentColor;
+  -webkit-mask:url('assets/wechat-oa.png') center/contain no-repeat;
+          mask:url('assets/wechat-oa.png') center/contain no-repeat; }
 
 /* ── Footer (same component as the homepage) ──────────────────────────── */
 .footer{ background:var(--c-slate-1); color:var(--c-paper-light); padding:clamp(48px,6vw,72px) var(--gutter) clamp(28px,4vw,40px); }
@@ -197,8 +200,8 @@ img{ display:block; max-width:100%; }
       <span class="cn">研于至深，美以致远</span>
     </h1>
     <div class="blog-channels">
-      <a class="blog-chip" href="#" aria-disabled="true" data-i18n="blog.wechat">Aesthetic Reflections · WeChat</a>
-      <a class="blog-chip" href="https://www.linkedin.com/company/aestrat-consulting/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="blog-ic" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5MDM2NTM2Mg==&amp;action=getalbum&amp;album_id=4060836438168829967#wechat_redirect" target="_blank" rel="noopener" aria-label="研美思维 · 公众号 / WeChat Official Account"><span class="oa"></span></a>
+      <a class="blog-ic" href="https://www.linkedin.com/company/aestrat-consulting/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45C23.2 24 24 23.22 24 22.27V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
     </div>
   </div>
 </main>
