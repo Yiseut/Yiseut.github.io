@@ -14,6 +14,7 @@
 
 <!-- Foundation tokens (five brand colors, type scale, spacing) -->
 <link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="assets/chat-widget.css">
 <!-- Modern geometric face for big data figures (high-end business numerals) -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap">
 <!-- Slogan script face, subset + embedded so it renders on every device (incl. mobile) -->
@@ -563,6 +564,25 @@ img{ display:block; max-width:100%; }
     <span data-i18n="f.copy">© 2026 AESTRAT Consulting. All rights reserved.</span>
   </div>
 </footer>
+
+<button class="chat-fab" id="chatFab" aria-label="Chat with AESTRAT">
+  <span class="dot"></span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z"/></svg>
+</button>
+<section class="chat-panel" id="chatPanel" aria-live="polite">
+  <div class="chat-head">
+    <img src="assets/ip-brain-mark.png" alt="">
+    <div class="t"><b>AESTRAT Assistant</b><span>研美 · AI</span></div>
+    <button class="x" id="chatClose" aria-label="Close">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-chips" id="chatChips"></div>
+  <form class="chat-input" id="chatForm">
+    <input id="chatText" type="text" autocomplete="off" placeholder="Ask anything — any language...">
+    <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-7-8-3z"/></svg></button>
+  </form>
+</section>
+<script src="assets/chat-widget.js"></script>
 
 <script>
 // Nav background on scroll

@@ -1,0 +1,52 @@
+.chat-fab{
+  position:fixed; right:clamp(18px,3vw,32px); bottom:clamp(18px,3vw,32px); z-index:200;
+  width:58px; height:58px; border-radius:50%; border:0; cursor:pointer;
+  background:var(--c-oxblood); color:var(--c-bone);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 14px 32px -10px rgba(10,16,26,.6);
+  transition:opacity var(--t-base) var(--ease-quiet), transform var(--t-base) var(--ease-quiet), background var(--t-base) var(--ease-quiet);
+}
+.chat-fab:hover{ transform:translateY(-2px); background:var(--c-oxblood-2); }
+.chat-fab svg{ width:26px; height:26px; fill:currentColor; }
+.chat-fab .dot{ position:absolute; top:13px; right:13px; width:9px; height:9px; border-radius:50%; background:var(--c-sand-2); border:2px solid var(--c-oxblood); }
+.chat-fab.open{ background:var(--c-slate); }
+.chat-panel{
+  position:fixed; right:clamp(18px,3vw,32px); bottom:calc(clamp(18px,3vw,32px) + 70px); z-index:200;
+  width:min(380px, calc(100vw - 36px)); height:min(560px, calc(100vh - 130px));
+  display:flex; flex-direction:column; overflow:hidden;
+  background:var(--c-paper); border:1px solid var(--c-sand-1); border-radius:16px;
+  box-shadow:0 30px 70px -24px rgba(10,16,26,.65);
+  opacity:0; transform:translateY(12px) scale(.98); pointer-events:none;
+  transition:opacity var(--t-base) var(--ease-quiet), transform var(--t-base) var(--ease-quiet);
+}
+.chat-panel.open{ opacity:1; transform:none; pointer-events:auto; }
+body:not(.contact-chat-visible) .chat-fab,
+body:not(.contact-chat-visible) .chat-panel{
+  opacity:0; pointer-events:none;
+}
+body:not(.contact-chat-visible) .chat-fab{
+  transform:translateY(10px) scale(.96);
+}
+.chat-head{ display:flex; align-items:center; gap:11px; padding:16px 18px; background:var(--c-slate); color:var(--c-bone); }
+.chat-head img{ width:30px; height:30px; flex:none; }
+.chat-head .t{ flex:1; }
+.chat-head .t b{ font-family:var(--serif); font-weight:300; font-size:15px; letter-spacing:.02em; display:block; }
+.chat-head .t span{ font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--c-sand-2); }
+.chat-head .x{ background:none; border:0; color:var(--c-slate-4); cursor:pointer; font-size:22px; line-height:1; padding:2px 6px; transition:color var(--t-fast); }
+.chat-head .x:hover{ color:var(--c-bone); }
+.chat-body{ flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:12px; }
+.chat-msg{ max-width:84%; font-size:13.5px; line-height:1.65; padding:11px 14px; border-radius:14px; white-space:pre-line; }
+.chat-msg.bot{ align-self:flex-start; background:var(--c-paper-light); color:var(--c-ink-2); border:1px solid var(--c-hairline); border-bottom-left-radius:4px; }
+.chat-msg.me{ align-self:flex-end; background:var(--c-slate); color:var(--c-bone); border-bottom-right-radius:4px; }
+.chat-chips{ display:flex; flex-wrap:wrap; gap:8px; padding:0 18px 12px; }
+.chat-chip{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--c-oxblood);
+  background:none; border:1px solid var(--c-border); border-radius:999px; padding:7px 13px; cursor:pointer;
+  transition:background var(--t-fast), color var(--t-fast), border-color var(--t-fast); }
+.chat-chip:hover{ background:var(--c-oxblood); color:var(--c-bone); border-color:var(--c-oxblood); }
+.chat-input{ display:flex; gap:8px; padding:12px; border-top:1px solid var(--c-hairline); background:var(--c-paper-light); }
+.chat-input input{ flex:1; border:1px solid var(--c-border); border-radius:999px; padding:10px 16px; font-family:var(--sans); font-size:13px; color:var(--c-ink-2); background:var(--c-paper); outline:none; }
+.chat-input input:focus{ border-color:var(--c-sand-1); }
+.chat-input button{ flex:none; width:40px; height:40px; border-radius:50%; border:0; background:var(--c-oxblood); color:var(--c-bone); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--t-fast); }
+.chat-input button:hover{ background:var(--c-oxblood-2); }
+.chat-input button svg{ width:17px; height:17px; fill:currentColor; }
+@media(max-width:480px){ .chat-panel{ height:min(72vh, 540px); } }

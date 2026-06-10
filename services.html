@@ -159,8 +159,8 @@ img{ display:block; max-width:100%; }
 .intel-cap{ margin-top:14px; font-family:var(--mono); font-size:8px; letter-spacing:.05em; line-height:1.65; color:var(--c-slate-4); }
 .masthead .eyebrow{ color:var(--c-sand-2); margin-bottom:22px; }
 .mast-title{
-  font-family:var(--serif); font-weight:200; font-size:var(--type-h1); line-height:1.08;
-  letter-spacing:.01em; color:var(--c-bone); max-width:16ch;
+  font-family:var(--serif); font-weight:200; font-size:var(--type-h1); line-height:1.18;
+  letter-spacing:.01em; color:var(--c-bone); max-width:28ch;
 }
 .mast-title em{ font-style:normal; color:var(--c-sand-2); }
 .mast-lead{
@@ -285,52 +285,6 @@ img{ display:block; max-width:100%; }
 .reveal.in{ opacity:1; transform:none; }
 @media(prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 
-/* ── AI assistant (UI shell — wire .endpoint to a DeepSeek serverless proxy to go live) ── */
-.chat-fab{
-  position:fixed; right:clamp(18px,3vw,32px); bottom:clamp(18px,3vw,32px); z-index:200;
-  width:58px; height:58px; border-radius:50%; border:0; cursor:pointer;
-  background:var(--c-oxblood); color:var(--c-bone);
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 14px 32px -10px rgba(10,16,26,.6);
-  transition:transform var(--t-base) var(--ease-quiet), background var(--t-base) var(--ease-quiet);
-}
-.chat-fab:hover{ transform:translateY(-2px); background:var(--c-oxblood-2); }
-.chat-fab svg{ width:26px; height:26px; fill:currentColor; }
-.chat-fab .dot{ position:absolute; top:13px; right:13px; width:9px; height:9px; border-radius:50%; background:var(--c-sand-2); border:2px solid var(--c-oxblood); }
-.chat-fab.open{ background:var(--c-slate); }
-.chat-panel{
-  position:fixed; right:clamp(18px,3vw,32px); bottom:calc(clamp(18px,3vw,32px) + 70px); z-index:200;
-  width:min(380px, calc(100vw - 36px)); height:min(560px, calc(100vh - 130px));
-  display:flex; flex-direction:column; overflow:hidden;
-  background:var(--c-paper); border:1px solid var(--c-sand-1); border-radius:16px;
-  box-shadow:0 30px 70px -24px rgba(10,16,26,.65);
-  opacity:0; transform:translateY(12px) scale(.98); pointer-events:none;
-  transition:opacity var(--t-base) var(--ease-quiet), transform var(--t-base) var(--ease-quiet);
-}
-.chat-panel.open{ opacity:1; transform:none; pointer-events:auto; }
-.chat-head{ display:flex; align-items:center; gap:11px; padding:16px 18px; background:var(--c-slate); color:var(--c-bone); }
-.chat-head img{ width:30px; height:30px; flex:none; }
-.chat-head .t{ flex:1; }
-.chat-head .t b{ font-family:var(--serif); font-weight:300; font-size:15px; letter-spacing:.02em; display:block; }
-.chat-head .t span{ font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--c-sand-2); }
-.chat-head .x{ background:none; border:0; color:var(--c-slate-4); cursor:pointer; font-size:22px; line-height:1; padding:2px 6px; transition:color var(--t-fast); }
-.chat-head .x:hover{ color:var(--c-bone); }
-.chat-body{ flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:12px; }
-.chat-msg{ max-width:84%; font-size:13.5px; line-height:1.65; padding:11px 14px; border-radius:14px; white-space:pre-line; }
-.chat-msg.bot{ align-self:flex-start; background:var(--c-paper-light); color:var(--c-ink-2); border:1px solid var(--c-hairline); border-bottom-left-radius:4px; }
-.chat-msg.me{ align-self:flex-end; background:var(--c-slate); color:var(--c-bone); border-bottom-right-radius:4px; }
-.chat-chips{ display:flex; flex-wrap:wrap; gap:8px; padding:0 18px 12px; }
-.chat-chip{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--c-oxblood);
-  background:none; border:1px solid var(--c-border); border-radius:999px; padding:7px 13px; cursor:pointer;
-  transition:background var(--t-fast), color var(--t-fast), border-color var(--t-fast); }
-.chat-chip:hover{ background:var(--c-oxblood); color:var(--c-bone); border-color:var(--c-oxblood); }
-.chat-input{ display:flex; gap:8px; padding:12px; border-top:1px solid var(--c-hairline); background:var(--c-paper-light); }
-.chat-input input{ flex:1; border:1px solid var(--c-border); border-radius:999px; padding:10px 16px; font-family:var(--sans); font-size:13px; color:var(--c-ink-2); background:var(--c-paper); outline:none; }
-.chat-input input:focus{ border-color:var(--c-sand-1); }
-.chat-input button{ flex:none; width:40px; height:40px; border-radius:50%; border:0; background:var(--c-oxblood); color:var(--c-bone); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--t-fast); }
-.chat-input button:hover{ background:var(--c-oxblood-2); }
-.chat-input button svg{ width:17px; height:17px; fill:currentColor; }
-@media(max-width:480px){ .chat-panel{ height:min(72vh, 540px); } }
 </style>
 </head>
 <body>
@@ -354,8 +308,8 @@ img{ display:block; max-width:100%; }
   <div class="masthead-inner">
     <div class="mast-copy">
       <div class="eyebrow" data-i18n="mast.eyebrow">Services</div>
-      <h1 class="mast-title" data-i18n="mast.title">Both ends of <em>the bridge.</em></h1>
-      <p class="mast-lead" data-i18n="mast.lead">AESTRAT serves clients on both sides of this bridge — international companies looking to enter China or source from it, and Chinese companies seeking partnerships abroad or scaling at home — with strategy grounded in <span class="accent">hands-on operating experience inside this market.</span></p>
+      <h1 class="mast-title" data-i18n="mast.title">Know the <em>need</em> of those who come;<br>open the <em>way</em> for those who go.</h1>
+      <p class="mast-lead" data-i18n="mast.lead">AESTRAT serves clients on both sides of this bridge — international companies looking to enter China or source from it, and Chinese companies seeking partnerships abroad or scaling at home — with strategy grounded in <span class="accent">deep, hands-on experience in this market.</span></p>
     </div>
   </div>
 </header>
@@ -519,83 +473,8 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
-<!-- ── AI assistant widget (UI shell; connect a DeepSeek serverless proxy later) ── -->
-<button class="chat-fab" id="chatFab" aria-label="Chat with AESTRAT">
-  <span class="dot"></span>
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2z"/></svg>
-</button>
-<section class="chat-panel" id="chatPanel" aria-live="polite">
-  <div class="chat-head">
-    <img src="assets/ip-brain-mark.png" alt="">
-    <div class="t"><b>AESTRAT Assistant</b><span>AESTRAT · AI</span></div>
-    <button class="x" id="chatClose" aria-label="Close">×</button>
-  </div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="chat-chips" id="chatChips"></div>
-  <form class="chat-input" id="chatForm">
-    <input id="chatText" type="text" autocomplete="off" placeholder="Ask anything — any language…">
-    <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-7-8-3z"/></svg></button>
-  </form>
-</section>
-
 <script>
-(function(){
-  // Endpoint is the same-origin Cloudflare Pages Function (functions/api/chat.js) that hides the
-  // DeepSeek key. It only exists on the Pages deployment; on file:// or GitHub Pages the fetch
-  // fails and the widget gracefully falls back to the canned/placeholder answers below.
-  const AESTRAT_CHAT = { endpoint: '/api/chat' };
-
-  const fab=document.getElementById('chatFab'), panel=document.getElementById('chatPanel'),
-        body=document.getElementById('chatBody'), chips=document.getElementById('chatChips'),
-        form=document.getElementById('chatForm'), text=document.getElementById('chatText'),
-        closeBtn=document.getElementById('chatClose');
-
-  const CANNED=[
-    {q:'Who is AESTRAT?',
-     a:"AESTRAT Consulting is a boutique strategic advisory — the bridge between global medical-aesthetics brands and China. From insight to impact."},
-    {q:'What do you do?',
-     a:"We work both ways across the bridge, for two kinds of client:\n· International — China market entry for manufacturers, sourcing support for buyers of Chinese products\n· Domestic — cross-border partnerships and full product-lifecycle consulting"},
-    {q:'How can I reach you?',
-     a:"By email at contact@aestrat.co, on LinkedIn, or on WeChat (ID: YanMeiChat — or scan the QR in the footer)."},
-    {q:'I’d like to introduce myself',
-     a:"Wonderful — tell me your name, your company, and what you’re looking for, and I’ll make sure it reaches the right person."}
-  ];
-
-  const FALLBACK="Thanks! Our live AI assistant is being connected — soon I’ll answer this in any language, in real time. Meanwhile, reach us at contact@aestrat.co or via WeChat (QR in the footer).";
-  let started=false, history=[];
-  function add(role,msg){ const d=document.createElement('div'); d.className='chat-msg '+role; if(msg!=null) d.textContent=msg; body.appendChild(d); body.scrollTop=body.scrollHeight; return d; }
-  async function reply(userMsg,canned){
-    history.push({role:'user',content:userMsg});
-    const el=add('bot','…');
-    let acc='';
-    try{
-      if(!AESTRAT_CHAT.endpoint) throw 0;
-      const res=await fetch(AESTRAT_CHAT.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:userMsg,history:history.slice(0,-1)})});
-      if(!res.ok||!res.body) throw 0;
-      el.textContent='';
-      const rd=res.body.getReader(), dec=new TextDecoder();
-      for(;;){ const {done,value}=await rd.read(); if(done) break; acc+=dec.decode(value,{stream:true}); el.textContent=acc; body.scrollTop=body.scrollHeight; }
-      if(!acc.trim()) throw 0;
-    }catch(e){
-      acc=canned||FALLBACK; el.textContent=acc;
-    }
-    history.push({role:'assistant',content:acc});
-  }
-  function start(){
-    if(started) return; started=true;
-    add('bot',"Hi 👋 I’m AESTRAT’s assistant. Ask me who we are, what we do, or how to connect.");
-    CANNED.forEach(c=>{ const b=document.createElement('button'); b.className='chat-chip'; b.type='button'; b.textContent=c.q; b.onclick=()=>{ add('me',c.q); reply(c.q,c.a); }; chips.appendChild(b); });
-  }
-  function open(){ panel.classList.add('open'); fab.classList.add('open'); start(); setTimeout(()=>text.focus(),300); }
-  function close(){ panel.classList.remove('open'); fab.classList.remove('open'); }
-  fab.onclick=()=> panel.classList.contains('open')?close():open();
-  closeBtn.onclick=close;
-  form.addEventListener('submit',e=>{ e.preventDefault(); const v=text.value.trim(); if(!v) return; add('me',v); text.value=''; reply(v); });
-})();
-</script>
-
-<script>
-(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "mast.eyebrow": "服务", "mast.title": "桥梁的<em>两端</em>。", "mast.lead": "研美咨询服务于桥梁两端的两类客户——希望进入中国、或从中国采购的国际企业，以及希望与海外市场合作、或在本土规模化的中国企业。每一项服务，皆立足于<span class=\"accent\">对中国市场的实操经验</span>。","svc.eyebrow": "我们做什么", "svc.catA": "国际客户", "svc.catB": "国内客户", "svc1.name": "上游企业", "svc1.for": "面向进入中国的国际医美生产商", "svc1.desc": "具备自有研发与生产能力的国际企业，进入中国前要在一系列核心决策间做出判断——<span class=\"accent\">NMPA 注册的真实周期与成本</span>、主体架构、直营 / 合资 / 代理的商业模式、赛道容量与竞争格局。我们提供进入前的全景评估与落地规划，从注册路径到市场预测，从主体搭建到上市节奏，基于中国市场的实操经验，而非桌面研究。", "svc1.m1": "NMPA 注册策略与时间表", "svc1.m2": "市场测算与竞争情报", "svc1.m3": "商业模式与企业主体设立", "svc1.m4": "分销与渠道架构", "svc2.name": "代理商", "svc2.for": "面向采购中国产品的海外买家", "svc2.desc": "中国医美上游从原料到成品，已在<span class=\"accent\">质量、创新与成本</span>上全面成熟。对跨境采购而言，真正的挑战在于供应商甄选与品控——面对 90 多家上游厂商，如何找到真正可靠的合作方，确保品质稳定、合规文件齐全。我们提供从供应商筛选、工厂审核到合作对接的一站式采购支持，替你把住质量与合规的每一道关。", "svc2.m1": "产品赛道评估与筛选", "svc2.m2": "产品供应商比较", "svc2.m3": "工厂审核与评估", "svc3.name": "跨境合作", "svc3.for": "面向寻求国际品牌合作的国内企业", "svc3.desc": "无论是上游、代理商还是资本方，想引入海外产品进入中国，核心都在于<span class=\"accent\">合作模式的选择</span>——licensing-in、OEM、独家代理还是收购，以及背后的资本结构设计。我们提供从品牌筛选到合作落地的全流程跨境合作支持，覆盖合作模式规划、商业条款搭建与 NMPA 注册路径，依托中国与国际两端的资源与实操经验。", "svc3.m1": "国际品牌搜寻与匹配", "svc3.m2": "合作模式设计", "svc3.m3": "NMPA 注册路径规划", "svc4.name": "产品全生命周期", "svc4.for": "面向已有产品的国内企业", "svc4.desc": "无论是新品还是已上市产品，<span class=\"accent\">从拿证到规模化</span>，每个阶段需要的能力都不一样：上市前的策略规划、上市后的推广与团队搭建、规模化阶段的组织升级与商业模式迭代。我们以四大职能贯穿产品全生命周期，从方案设计到执行落地，全程陪伴。", "svc4.m1": "上市前策略规划", "svc4.m2": "上市后推广与团队搭建", "svc4.m3": "规模化组织升级与模式迭代", "svc4.more": "查看完整四大职能框架 →","mtx.eyebrow": "框架", "mtx.title": "四大职能，贯穿医美产品全生命周期", "mtx.d1": "市场策略", "mtx.d2": "医学支持", "mtx.d3": "销售管理", "mtx.d4": "组织发展", "mtx.p0": "上市前", "mtx.p1": "上市后", "mtx.p2": "规模化", "mtx.c00": "市场调研、客群细分、商业模式、定价路径、推广规划", "mtx.c01": "文献、临床报告、KOL 共识、适应症与不良事件方案设计", "mtx.c02": "销售组织架构、KPI 分配、奖金政策、销售规划", "mtx.c03": "高管招聘、绩效与激励体系、危机公关、文化建设", "mtx.c10": "推广物料、销售素材、竞品测试", "mtx.c11": "讲者体系、医学课程、专家内容", "mtx.c12": "活动管理、能力模型、KA 与经销商培训", "mtx.c13": "人才培训、职级优化、高管发展", "mtx.c20": "经营复盘、商业模式创新、产品组合策略", "mtx.c21": "持续学术支持", "mtx.c22": "按需赋能", "mtx.c23": "组织诊断、人才盘点、多元激励", "cta.back": "返回首页", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。"};
+(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "mast.eyebrow": "服务", "mast.title": "来者知其<em>需</em>，<br>往者通其<em>路</em>", "mast.lead": "研美咨询服务于桥梁两端的两类客户——希望进入中国、或从中国采购的国际企业，以及希望与海外市场合作、或在本土规模化的中国企业。每一项服务，皆基于<span class=\"accent\">对中国市场丰富的实践经验</span>。","svc.eyebrow": "我们做什么", "svc.catA": "国际客户", "svc.catB": "国内客户", "svc1.name": "上游企业", "svc1.for": "面向进入中国的国际医美生产商", "svc1.desc": "具备自有研发与生产能力的国际企业，进入中国前要在一系列核心决策间做出判断——<span class=\"accent\">NMPA 注册的真实周期与成本</span>、主体架构、直营 / 合资 / 代理的商业模式、赛道容量与竞争格局。我们提供进入前的全景评估与落地规划，从注册路径到市场预测，从主体搭建到上市节奏，基于中国市场的实操经验，而非桌面研究。", "svc1.m1": "NMPA 注册策略与时间表", "svc1.m2": "市场测算与竞争情报", "svc1.m3": "商业模式与企业主体设立", "svc1.m4": "分销与渠道架构", "svc2.name": "代理商", "svc2.for": "面向采购中国产品的海外买家", "svc2.desc": "中国医美上游从原料到成品，已在<span class=\"accent\">质量、创新与成本</span>上全面成熟。对跨境采购而言，真正的挑战在于供应商甄选与品控——面对 90 多家上游厂商，如何找到真正可靠的合作方，确保品质稳定、合规文件齐全。我们提供从供应商筛选、工厂审核到合作对接的一站式采购支持，替你把住质量与合规的每一道关。", "svc2.m1": "产品赛道评估与筛选", "svc2.m2": "产品供应商比较", "svc2.m3": "工厂审核与评估", "svc3.name": "跨境合作", "svc3.for": "面向寻求国际品牌合作的国内企业", "svc3.desc": "无论是上游、代理商还是资本方，想引入海外产品进入中国，核心都在于<span class=\"accent\">合作模式的选择</span>——licensing-in、OEM、独家代理还是收购，以及背后的资本结构设计。我们提供从品牌筛选到合作落地的全流程跨境合作支持，覆盖合作模式规划、商业条款搭建与 NMPA 注册路径，依托中国与国际两端的资源与实操经验。", "svc3.m1": "国际品牌搜寻与匹配", "svc3.m2": "合作模式设计", "svc3.m3": "NMPA 注册路径规划", "svc4.name": "产品全生命周期", "svc4.for": "面向已有产品的国内企业", "svc4.desc": "无论是新品还是已上市产品，<span class=\"accent\">从拿证到规模化</span>，每个阶段需要的能力都不一样：上市前的策略规划、上市后的推广与团队搭建、规模化阶段的组织升级与商业模式迭代。我们以四大职能贯穿产品全生命周期，从方案设计到执行落地，全程陪伴。", "svc4.m1": "上市前策略规划", "svc4.m2": "上市后推广与团队搭建", "svc4.m3": "规模化组织升级与模式迭代", "svc4.more": "查看完整四大职能框架 →","mtx.eyebrow": "框架", "mtx.title": "四大职能，贯穿医美产品全生命周期", "mtx.d1": "市场策略", "mtx.d2": "医学支持", "mtx.d3": "销售管理", "mtx.d4": "组织发展", "mtx.p0": "上市前", "mtx.p1": "上市后", "mtx.p2": "规模化", "mtx.c00": "市场调研、客群细分、商业模式、定价路径、推广规划", "mtx.c01": "文献、临床报告、KOL 共识、适应症与不良事件方案设计", "mtx.c02": "销售组织架构、KPI 分配、奖金政策、销售规划", "mtx.c03": "高管招聘、绩效与激励体系、危机公关、文化建设", "mtx.c10": "推广物料、销售素材、竞品测试", "mtx.c11": "讲者体系、医学课程、专家内容", "mtx.c12": "活动管理、能力模型、KA 与经销商培训", "mtx.c13": "人才培训、职级优化、高管发展", "mtx.c20": "经营复盘、商业模式创新、产品组合策略", "mtx.c21": "持续学术支持", "mtx.c22": "按需赋能", "mtx.c23": "组织诊断、人才盘点、多元激励", "cta.back": "返回首页", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。"};
 var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));var en=nodes.map(function(n){return n.innerHTML;});
 function apply(lang){root.setAttribute("data-lang",lang);nodes.forEach(function(n,i){var z=I18N[n.getAttribute("data-i18n")];n.innerHTML=(lang==="zh"&&z!=null)?z:en[i];});try{localStorage.setItem(KEY,lang);}catch(e){}[].forEach.call(document.querySelectorAll(".lang-toggle"),function(b){b.textContent=lang==="zh"?"EN":"中文";});}
 var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved);
