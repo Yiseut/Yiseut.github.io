@@ -144,6 +144,9 @@ img{ display:block; max-width:100%; }
 /* Official AESTRAT wordmark (PNG) with the slogan tied to its width */
 .hero-stack{ display:inline-block; }
 .hero-pos{ margin-top:clamp(18px,2.4vw,30px); font-family:var(--sans); font-weight:300; font-size:clamp(11px,1.2vw,13px); letter-spacing:.18em; text-transform:uppercase; color:var(--c-bone); opacity:.75; }
+.hero-note{ position:absolute; left:50%; bottom:clamp(16px,3.2vh,32px); transform:translateX(-50%); z-index:2;
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--c-bone); opacity:.4; white-space:nowrap; text-align:center; pointer-events:none; }
 /* White wordmark (PNG) above the cream-gold slogan — kept distinct on purpose */
 .hero-logo{ display:block; width:clamp(280px,42vw,560px); height:auto; }
 
@@ -392,7 +395,8 @@ img{ display:block; max-width:100%; }
 <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
 <header class="hero" id="top">
   <!-- Background: live WebGL globe (sharp on every device + rotates on mobile).
-       Self-contained page in globe/ — loads only the curated 63-company subset. -->
+       Self-contained page in globe/ — loads a curated illustrative subset (global + China
+       head companies), not the full proprietary dataset. -->
   <div class="hero-bg" aria-hidden="true">
     <iframe class="hero-globe" src="globe/index.html" title="" tabindex="-1" scrolling="no" loading="eager"></iframe>
     <div class="hero-scrim"></div>
@@ -406,6 +410,7 @@ img{ display:block; max-width:100%; }
       </div>
     </div>
   </div>
+  <div class="hero-note" data-i18n="hero.note">Illustrative view — not the full dataset</div>
 </header>
 
 <!-- ── Proprietary intelligence — three databases ───────────────────────── -->
@@ -599,7 +604,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 <script>
-(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"hero.pos": "专注中国医美 · 精品战略咨询", "nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "hero.slogan": "<span style=\"font-family:var(--fengya);letter-spacing:.28em\">研于至深　美以致远</span>", "intel.eyebrow": "自研数据底座 · 专注医美", "intel.title": "自研全球医美数据库，让每一次决策有理有据、逻辑严谨。", "db1.tag": "看见产品、注册、渠道与资本变化", "db1.name": "全球医美上游产业图谱", "db1.desc": "面向医美产业决策的全球上游情报系统——把分散、零碎的产业动态，结构化为可查询、可比较、可判断的情报视野。", "db1.s1": "上游企业", "db1.s2": "国家与地区", "db1.s3": "城市", "db1.s4": "产品线", "db1.s5": "上市主体", "db1.s6": "注册证据", "db2.tag": "看清中国医美准入与竞争格局", "db2.name": "中国医美市场全景地图", "db2.desc": "聚焦准入版图、赛道机会、产品布局与竞争演变，帮助品牌、投资人和产业决策者更快识别增长方向、判断市场位置、捕捉下一步机会。", "db2.s1": "注册企业集团", "db2.s2": "战略子赛道", "db2.s3": "核心赛道", "db2.s4": "准入产品", "db2.s5": "适应症与部位", "db3.tag": "每日更新，总览全球医美大事件", "db3.name": "全球医美行业情报系统", "db3.desc": "梳理全球医美前沿技术、科研进展、市场准入、区域热点、上市公司、品牌动态与社媒趋势，帮助品牌方、投资人和产业决策者更快抓住值得关注的行业信号。", "db3.v1": "每日", "db3.s1": "更新频率", "db3.s2": "追踪关键词", "db3.s3": "覆盖企业", "db3.s4": "覆盖品牌", "voice.eyebrow": "行业影响力", "voice.title": "中国深度，全球广度", "ch1.tag": "<span class=\"seal-sq\"></span> 原创 · 深度 · 观察", "ch1.desc": "《研美思维》是研美咨询旗下的内容 IP，<span class=\"accent\">由创始人主笔</span>，是医美行业观察和全球行业趋势的解读平台。它的读者，正是主导行业的人——C-level 决策者、机构与渠道负责人、医学与市场负责人，是行业最具影响力的战略声音之一。", "ch1.cred": "中国媒体合作伙伴", "ch1.m1": "行业资深从业者", "ch1.m2": "上游高管触达", "ch1.m3": "篇均阅读", "ch1.m4": "互动率", "ch2.tag": "<span class=\"seal-sq\"></span> 精选 · 资讯 · 每日", "ch2.desc": "每日追踪全球最新最精的医美产业信号：医美企业与产品的动态与战略、市场准入与监管、科研文献与临床前沿，及当下最值得关注的趋势热点。<span class=\"accent\">给医美决策者看的晨间日报。</span>", "ch2.a1b": "全球实时快讯", "ch2.a1s": "全球突发新闻、各国动态趋势与社媒热点。", "ch2.a2b": "企业、市场与监管", "ch2.a2s": "品牌动态、产品事件、上市公司走势与法规变更。", "ch2.a3b": "科研、文献与抗衰", "ch2.a3s": "临床研究、研发与最新文献及专家解读。", "voice.featured": "研美思维 · 热门文章", "reads": "阅读", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。", "db2.s6": "合规注册证", "db3.c1": "前沿技术与产品动向", "db3.c2": "科研与临床观察", "db3.c3": "准入与监管进展", "db3.c4": "重点国家市场热点", "db3.c5": "上市公司与资本信号", "db3.c6": "品牌与传播趋势", "ch2.a4b": "企业科普介绍", "ch2.a4s": "覆盖全球 362 家医美企业，梳理品牌和产品优势等商业信息。"};
+(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"hero.pos": "专注中国医美 · 精品战略咨询", "hero.note": "仅为示意展示，非完整数据源", "nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "hero.slogan": "<span style=\"font-family:var(--fengya);letter-spacing:.28em\">研于至深　美以致远</span>", "intel.eyebrow": "自研数据底座 · 专注医美", "intel.title": "自研全球医美数据库，让每一次决策有理有据、逻辑严谨。", "db1.tag": "看见产品、注册、渠道与资本变化", "db1.name": "全球医美上游产业图谱", "db1.desc": "面向医美产业决策的全球上游情报系统——把分散、零碎的产业动态，结构化为可查询、可比较、可判断的情报视野。", "db1.s1": "上游企业", "db1.s2": "国家与地区", "db1.s3": "城市", "db1.s4": "产品线", "db1.s5": "上市主体", "db1.s6": "注册证据", "db2.tag": "看清中国医美准入与竞争格局", "db2.name": "中国医美市场全景地图", "db2.desc": "聚焦准入版图、赛道机会、产品布局与竞争演变，帮助品牌、投资人和产业决策者更快识别增长方向、判断市场位置、捕捉下一步机会。", "db2.s1": "注册企业集团", "db2.s2": "战略子赛道", "db2.s3": "核心赛道", "db2.s4": "准入产品", "db2.s5": "适应症与部位", "db3.tag": "每日更新，总览全球医美大事件", "db3.name": "全球医美行业情报系统", "db3.desc": "梳理全球医美前沿技术、科研进展、市场准入、区域热点、上市公司、品牌动态与社媒趋势，帮助品牌方、投资人和产业决策者更快抓住值得关注的行业信号。", "db3.v1": "每日", "db3.s1": "更新频率", "db3.s2": "追踪关键词", "db3.s3": "覆盖企业", "db3.s4": "覆盖品牌", "voice.eyebrow": "行业影响力", "voice.title": "中国深度，全球广度", "ch1.tag": "<span class=\"seal-sq\"></span> 原创 · 深度 · 观察", "ch1.desc": "《研美思维》是研美咨询旗下的内容 IP，<span class=\"accent\">由创始人主笔</span>，是医美行业观察和全球行业趋势的解读平台。它的读者，正是主导行业的人——C-level 决策者、机构与渠道负责人、医学与市场负责人，是行业最具影响力的战略声音之一。", "ch1.cred": "中国媒体合作伙伴", "ch1.m1": "行业资深从业者", "ch1.m2": "上游高管触达", "ch1.m3": "篇均阅读", "ch1.m4": "互动率", "ch2.tag": "<span class=\"seal-sq\"></span> 精选 · 资讯 · 每日", "ch2.desc": "每日追踪全球最新最精的医美产业信号：医美企业与产品的动态与战略、市场准入与监管、科研文献与临床前沿，及当下最值得关注的趋势热点。<span class=\"accent\">给医美决策者看的晨间日报。</span>", "ch2.a1b": "全球实时快讯", "ch2.a1s": "全球突发新闻、各国动态趋势与社媒热点。", "ch2.a2b": "企业、市场与监管", "ch2.a2s": "品牌动态、产品事件、上市公司走势与法规变更。", "ch2.a3b": "科研、文献与抗衰", "ch2.a3s": "临床研究、研发与最新文献及专家解读。", "voice.featured": "研美思维 · 热门文章", "reads": "阅读", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。", "db2.s6": "合规注册证", "db3.c1": "前沿技术与产品动向", "db3.c2": "科研与临床观察", "db3.c3": "准入与监管进展", "db3.c4": "重点国家市场热点", "db3.c5": "上市公司与资本信号", "db3.c6": "品牌与传播趋势", "ch2.a4b": "企业科普介绍", "ch2.a4s": "覆盖全球 362 家医美企业，梳理品牌和产品优势等商业信息。"};
 var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));var en=nodes.map(function(n){return n.innerHTML;});
 function apply(lang){root.setAttribute("data-lang",lang);nodes.forEach(function(n,i){var z=I18N[n.getAttribute("data-i18n")];n.innerHTML=(lang==="zh"&&z!=null)?z:en[i];});try{localStorage.setItem(KEY,lang);}catch(e){}[].forEach.call(document.querySelectorAll(".lang-toggle"),function(b){b.textContent=lang==="zh"?"EN":"中文";});}
 var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved);
