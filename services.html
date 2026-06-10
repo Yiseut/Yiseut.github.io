@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 <meta name="robots" content="noindex"><!-- pre-launch preview: remove before public launch -->
-<meta name="description" content="AESTRAT Consulting — three ways across the bridge between global medical-aesthetics brands and China: market entry, sourcing & partnership, and proprietary intelligence.">
+<meta name="description" content="AESTRAT Consulting — the strategic bridge for medical aesthetics in China: market entry and sourcing for international clients, cross-border partnership and full-lifecycle consulting for Chinese clients.">
 <meta property="og:title" content="Services · AESTRAT Consulting">
 <meta property="og:description" content="The strategic bridge to medical aesthetics in China — and back out to the world.">
 <meta property="og:type" content="website">
@@ -199,19 +199,30 @@ img{ display:block; max-width:100%; }
   .svc-lead{ position:static; }
 }
 
-/* ── Consolidated services — one section, three columns ────────────────── */
+/* ── Consolidated services — two client worlds, two cards each ─────────── */
 .svc-all{ background:var(--c-paper); }
-.svc-all-head{ margin-bottom:clamp(34px,5vw,60px); }
-.svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(28px,3.5vw,56px); }
+.svc-all-head{ margin-bottom:clamp(30px,4vw,52px); }
+.svc-cat{ margin-top:clamp(46px,6vw,84px); }
+.svc-cat--first{ margin-top:0; }
+.svc-cat-head{ display:flex; align-items:center; gap:20px; margin-bottom:clamp(26px,3vw,44px); }
+.svc-cat-label{ font-family:var(--mono); font-size:var(--type-stamp); letter-spacing:.22em;
+  text-transform:uppercase; color:var(--c-oxblood); white-space:nowrap; }
+.svc-cat-head .rule{ flex:1; }
+.svc-pair{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(30px,3.5vw,60px); }
 .svc-col{ display:flex; flex-direction:column; }
-.svc-grid .svc-name{ font-size:clamp(21px,1.9vw,27px); margin-top:0; }
-.svc-grid .svc-for{ margin-top:14px; }
-.svc-grid .svc-desc{ font-size:14px; line-height:1.8; margin-top:16px; max-width:none; }
+.svc-pair .svc-name{ font-size:clamp(21px,1.9vw,27px); margin-top:0; }
+.svc-pair .svc-for{ margin-top:14px; }
+.svc-pair .svc-desc{ font-size:14px; line-height:1.8; margin-top:16px; max-width:none; }
 .svc-mini{ list-style:none; margin-top:auto; padding-top:22px; }
 .svc-mini li{ font-size:12.5px; line-height:1.5; color:var(--c-slate); padding:11px 0;
   border-top:1px solid var(--c-hairline); display:flex; gap:11px; align-items:baseline; }
 .svc-mini li::before{ content:''; flex:none; width:5px; height:5px; background:var(--c-oxblood); margin-top:6px; }
-@media(max-width:860px){ .svc-grid{ grid-template-columns:1fr; gap:38px; } .svc-mini{ margin-top:18px; } }
+.svc-more{ display:inline-flex; align-items:baseline; gap:8px; margin-top:18px; align-self:flex-start;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--c-oxblood); border-bottom:1px solid var(--c-border); padding-bottom:3px;
+  transition:color var(--t-fast), border-color var(--t-fast); }
+.svc-more:hover{ color:var(--c-oxblood-2); border-color:var(--c-oxblood); }
+@media(max-width:860px){ .svc-pair{ grid-template-columns:1fr; gap:40px; } .svc-mini{ margin-top:18px; } }
 
 /* ── Framework matrix (four disciplines × three lifecycle) ────────────── */
 .matrix-sec{ background:var(--c-paper-light); border-top:1px solid var(--c-hairline); border-bottom:1px solid var(--c-hairline); }
@@ -341,8 +352,8 @@ img{ display:block; max-width:100%; }
   <div class="masthead-inner">
     <div class="mast-copy">
       <div class="eyebrow" data-i18n="mast.eyebrow">Services</div>
-      <h1 class="mast-title" data-i18n="mast.title">Three ways across <em>the bridge.</em></h1>
-      <p class="mast-lead" data-i18n="mast.lead">We help international brands enter China's medical-aesthetics market — and connect global buyers with China's best upstream products. Every engagement starts from the same premise: <span class="accent">you need someone who operates inside this market, not someone who studies it from outside.</span></p>
+      <h1 class="mast-title" data-i18n="mast.title">Both ends of <em>the bridge.</em></h1>
+      <p class="mast-lead" data-i18n="mast.lead">We work with two kinds of client across the same bridge — international companies entering China or sourcing from it, and Chinese companies partnering with the world or scaling at home. Every engagement starts from the same premise: <span class="accent">you need someone who operates inside this market, not someone who studies it from outside.</span></p>
     </div>
   </div>
 </header>
@@ -353,37 +364,66 @@ img{ display:block; max-width:100%; }
     <div class="svc-all-head reveal">
       <div class="eyebrow" data-i18n="svc.eyebrow">What we do</div>
     </div>
-    <div class="svc-grid">
-      <article class="svc-col reveal">
-        <h2 class="svc-name" data-i18n="svc1.name">China Market Entry</h2>
-        <div class="svc-for" data-i18n="svc1.for">Global brands entering China</div>
-        <p class="svc-desc" data-i18n="svc1.desc">We map the route in — <span class="accent">regulatory pathway</span>, competitive landscape, distribution and KOLs — then walk it with you.</p>
-        <ul class="svc-mini">
-          <li data-i18n="svc1.m1">NMPA regulatory strategy &amp; timeline</li>
-          <li data-i18n="svc1.m2">Market sizing &amp; competitive intelligence</li>
-          <li data-i18n="svc1.m3">Distribution &amp; channel architecture</li>
-        </ul>
-      </article>
-      <article class="svc-col reveal">
-        <h2 class="svc-name" data-i18n="svc2.name">Sourcing &amp; Partnership</h2>
-        <div class="svc-for" data-i18n="svc2.for">Buyers seeking Chinese products</div>
-        <p class="svc-desc" data-i18n="svc2.desc">China's upstream has matured in <span class="accent">quality, innovation and cost</span>. We connect you with vetted manufacturers and OEM / ODM partners — and stand between you and the risk.</p>
-        <ul class="svc-mini">
-          <li data-i18n="svc2.m1">Product scouting &amp; supplier vetting</li>
-          <li data-i18n="svc2.m2">OEM · ODM matchmaking</li>
-          <li data-i18n="svc2.m3">Quality assessment &amp; due diligence</li>
-        </ul>
-      </article>
-      <article class="svc-col reveal">
-        <h2 class="svc-name" data-i18n="svc3.name">Market Intelligence</h2>
-        <div class="svc-for" data-i18n="svc3.for">Anyone decoding this market</div>
-        <p class="svc-desc" data-i18n="svc3.desc">Six years of coverage, <span class="accent">390+ companies tracked</span>. Proprietary dashboards on China and the global upstream — the evidence behind every call.</p>
-        <ul class="svc-mini">
-          <li data-i18n="svc3.m1">Proprietary interactive dashboards</li>
-          <li data-i18n="svc3.m2">Custom research &amp; briefings</li>
-          <li data-i18n="svc3.m3">Periodic industry reports</li>
-        </ul>
-      </article>
+    <!-- Category A — International clients -->
+    <div class="svc-cat svc-cat--first reveal">
+      <div class="svc-cat-head">
+        <span class="svc-cat-label" data-i18n="svc.catA">International clients</span>
+        <hr class="rule">
+      </div>
+      <div class="svc-pair">
+        <article class="svc-col">
+          <h2 class="svc-name" data-i18n="svc1.name">Upstream Enterprises</h2>
+          <div class="svc-for" data-i18n="svc1.for">International manufacturers entering China</div>
+          <p class="svc-desc" data-i18n="svc1.desc">For international companies with their own R&amp;D and manufacturing, entering China means hard calls — <span class="accent">NMPA timelines and real cost</span>, entity structure, the direct / JV / distributor model, and how to read a track's capacity and competition. We deliver a full pre-entry assessment and landing plan, from regulatory pathway to market forecast — grounded in operating experience inside this market, not desk research.</p>
+          <ul class="svc-mini">
+            <li data-i18n="svc1.m1">NMPA registration strategy &amp; timeline</li>
+            <li data-i18n="svc1.m2">Market sizing &amp; competitive intelligence</li>
+            <li data-i18n="svc1.m3">Business model &amp; entity setup</li>
+            <li data-i18n="svc1.m4">Distribution &amp; channel architecture</li>
+          </ul>
+        </article>
+        <article class="svc-col">
+          <h2 class="svc-name" data-i18n="svc2.name">Distributors</h2>
+          <div class="svc-for" data-i18n="svc2.for">Overseas buyers sourcing from China</div>
+          <p class="svc-desc" data-i18n="svc2.desc">From raw materials to finished products, China's upstream has fully matured in <span class="accent">quality, innovation and cost</span>. For cross-border buyers the real challenge is supplier selection and quality control — among 90+ manufacturers, finding partners you can trust, with stable quality and complete compliance files. We provide end-to-end sourcing support, from supplier screening and factory audits to partnership matchmaking.</p>
+          <ul class="svc-mini">
+            <li data-i18n="svc2.m1">Product-track assessment &amp; screening</li>
+            <li data-i18n="svc2.m2">Supplier benchmarking</li>
+            <li data-i18n="svc2.m3">Factory audit &amp; assessment</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <!-- Category B — Domestic clients -->
+    <div class="svc-cat reveal">
+      <div class="svc-cat-head">
+        <span class="svc-cat-label" data-i18n="svc.catB">Domestic clients</span>
+        <hr class="rule">
+      </div>
+      <div class="svc-pair">
+        <article class="svc-col">
+          <h2 class="svc-name" data-i18n="svc3.name">Cross-border Partnership</h2>
+          <div class="svc-for" data-i18n="svc3.for">Chinese players seeking international brands</div>
+          <p class="svc-desc" data-i18n="svc3.desc">Whether upstream, distributor or investor, bringing an overseas product into China comes down to the <span class="accent">partnership model</span> — licensing-in, OEM, exclusivity or acquisition — and the capital structure behind it. We provide end-to-end cross-border support, from brand sourcing to deal execution, drawing on resources and hands-on experience on both sides of the bridge.</p>
+          <ul class="svc-mini">
+            <li data-i18n="svc3.m1">International brand search &amp; matching</li>
+            <li data-i18n="svc3.m2">Partnership-model design</li>
+            <li data-i18n="svc3.m3">NMPA registration pathway</li>
+          </ul>
+        </article>
+        <article class="svc-col">
+          <h2 class="svc-name" data-i18n="svc4.name">Full Product Lifecycle</h2>
+          <div class="svc-for" data-i18n="svc4.for">Chinese companies with their own products</div>
+          <p class="svc-desc" data-i18n="svc4.desc">For a new or already-launched product, every stage — <span class="accent">from approval to scale</span> — demands a different capability: pre-launch strategy, post-launch promotion and team building, then organisational upgrade and business-model iteration at scale. We bring four disciplines across the entire product lifecycle, from blueprint to execution, alongside you the whole way.</p>
+          <ul class="svc-mini">
+            <li data-i18n="svc4.m1">Pre-launch strategy &amp; planning</li>
+            <li data-i18n="svc4.m2">Post-launch promotion &amp; team building</li>
+            <li data-i18n="svc4.m3">Scale-up: organisation &amp; model</li>
+          </ul>
+          <a class="svc-more" href="#framework" data-i18n="svc4.more">See the full framework →</a>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -551,7 +591,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 <script>
-(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "mast.eyebrow": "服务", "mast.title": "连接全球医美与中国，<em>三种方式</em>。", "mast.lead": "我们帮全球品牌进入中国医美市场，也帮全球买家对接中国最好的上游产品。每一次合作都基于同一个前提：<span class=\"accent\">你需要的是在这个市场里实操的人，而不是从外面研究它的人。</span>", "svc.eyebrow": "我们做什么", "svc1.name": "进入中国市场", "svc1.for": "面向进入中国的全球品牌", "svc1.desc": "不只是一份报告——我们陪你把路走完：<span class=\"accent\">注册路径</span>、竞争格局、渠道与 KOL，每一步都为你落地。", "svc1.m1": "NMPA 注册策略与时间表", "svc1.m2": "市场测算与竞争情报", "svc1.m3": "分销与渠道架构", "svc2.name": "采购与合作", "svc2.for": "面向寻找中国产品的买家", "svc2.desc": "中国上游已在<span class=\"accent\">质量、创新与成本</span>上全面成熟。我们为你对接经甄选的厂商与 OEM / ODM 合作方，并替你把住质量与合规的每一道关。", "svc2.m1": "产品搜寻与供应商甄选", "svc2.m2": "OEM · ODM 对接", "svc2.m3": "质量评估与尽职调查", "svc3.name": "市场情报", "svc3.for": "面向所有想读懂这个市场的人", "svc3.desc": "六年持续追踪、<span class=\"accent\">390+ 家企业</span>。覆盖中国与全球上游的自有数据库——让你的每一次决策，都有据可依。", "svc3.m1": "自有交互式仪表盘", "svc3.m2": "定制研究与简报", "svc3.m3": "定期行业报告", "mtx.eyebrow": "框架", "mtx.title": "四大职能，贯穿医美产品全生命周期", "mtx.d1": "市场策略", "mtx.d2": "医学支持", "mtx.d3": "销售管理", "mtx.d4": "组织发展", "mtx.p0": "上市前", "mtx.p1": "上市后", "mtx.p2": "规模化", "mtx.c00": "市场调研、客群细分、商业模式、定价路径、推广规划", "mtx.c01": "文献、临床报告、KOL 共识、适应症与不良事件方案设计", "mtx.c02": "销售组织架构、KPI 分配、奖金政策、销售规划", "mtx.c03": "高管招聘、绩效与激励体系、危机公关、文化建设", "mtx.c10": "推广物料、销售素材、竞品测试", "mtx.c11": "讲者体系、医学课程、专家内容", "mtx.c12": "活动管理、能力模型、KA 与经销商培训", "mtx.c13": "人才培训、职级优化、高管发展", "mtx.c20": "经营复盘、商业模式创新、产品组合策略", "mtx.c21": "持续学术支持", "mtx.c22": "按需赋能", "mtx.c23": "组织诊断、人才盘点、多元激励", "cta.back": "返回首页", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。"};
+(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "mast.eyebrow": "服务", "mast.title": "桥的<em>两端</em>，我们都在。", "mast.lead": "我们服务于这座桥两端的两类客户——进入中国、或从中国采购的国际企业，以及与世界合作、或在本土规模化的中国企业。每一次合作都基于同一个前提：<span class=\"accent\">你需要的是在这个市场里实操的人，而不是从外面研究它的人。</span>", "svc.eyebrow": "我们做什么", "svc.catA": "国际客户", "svc.catB": "国内客户", "svc1.name": "上游企业", "svc1.for": "面向进入中国的国际医美生产商", "svc1.desc": "具备自有研发与生产能力的国际企业，进入中国前要在一系列核心决策间做出判断——<span class=\"accent\">NMPA 注册的真实周期与成本</span>、主体架构、直营 / 合资 / 代理的商业模式、赛道容量与竞争格局。我们提供进入前的全景评估与落地规划，从注册路径到市场预测，从主体搭建到上市节奏，基于中国市场的实操经验，而非桌面研究。", "svc1.m1": "NMPA 注册策略与时间表", "svc1.m2": "市场测算与竞争情报", "svc1.m3": "商业模式与企业主体设立", "svc1.m4": "分销与渠道架构", "svc2.name": "代理商", "svc2.for": "面向采购中国产品的海外买家", "svc2.desc": "中国医美上游从原料到成品，已在<span class=\"accent\">质量、创新与成本</span>上全面成熟。对跨境采购而言，真正的挑战在于供应商甄选与品控——面对 90 多家上游厂商，如何找到真正可靠的合作方，确保品质稳定、合规文件齐全。我们提供从供应商筛选、工厂审核到合作对接的一站式采购支持，替你把住质量与合规的每一道关。", "svc2.m1": "产品赛道评估与筛选", "svc2.m2": "产品供应商比较", "svc2.m3": "工厂审核与评估", "svc3.name": "跨境合作", "svc3.for": "面向寻求国际品牌合作的国内企业", "svc3.desc": "无论是上游、代理商还是资本方，想引入海外产品进入中国，核心都在于<span class=\"accent\">合作模式的选择</span>——licensing-in、OEM、独家代理还是收购，以及背后的资本结构设计。我们提供从品牌筛选到合作落地的全流程跨境合作支持，覆盖合作模式规划、商业条款搭建与 NMPA 注册路径，依托中国与国际两端的资源与实操经验。", "svc3.m1": "国际品牌搜寻与匹配", "svc3.m2": "合作模式设计", "svc3.m3": "NMPA 注册路径规划", "svc4.name": "产品全生命周期", "svc4.for": "面向已有产品的国内企业", "svc4.desc": "无论是新品还是已上市产品，<span class=\"accent\">从拿证到规模化</span>，每个阶段需要的能力都不一样：上市前的策略规划、上市后的推广与团队搭建、规模化阶段的组织升级与商业模式迭代。我们以四大职能贯穿产品全生命周期，从方案设计到执行落地，全程陪伴。", "svc4.m1": "上市前策略规划", "svc4.m2": "上市后推广与团队搭建", "svc4.m3": "规模化组织升级与模式迭代", "svc4.more": "查看完整四大职能框架 →","mtx.eyebrow": "框架", "mtx.title": "四大职能，贯穿医美产品全生命周期", "mtx.d1": "市场策略", "mtx.d2": "医学支持", "mtx.d3": "销售管理", "mtx.d4": "组织发展", "mtx.p0": "上市前", "mtx.p1": "上市后", "mtx.p2": "规模化", "mtx.c00": "市场调研、客群细分、商业模式、定价路径、推广规划", "mtx.c01": "文献、临床报告、KOL 共识、适应症与不良事件方案设计", "mtx.c02": "销售组织架构、KPI 分配、奖金政策、销售规划", "mtx.c03": "高管招聘、绩效与激励体系、危机公关、文化建设", "mtx.c10": "推广物料、销售素材、竞品测试", "mtx.c11": "讲者体系、医学课程、专家内容", "mtx.c12": "活动管理、能力模型、KA 与经销商培训", "mtx.c13": "人才培训、职级优化、高管发展", "mtx.c20": "经营复盘、商业模式创新、产品组合策略", "mtx.c21": "持续学术支持", "mtx.c22": "按需赋能", "mtx.c23": "组织诊断、人才盘点、多元激励", "cta.back": "返回首页", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。"};
 var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));var en=nodes.map(function(n){return n.innerHTML;});
 function apply(lang){root.setAttribute("data-lang",lang);nodes.forEach(function(n,i){var z=I18N[n.getAttribute("data-i18n")];n.innerHTML=(lang==="zh"&&z!=null)?z:en[i];});try{localStorage.setItem(KEY,lang);}catch(e){}[].forEach.call(document.querySelectorAll(".lang-toggle"),function(b){b.textContent=lang==="zh"?"EN":"中文";});}
 var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved);
