@@ -483,7 +483,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 <section class="chat-panel" id="chatPanel" aria-live="polite">
   <div class="chat-head">
     <img src="assets/ip-brain-mark.png" alt="">
-    <div class="t"><b>AESTRAT Assistant</b><span>AESTRAT · AI · Preview</span></div>
+    <div class="t"><b>AESTRAT Assistant</b><span>AESTRAT · AI</span></div>
     <button class="x" id="chatClose" aria-label="Close">×</button>
   </div>
   <div class="chat-body" id="chatBody"></div>
@@ -496,9 +496,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 <script>
 (function(){
-  // To go LIVE: set endpoint to your serverless DeepSeek proxy URL (it keeps the API key secret).
-  // Until then the widget runs in PREVIEW mode with canned answers.
-  const AESTRAT_CHAT = { endpoint: null };
+  // Endpoint is the same-origin Cloudflare Pages Function (functions/api/chat.js) that hides the
+  // DeepSeek key. It only exists on the Pages deployment; on file:// or GitHub Pages the fetch
+  // fails and the widget gracefully falls back to the canned/placeholder answers below.
+  const AESTRAT_CHAT = { endpoint: '/api/chat' };
 
   const fab=document.getElementById('chatFab'), panel=document.getElementById('chatPanel'),
         body=document.getElementById('chatBody'), chips=document.getElementById('chatChips'),
@@ -516,18 +517,30 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
      a:"Wonderful — tell me your name, your company, and what you’re looking for, and I’ll make sure it reaches the right person."}
   ];
 
-  let started=false;
-  function add(role,msg){ const d=document.createElement('div'); d.className='chat-msg '+role; d.textContent=msg; body.appendChild(d); body.scrollTop=body.scrollHeight; }
-  function reply(userMsg){
-    const hit=CANNED.find(c=>c.q===userMsg);
-    if(hit){ setTimeout(()=>add('bot',hit.a),350); return; }
-    // When AESTRAT_CHAT.endpoint is set, POST {message, history} here and stream the answer.
-    setTimeout(()=>add('bot',"Thanks! Our live AI assistant is being connected — soon I’ll answer this in any language, in real time. Meanwhile, reach us at contact@aestrat.co or via WeChat (QR in the footer)."),400);
+  const FALLBACK="Thanks! Our live AI assistant is being connected — soon I’ll answer this in any language, in real time. Meanwhile, reach us at contact@aestrat.co or via WeChat (QR in the footer).";
+  let started=false, history=[];
+  function add(role,msg){ const d=document.createElement('div'); d.className='chat-msg '+role; if(msg!=null) d.textContent=msg; body.appendChild(d); body.scrollTop=body.scrollHeight; return d; }
+  async function reply(userMsg,canned){
+    history.push({role:'user',content:userMsg});
+    const el=add('bot','…');
+    let acc='';
+    try{
+      if(!AESTRAT_CHAT.endpoint) throw 0;
+      const res=await fetch(AESTRAT_CHAT.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:userMsg,history:history.slice(0,-1)})});
+      if(!res.ok||!res.body) throw 0;
+      el.textContent='';
+      const rd=res.body.getReader(), dec=new TextDecoder();
+      for(;;){ const {done,value}=await rd.read(); if(done) break; acc+=dec.decode(value,{stream:true}); el.textContent=acc; body.scrollTop=body.scrollHeight; }
+      if(!acc.trim()) throw 0;
+    }catch(e){
+      acc=canned||FALLBACK; el.textContent=acc;
+    }
+    history.push({role:'assistant',content:acc});
   }
   function start(){
     if(started) return; started=true;
     add('bot',"Hi 👋 I’m AESTRAT’s assistant. Ask me who we are, what we do, or how to connect.");
-    CANNED.forEach(c=>{ const b=document.createElement('button'); b.className='chat-chip'; b.type='button'; b.textContent=c.q; b.onclick=()=>{ add('me',c.q); reply(c.q); }; chips.appendChild(b); });
+    CANNED.forEach(c=>{ const b=document.createElement('button'); b.className='chat-chip'; b.type='button'; b.textContent=c.q; b.onclick=()=>{ add('me',c.q); reply(c.q,c.a); }; chips.appendChild(b); });
   }
   function open(){ panel.classList.add('open'); fab.classList.add('open'); start(); setTimeout(()=>text.focus(),300); }
   function close(){ panel.classList.remove('open'); fab.classList.remove('open'); }
