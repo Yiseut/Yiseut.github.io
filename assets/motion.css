@@ -1,0 +1,86 @@
+/* assets/motion.css — a self-contained motion layer for the AESTRAT site.
+   Adds tasteful, on-brand micro-interactions + entrance motion on top of the
+   existing styles. Easy to tune (intensity vars below) or remove (drop the two
+   <link>/<script> tags). Honours prefers-reduced-motion. */
+
+:root{
+  --m-rise: 18px;          /* entrance travel */
+  --m-lift: -5px;          /* hover lift */
+  --m-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --m-spring: cubic-bezier(0.34, 1.3, 0.5, 1);   /* gentle overshoot for hovers */
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   1) HOVER MICRO-INTERACTIONS  (the signature ask)
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Nav links — underline drawn from the left; current page stays underlined */
+.nav-links a{ position:relative; }
+.nav-links a::after{
+  content:''; position:absolute; left:0; right:0; bottom:-4px; height:1px;
+  background:currentColor; transform:scaleX(0); transform-origin:left;
+  transition:transform var(--t-base) var(--m-ease); opacity:.8;
+}
+.nav-links a:hover::after{ transform:scaleX(1); }
+.nav-links a.here::after{ transform:scaleX(1); transform-origin:left; }
+
+/* Database column pills — lift + seal-dot grows on hover */
+.db-col{ transition:border-color var(--t-base) var(--m-ease), background var(--t-base) var(--m-ease), transform var(--t-base) var(--m-spring); }
+.db-col:hover{ transform:translateY(-3px); }
+.db-col::before{ transition:transform var(--t-base) var(--m-spring), background var(--t-base) var(--m-ease); }
+.db-col:hover::before{ transform:scale(1.5); background:var(--c-oxblood); }
+
+/* Dashboard screenshots — lift on hover */
+.dbshot{ transition:transform var(--t-base) var(--m-ease), box-shadow var(--t-base) var(--m-ease), border-color var(--t-base) var(--m-ease); }
+.dbshot:hover{ transform:translateY(var(--m-lift)) scale(1.012); box-shadow:0 30px 60px -30px rgba(8,12,20,.85); }
+
+/* Stat readouts — number warms to oxblood + nudges up when you hover its cell */
+.db-stats div{ transition:transform var(--t-base) var(--m-spring); }
+.db-stats div b{ transition:color var(--t-base) var(--m-ease); }
+.db-stats div:hover{ transform:translateY(-2px); }
+.db-stats div:hover b{ color:var(--c-oxblood); }
+
+/* Service cards — title warms, "see more" arrow slides */
+.svc-col .svc-name{ transition:color var(--t-base) var(--m-ease); }
+.svc-col:hover .svc-name{ color:var(--c-oxblood); }
+.svc-more{ transition:color var(--t-fast) var(--m-ease), border-color var(--t-fast) var(--m-ease), gap var(--t-base) var(--m-ease); }
+.svc-more:hover{ gap:13px; }
+
+/* Footer channels — icon nudges right, gap opens slightly */
+.f-chan{ transition:color var(--t-fast) var(--m-ease), gap var(--t-base) var(--m-spring); }
+.f-chan:hover{ gap:12px; }
+.f-chan svg{ transition:transform var(--t-base) var(--m-spring); }
+.f-chan:hover svg{ transform:translateX(2px) scale(1.06); }
+
+/* Matrix rows — bullets warm to oxblood on row hover */
+.matrix tbody tr .cell-list li::before{ transition:background var(--t-base) var(--m-ease), transform var(--t-base) var(--m-spring); }
+.matrix tbody tr:hover .cell-list li::before{ background:var(--c-oxblood); }
+
+/* Voice / content-IP cards lift, if present */
+.channels .ch-card{ transition:transform var(--t-base) var(--m-ease), box-shadow var(--t-base) var(--m-ease); }
+.channels .ch-card:hover{ transform:translateY(var(--m-lift)); }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   2) ENTRANCE — staggered cascade (opt-in via [data-stagger]; JS sets --si)
+   ───────────────────────────────────────────────────────────────────────── */
+[data-stagger] > *{
+  opacity:0; transform:translateY(var(--m-rise));
+  transition:opacity var(--t-slow) var(--m-ease), transform var(--t-slow) var(--m-ease);
+  transition-delay:calc(var(--si, 0) * 70ms);
+}
+[data-stagger].in > *{ opacity:1; transform:none; }
+
+/* 3) HERO entrance on load — logo/slogan rise (homepage + service masthead) */
+.m-hero-rise{ opacity:0; transform:translateY(22px); }
+.m-hero-rise.m-in{ opacity:1; transform:none; transition:opacity 1s var(--m-ease), transform 1s var(--m-ease); }
+.m-hero-rise.m-d1.m-in{ transition-delay:.12s; }
+.m-hero-rise.m-d2.m-in{ transition-delay:.26s; }
+
+/* 4) Count-up numbers hold their box so layout doesn't jump while animating */
+.m-counting{ font-variant-numeric:tabular-nums; }
+
+@media (prefers-reduced-motion: reduce){
+  .nav-links a::after{ transition:none; }
+  [data-stagger] > *,
+  .m-hero-rise{ opacity:1 !important; transform:none !important; transition:none !important; }
+}
