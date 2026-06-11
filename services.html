@@ -231,13 +231,19 @@ img{ display:block; max-width:100%; }
 .matrix{ width:100%; border-collapse:collapse; }
 .matrix th, .matrix td{ text-align:left; vertical-align:top; padding:22px 22px; border-bottom:1px solid var(--c-hairline); }
 .matrix thead th{ border-bottom:1px solid var(--c-sand-1); }
-.matrix .disc-en{ font-family:var(--serif); font-weight:300; font-size:16px; color:var(--c-slate); letter-spacing:.01em; display:block; }
-.matrix .phase{ width:140px; }
-.matrix .phase .ph-en{ font-family:var(--serif); font-weight:300; font-size:14px; color:var(--c-slate); display:block; }
-.matrix td.cell{ font-size:13px; line-height:1.7; color:var(--c-ink-3); }
+.matrix .disc-name{ font-family:var(--serif); font-weight:400; font-size:17px; color:var(--c-slate); letter-spacing:.01em; display:block; }
+.matrix .disc-sub{ font-family:var(--sans); font-weight:300; font-size:11px; letter-spacing:.03em; color:var(--c-ink-4); display:block; margin-top:6px; }
+.matrix .phase{ width:130px; }
+.matrix .phase .ph-name{ font-family:var(--serif); font-weight:400; font-size:15px; color:var(--c-slate); display:block; }
+.matrix .phase .ph-sub{ font-family:var(--sans); font-weight:300; font-size:11px; color:var(--c-ink-4); display:block; margin-top:5px; }
+.matrix .cell-list{ list-style:none; }
+.matrix .cell-list li{ position:relative; padding-left:15px; font-size:13px; line-height:1.5; color:var(--c-ink-3); font-weight:400; margin:9px 0; }
+.matrix .cell-list li:first-child{ margin-top:0; }
+.matrix .cell-list li:last-child{ margin-bottom:0; }
+.matrix .cell-list li::before{ content:''; position:absolute; left:0; top:.52em; width:5px; height:5px; background:var(--c-sand-1); }
 .matrix tbody tr:hover td{ background:var(--c-paper); }
 .matrix-scroll{ overflow-x:auto; }
-@media(max-width:820px){ .matrix .phase{ width:auto; } .matrix th,.matrix td{ padding:16px 14px; } .matrix td.cell{ font-size:12px; } }
+@media(max-width:820px){ .matrix .phase{ width:auto; } .matrix th,.matrix td{ padding:16px 14px; } .matrix .cell-list li{ font-size:12px; } }
 
 /* ── Closing CTA (dusk register) ──────────────────────────────────────── */
 .cta{ background:var(--c-slate); color:var(--c-bone); text-align:center; padding:clamp(80px,12vw,150px) var(--gutter); }
@@ -401,33 +407,33 @@ img{ display:block; max-width:100%; }
         <thead>
           <tr>
             <th class="phase"></th>
-            <th><span class="disc-en" data-i18n="mtx.d1">Market strategy</span></th>
-            <th><span class="disc-en" data-i18n="mtx.d2">Medical support</span></th>
-            <th><span class="disc-en" data-i18n="mtx.d3">Sales management</span></th>
-            <th><span class="disc-en" data-i18n="mtx.d4">Organization development</span></th>
+            <th><span class="disc-name" data-i18n="mtx.d1">Market Strategy</span><span class="disc-sub" data-i18n="mtx.d1s">市场策略</span></th>
+            <th><span class="disc-name" data-i18n="mtx.d2">Brand Strategy</span><span class="disc-sub" data-i18n="mtx.d2s">品牌策略</span></th>
+            <th><span class="disc-name" data-i18n="mtx.d3">Medical Strategy</span><span class="disc-sub" data-i18n="mtx.d3s">医学策略</span></th>
+            <th><span class="disc-name" data-i18n="mtx.d4">Sales Management</span><span class="disc-sub" data-i18n="mtx.d4s">销售管理</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="phase"><span class="ph-en" data-i18n="mtx.p0">Pre-launch</span></td>
-            <td class="cell" data-i18n="mtx.c00">Research, segmentation, business model, pricing path, promotion plan</td>
-            <td class="cell" data-i18n="mtx.c01">Literature, clinical reports, KOL consensus, indication &amp; AE protocol design</td>
-            <td class="cell" data-i18n="mtx.c02">Sales org architecture, KPI allocation, bonus policy, sales planning</td>
-            <td class="cell" data-i18n="mtx.c03">Executive hiring, performance &amp; incentive systems, crisis PR, culture</td>
+            <td class="phase"><span class="ph-name" data-i18n="mtx.p0">Pre-launch</span><span class="ph-sub" data-i18n="mtx.p0s">Strategy &amp; planning</span></td>
+            <td class="cell" data-i18n="mtx.c00"><ul class="cell-list"><li>Market research &amp; competitive analysis</li><li>Segmentation &amp; pricing strategy</li><li>Business model &amp; go-to-market plan</li></ul></td>
+            <td class="cell" data-i18n="mtx.c01"><ul class="cell-list"><li>Brand positioning &amp; visual identity</li><li>Product &amp; promotional materials</li><li>Launch communications &amp; content plan</li></ul></td>
+            <td class="cell" data-i18n="mtx.c02"><ul class="cell-list"><li>Literature &amp; clinical evidence review</li><li>KOL mapping &amp; academic consensus</li><li>Indication &amp; safety protocol design</li></ul></td>
+            <td class="cell" data-i18n="mtx.c03"><ul class="cell-list"><li>Sales org &amp; territory planning</li><li>KPI &amp; incentive system design</li><li>Channel strategy &amp; launch kickoff</li></ul></td>
           </tr>
           <tr>
-            <td class="phase"><span class="ph-en" data-i18n="mtx.p1">Post-launch</span></td>
-            <td class="cell" data-i18n="mtx.c10">Promotion decks, sales collateral, competitive testing</td>
-            <td class="cell" data-i18n="mtx.c11">Speaker systems, medical courses, expert content</td>
-            <td class="cell" data-i18n="mtx.c12">Activity management, capability models, KA &amp; distributor training</td>
-            <td class="cell" data-i18n="mtx.c13">Talent training, job-level optimization, executive development</td>
+            <td class="phase"><span class="ph-name" data-i18n="mtx.p1">Launch</span><span class="ph-sub" data-i18n="mtx.p1s">Execution</span></td>
+            <td class="cell" data-i18n="mtx.c10"><ul class="cell-list"><li>Competitor monitoring &amp; benchmarking</li><li>Campaign execution &amp; review</li></ul></td>
+            <td class="cell" data-i18n="mtx.c11"><ul class="cell-list"><li>RED / WeChat content operations</li><li>Digital marketing &amp; paid media</li><li>Sales collateral &amp; scripts</li><li>KOL / KOC partnership management</li></ul></td>
+            <td class="cell" data-i18n="mtx.c12"><ul class="cell-list"><li>Speaker programs &amp; medical education</li><li>Expert content &amp; clinical cases</li><li>Academic conference planning</li></ul></td>
+            <td class="cell" data-i18n="mtx.c13"><ul class="cell-list"><li>Product training (team + channel)</li><li>KA management &amp; distributor enablement</li><li>Performance tracking &amp; review</li></ul></td>
           </tr>
           <tr>
-            <td class="phase"><span class="ph-en" data-i18n="mtx.p2">Scale</span></td>
-            <td class="cell" data-i18n="mtx.c20">Operational review, business-model innovation, portfolio strategy</td>
-            <td class="cell" data-i18n="mtx.c21">Ongoing scientific support</td>
-            <td class="cell" data-i18n="mtx.c22">As-needed enablement</td>
-            <td class="cell" data-i18n="mtx.c23">Org diagnostic, talent inventory, diversified incentives</td>
+            <td class="phase"><span class="ph-name" data-i18n="mtx.p2">Scale</span><span class="ph-sub" data-i18n="mtx.p2s">Growth &amp; iteration</span></td>
+            <td class="cell" data-i18n="mtx.c20"><ul class="cell-list"><li>Business review &amp; strategy iteration</li><li>Portfolio &amp; business-model innovation</li><li>New-market expansion assessment</li></ul></td>
+            <td class="cell" data-i18n="mtx.c21"><ul class="cell-list"><li>Brand upgrade &amp; content optimization</li><li>Integrated marketing communications</li></ul></td>
+            <td class="cell" data-i18n="mtx.c22"><ul class="cell-list"><li>Ongoing scientific support</li><li>Academic influence building</li></ul></td>
+            <td class="cell" data-i18n="mtx.c23"><ul class="cell-list"><li>Channel optimization &amp; territory expansion</li><li>Team capability upgrade</li></ul></td>
           </tr>
         </tbody>
       </table>
@@ -479,7 +485,7 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 <script>
-(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "mast.eyebrow": "服务", "mast.title": "来者知其<em>需</em>，<br>往者通其<em>路</em>", "mast.lead": "研美咨询服务于桥梁两端的两类客户——希望进入中国、或从中国采购的国际企业，以及希望与海外市场合作、或在本土规模化的中国企业。每一项服务，皆基于<span class=\"accent\">对中国市场丰富的实践经验</span>。","svc.eyebrow": "我们做什么", "svc.catA": "国际客户", "svc.catB": "国内客户", "svc1.name": "上游企业", "svc1.for": "面向进入中国的国际医美生产商", "svc1.desc": "具备自有研发与生产能力的国际企业，进入中国前要在一系列核心决策间做出判断——<span class=\"accent\">NMPA 注册的真实周期与成本</span>、主体架构、直营 / 合资 / 代理的商业模式、赛道容量与竞争格局。我们提供进入前的全景评估与落地规划，从注册路径到市场预测，从主体搭建到上市节奏，基于中国市场的实操经验，而非桌面研究。", "svc1.m1": "NMPA 注册策略与时间表", "svc1.m2": "市场测算与竞争情报", "svc1.m3": "商业模式与企业主体设立", "svc1.m4": "分销与渠道架构", "svc2.name": "代理商", "svc2.for": "面向采购中国产品的海外买家", "svc2.desc": "中国医美上游从原料到成品，已在<span class=\"accent\">质量、创新与成本</span>上全面成熟。对跨境采购而言，真正的挑战在于供应商甄选与品控——面对 90 多家上游厂商，如何找到真正可靠的合作方，确保品质稳定、合规文件齐全。我们提供从供应商筛选、工厂审核到合作对接的一站式采购支持，替你把住质量与合规的每一道关。", "svc2.m1": "产品赛道评估与筛选", "svc2.m2": "产品供应商比较", "svc2.m3": "工厂审核与评估", "svc3.name": "跨境合作", "svc3.for": "面向寻求国际品牌合作的国内企业", "svc3.desc": "无论是上游、代理商还是资本方，想引入海外产品进入中国，核心都在于<span class=\"accent\">合作模式的选择</span>——licensing-in、OEM、独家代理还是收购，以及背后的资本结构设计。我们提供从品牌筛选到合作落地的全流程跨境合作支持，覆盖合作模式规划、商业条款搭建与 NMPA 注册路径，依托中国与国际两端的资源与实操经验。", "svc3.m1": "国际品牌搜寻与匹配", "svc3.m2": "合作模式设计", "svc3.m3": "NMPA 注册路径规划", "svc4.name": "产品全生命周期", "svc4.for": "面向已有产品的国内企业", "svc4.desc": "无论是新品还是已上市产品，<span class=\"accent\">从拿证到规模化</span>，每个阶段需要的能力都不一样：上市前的策略规划、上市后的推广与团队搭建、规模化阶段的组织升级与商业模式迭代。我们以四大职能贯穿产品全生命周期，从方案设计到执行落地，全程陪伴。", "svc4.m1": "上市前策略规划", "svc4.m2": "上市后推广与团队搭建", "svc4.m3": "规模化组织升级与模式迭代", "svc4.more": "查看完整四大职能框架 →","mtx.eyebrow": "框架", "mtx.title": "四大职能，贯穿医美产品全生命周期", "mtx.d1": "市场策略", "mtx.d2": "医学支持", "mtx.d3": "销售管理", "mtx.d4": "组织发展", "mtx.p0": "上市前", "mtx.p1": "上市后", "mtx.p2": "规模化", "mtx.c00": "市场调研、客群细分、商业模式、定价路径、推广规划", "mtx.c01": "文献、临床报告、KOL 共识、适应症与不良事件方案设计", "mtx.c02": "销售组织架构、KPI 分配、奖金政策、销售规划", "mtx.c03": "高管招聘、绩效与激励体系、危机公关、文化建设", "mtx.c10": "推广物料、销售素材、竞品测试", "mtx.c11": "讲者体系、医学课程、专家内容", "mtx.c12": "活动管理、能力模型、KA 与经销商培训", "mtx.c13": "人才培训、职级优化、高管发展", "mtx.c20": "经营复盘、商业模式创新、产品组合策略", "mtx.c21": "持续学术支持", "mtx.c22": "按需赋能", "mtx.c23": "组织诊断、人才盘点、多元激励", "cta.back": "返回首页", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。"};
+(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"nav.home":"首页","nav.services":"服务","nav.blog":"洞察","nav.contact":"联系","mast.eyebrow":"服务","mast.title":"来者知其<em>需</em>，<br>往者通其<em>路</em>","mast.lead":"研美咨询服务于桥梁两端的两类客户——希望进入中国、或从中国采购的国际企业，以及希望与海外市场合作、或在本土规模化的中国企业。每一项服务，皆基于<span class=\"accent\">对中国市场丰富的实践经验</span>。","svc.eyebrow":"我们做什么","svc.catA":"国际客户","svc.catB":"国内客户","svc1.name":"上游企业","svc1.for":"面向进入中国的国际医美生产商","svc1.desc":"具备自有研发与生产能力的国际企业，进入中国前要在一系列核心决策间做出判断——<span class=\"accent\">NMPA 注册的真实周期与成本</span>、主体架构、直营 / 合资 / 代理的商业模式、赛道容量与竞争格局。我们提供进入前的全景评估与落地规划，从注册路径到市场预测，从主体搭建到上市节奏，基于中国市场的实操经验，而非桌面研究。","svc1.m1":"NMPA 注册策略与时间表","svc1.m2":"市场测算与竞争情报","svc1.m3":"商业模式与企业主体设立","svc1.m4":"分销与渠道架构","svc2.name":"代理商","svc2.for":"面向采购中国产品的海外买家","svc2.desc":"中国医美上游从原料到成品，已在<span class=\"accent\">质量、创新与成本</span>上全面成熟。对跨境采购而言，真正的挑战在于供应商甄选与品控——面对 90 多家上游厂商，如何找到真正可靠的合作方，确保品质稳定、合规文件齐全。我们提供从供应商筛选、工厂审核到合作对接的一站式采购支持，替你把住质量与合规的每一道关。","svc2.m1":"产品赛道评估与筛选","svc2.m2":"产品供应商比较","svc2.m3":"工厂审核与评估","svc3.name":"跨境合作","svc3.for":"面向寻求国际品牌合作的国内企业","svc3.desc":"无论是上游、代理商还是资本方，想引入海外产品进入中国，核心都在于<span class=\"accent\">合作模式的选择</span>——licensing-in、OEM、独家代理还是收购，以及背后的资本结构设计。我们提供从品牌筛选到合作落地的全流程跨境合作支持，覆盖合作模式规划、商业条款搭建与 NMPA 注册路径，依托中国与国际两端的资源与实操经验。","svc3.m1":"国际品牌搜寻与匹配","svc3.m2":"合作模式设计","svc3.m3":"NMPA 注册路径规划","svc4.name":"产品全生命周期","svc4.for":"面向已有产品的国内企业","svc4.desc":"无论是新品还是已上市产品，<span class=\"accent\">从拿证到规模化</span>，每个阶段需要的能力都不一样：上市前的策略规划、上市后的推广与团队搭建、规模化阶段的组织升级与商业模式迭代。我们以四大职能贯穿产品全生命周期，从方案设计到执行落地，全程陪伴。","svc4.m1":"上市前策略规划","svc4.m2":"上市后推广与团队搭建","svc4.m3":"规模化组织升级与模式迭代","svc4.more":"查看完整四大职能框架 →","mtx.eyebrow":"框架","mtx.title":"四大职能，贯穿医美产品全生命周期","mtx.d1":"市场策略","mtx.d2":"品牌策略","mtx.d3":"医学策略","mtx.d4":"销售管理","mtx.p0":"上市前","mtx.p1":"上市期","mtx.p2":"规模化","mtx.c00":"<ul class=\"cell-list\"><li>市场调研与竞争分析</li><li>客群细分与定价策略</li><li>商业模式与推广规划</li></ul>","mtx.c01":"<ul class=\"cell-list\"><li>品牌定位与视觉体系</li><li>产品资料与推广物料制作</li><li>上市传播策略与内容规划</li></ul>","mtx.c02":"<ul class=\"cell-list\"><li>文献与临床证据梳理</li><li>KOL 图谱与学术共识</li><li>适应症与安全性方案设计</li></ul>","mtx.c03":"<ul class=\"cell-list\"><li>销售组织与区域规划</li><li>KPI 与激励体系设计</li><li>渠道策略与上市启动</li></ul>","mtx.c10":"<ul class=\"cell-list\"><li>竞品监测与对比分析</li><li>推广执行与效果复盘</li></ul>","mtx.c11":"<ul class=\"cell-list\"><li>小红书 / 公众号内容运营</li><li>数字营销与投流执行</li><li>销售素材与话术制作</li><li>KOL / KOC 合作管理</li></ul>","mtx.c12":"<ul class=\"cell-list\"><li>讲者体系与医学教育</li><li>专家内容与临床案例</li><li>学术会议策划</li></ul>","mtx.c13":"<ul class=\"cell-list\"><li>产品培训（团队 + 渠道）</li><li>KA 管理与经销商赋能</li><li>业绩追踪与绩效复盘</li></ul>","mtx.c20":"<ul class=\"cell-list\"><li>经营复盘与战略迭代</li><li>产品组合与模式创新</li><li>新市场拓展评估</li></ul>","mtx.c21":"<ul class=\"cell-list\"><li>品牌升级与内容优化</li><li>整合营销传播</li></ul>","mtx.c22":"<ul class=\"cell-list\"><li>持续学术支持</li><li>学术影响力建设</li></ul>","mtx.c23":"<ul class=\"cell-list\"><li>渠道优化与区域拓展</li><li>团队能力升级</li></ul>","cta.back":"返回首页","f.connect":"联系我们","f.loc":"中国 · 上海","f.copy":"© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。","mtx.d1s":"Market Strategy","mtx.d2s":"Brand Strategy","mtx.d3s":"Medical Strategy","mtx.d4s":"Sales Management","mtx.p0s":"策略规划","mtx.p1s":"执行落地","mtx.p2s":"增长迭代"};
 var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));var en=nodes.map(function(n){return n.innerHTML;});
 function apply(lang){root.setAttribute("data-lang",lang);nodes.forEach(function(n,i){var z=I18N[n.getAttribute("data-i18n")];n.innerHTML=(lang==="zh"&&z!=null)?z:en[i];});try{localStorage.setItem(KEY,lang);}catch(e){}[].forEach.call(document.querySelectorAll(".lang-toggle"),function(b){b.textContent=lang==="zh"?"EN":"中文";});}
 var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved);
