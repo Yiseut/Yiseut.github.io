@@ -281,6 +281,97 @@ img{ display:block; max-width:100%; }
 }
 @media(max-width:520px){ .db-stats{ grid-template-columns:repeat(2,1fr); } }
 
+/* ── Device mockups — realistic laptop & tablet (replaces loose screenshots) ── */
+.device-laptop{ position:relative; width:100%; max-width:560px; justify-self:end; margin:0 auto; }
+.db-figs-left .device-laptop{ justify-self:start; }
+.dl-lid{
+  position:relative; background:linear-gradient(155deg,#3c4859,#28323f);
+  border-radius:16px; padding:13px 13px 14px;
+  box-shadow:0 46px 90px -34px rgba(4,7,13,.9), 0 10px 26px -14px rgba(4,7,13,.6),
+             inset 0 0 0 1px rgba(206,181,156,.12);
+}
+.dl-cam{ position:absolute; top:6px; left:50%; transform:translateX(-50%); width:5px; height:5px;
+  border-radius:50%; background:#0c1119; box-shadow:inset 0 0 0 1px rgba(255,255,255,.07); }
+.dl-screen{ position:relative; border-radius:5px; overflow:hidden; background:#0a0e15;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.55); }
+.dl-screen img{ display:block; width:100%; }
+/* subtle glass sheen across the screen */
+.dl-screen::after{ content:''; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 26%); }
+/* aluminium hinge / base */
+.dl-base{ position:relative; height:15px; margin:0 -5.5%;
+  background:linear-gradient(#d4d8dd,#a3aab3 55%,#828a94);
+  border-radius:0 0 13px 13px; box-shadow:0 20px 28px -16px rgba(4,7,13,.7); }
+.dl-base::after{ content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:17%; height:6px; background:#7c838d; border-radius:0 0 8px 8px;
+  box-shadow:inset 0 2px 3px rgba(0,0,0,.3); }
+/* small dashboard cards floating off the laptop */
+.dl-float{ position:absolute; border-radius:11px; overflow:hidden; background:var(--c-paper);
+  border:1px solid rgba(206,181,156,.32); z-index:6;
+  box-shadow:0 26px 52px -22px rgba(4,7,13,.82);
+  animation:floaty 8s ease-in-out infinite; transition:transform .5s var(--ease-quiet); }
+.dl-float img{ display:block; width:100%; }
+.dl-float.f-a{ width:42%; max-width:172px; right:-22px; top:24%; animation-duration:7.5s; }
+.dl-float.f-b{ width:38%; max-width:158px; left:-26px; bottom:4%; animation-duration:9s; animation-delay:-2.4s; z-index:7; }
+.device-laptop:hover .dl-float{ transform:translateY(-6px); }
+
+.device-tablet{ position:relative; width:100%; max-width:368px; margin:0 auto; justify-self:center; }
+.dt-frame{ position:relative; background:linear-gradient(160deg,#3a4657,#262f3c);
+  border-radius:30px; padding:17px 14px;
+  box-shadow:0 50px 100px -34px rgba(4,7,13,.9), 0 12px 30px -16px rgba(4,7,13,.55),
+             inset 0 0 0 1px rgba(206,181,156,.12); }
+.dt-frame::before{ content:''; position:absolute; top:8px; left:50%; transform:translateX(-50%);
+  width:5px; height:5px; border-radius:50%; background:#0c1119; }
+.dt-frame img{ display:block; width:100%; border-radius:5px; }
+
+/* phone mockup — the WeChat Official-Account feed, with red read-count badges */
+.featured-layout{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,320px); gap:clamp(36px,6vw,80px); align-items:center; }
+.featured-intro .featured-head{ margin-bottom:22px; }
+.featured-lede{ font-family:var(--serif); font-weight:200; font-size:clamp(20px,2.2vw,28px); line-height:1.4; color:var(--c-slate); max-width:21ch; }
+.device-phone{ position:relative; width:100%; max-width:300px; margin:0 auto; justify-self:center; }
+.dp-frame{ position:relative; background:linear-gradient(160deg,#3a4657,#262f3c); border-radius:46px; padding:12px;
+  box-shadow:0 50px 100px -34px rgba(4,7,13,.9), 0 12px 30px -16px rgba(4,7,13,.55), inset 0 0 0 1px rgba(206,181,156,.12); }
+.dp-screen{ position:relative; background:var(--c-paper); border-radius:34px; overflow:hidden; }
+.dp-island{ position:absolute; top:9px; left:50%; transform:translateX(-50%); z-index:6; width:80px; height:20px; background:#0a0e15; border-radius:999px; }
+.dp-top{ display:flex; align-items:center; justify-content:center; padding:30px 18px 13px; background:var(--c-paper-light); border-bottom:1px solid var(--c-hairline); }
+.dp-logo{ height:34px; width:auto; display:block; }
+.dp-feed{ position:relative; height:540px; overflow:hidden; }
+.dp-track{ animation:feedScroll 40s linear infinite; will-change:transform; }
+.dp-feed:hover .dp-track{ animation-play-state:paused; }
+@keyframes feedScroll{ from{ transform:translateY(0); } to{ transform:translateY(-50%); } }
+.dp-feed::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:66px; pointer-events:none; z-index:2;
+  background:linear-gradient(to bottom, rgba(224,214,202,0), var(--c-paper)); }
+.feed-card{ position:relative; border-bottom:1px solid var(--c-hairline); }
+.feed-card img{ width:100%; display:block; }
+.feed-badge{ position:absolute; top:11px; right:11px; z-index:3; font-family:var(--fig); font-weight:600;
+  font-size:11px; letter-spacing:.01em; color:var(--c-bone); background:var(--c-oxblood); padding:3px 10px;
+  border-radius:999px; box-shadow:0 8px 18px -6px rgba(108,30,30,.75); }
+/* phone sits beside the two channel cards (no separate section) */
+.voice-grid{ display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:clamp(34px,4vw,60px); align-items:center; }
+.dp-cap{ margin-top:18px; text-align:center; font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--c-ink-4); }
+@media(max-width:980px){ .voice-grid{ grid-template-columns:1fr; gap:44px; justify-items:center; } .device-phone{ order:2; } .voice-grid .channels{ width:100%; } }
+/* "data current as of" stamp, sits beside the figures it qualifies */
+.data-asof{ margin-top:20px; font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--c-ink-4); display:flex; align-items:center; gap:8px; }
+.data-asof::before{ content:''; width:5px; height:5px; background:var(--c-oxblood); flex:none; }
+.db-dusk .data-asof{ color:var(--c-slate-4); }
+.voice .data-asof{ justify-content:center; margin-top:clamp(28px,4vw,44px); }
+
+@media(max-width:820px){
+  .featured-layout{ grid-template-columns:1fr; gap:34px; }
+  .featured-intro{ text-align:center; }
+  .featured-intro .featured-head::after{ display:none; }
+  .featured-lede{ margin:0 auto; }
+}
+@media(max-width:900px){
+  .device-laptop, .db-figs-left .device-laptop{ justify-self:center; }
+  .db-figs-left .device-laptop{ order:2; }
+}
+@media(max-width:560px){
+  .dl-float.f-a{ right:-8px; width:38%; }
+  .dl-float.f-b{ left:-8px; width:34%; }
+}
+@media(prefers-reduced-motion:reduce){ .dl-float, .dp-track{ animation:none; } }
+
 /* ── Founder ──────────────────────────────────────────────────────────── */
 .founder{ background:var(--c-paper); }
 .founder-grid{ display:grid; grid-template-columns:300px 1fr; gap:clamp(36px,5vw,72px); align-items:start; }
@@ -435,13 +526,16 @@ img{ display:block; max-width:100%; }
           <div><b>61</b><span data-i18n="db1.s5">Listed entities</span></div>
           <div><b>1,603</b><span data-i18n="db1.s6">Registration records</span></div>
         </div>
+        <div class="data-asof" data-i18n="data.asof">Data current as of 30 May 2026</div>
       </div>
-      <div class="db-figs reveal">
-        <figure class="dbshot"><img src="assets/intel/sunburst.png" alt=""></figure>
-        <figure class="dbshot"><img src="assets/intel/donut567.png" alt=""></figure>
-        <figure class="dbshot"><img src="assets/intel/worldmap.png" alt=""></figure>
-        <figure class="dbshot"><img src="assets/intel/trackbars.png" alt=""></figure>
-        <figure class="dbshot"><img src="assets/intel/donut62.png" alt=""></figure>
+      <div class="device-laptop reveal">
+        <div class="dl-lid">
+          <span class="dl-cam"></span>
+          <div class="dl-screen"><img src="assets/intel/dash-global.png" alt="Global medical-aesthetics landscape dashboard"></div>
+        </div>
+        <div class="dl-base"></div>
+        <figure class="dl-float f-a"><img src="assets/intel/donut567.png" alt=""></figure>
+        <figure class="dl-float f-b"><img src="assets/intel/trackbars.png" alt=""></figure>
       </div>
     </div>
   </div>
@@ -451,11 +545,14 @@ img{ display:block; max-width:100%; }
 <section class="section db-cream">
   <div class="wrap">
     <div class="db-row db-figs-left">
-      <div class="db-figs reveal">
-        <figure class="dbshot"><img src="assets/intel/chinamap.png" alt=""></figure>
-        <figure class="dbshot"><img src="assets/intel/chinamatrix.png" alt=""></figure>
-        <figure class="dbshot"><img src="assets/intel/chinacurve.png" alt=""></figure>
-        <figure class="dbshot"><img src="assets/intel/chinabars.png" alt=""></figure>
+      <div class="device-laptop reveal">
+        <div class="dl-lid">
+          <span class="dl-cam"></span>
+          <div class="dl-screen"><img src="assets/intel/dash-china.png" alt="China medical-aesthetics market-access dashboard"></div>
+        </div>
+        <div class="dl-base"></div>
+        <figure class="dl-float f-a"><img src="assets/intel/chinabars.png" alt=""></figure>
+        <figure class="dl-float f-b"><img src="assets/intel/chinacurve.png" alt=""></figure>
       </div>
       <div class="db-copy">
         <span class="db-tag" data-i18n="db2.tag">See China's access &amp; competitive landscape</span>
@@ -469,6 +566,7 @@ img{ display:block; max-width:100%; }
           <div><b>32</b><span data-i18n="db2.s5">Indications &amp; areas</span></div>
           <div><b>176</b><span data-i18n="db2.s6">Verified registrations</span></div>
         </div>
+        <div class="data-asof" data-i18n="data.asof">Data current as of 30 May 2026</div>
       </div>
     </div>
   </div>
@@ -491,8 +589,8 @@ img{ display:block; max-width:100%; }
           <span class="db-col" data-i18n="db3.c6">Brands &amp; social trends</span>
         </div>
       </div>
-      <div class="db-figs db-figs-single reveal">
-        <figure class="dbshot"><img src="assets/intel/dailyreport.png" alt=""></figure>
+      <div class="device-tablet reveal">
+        <div class="dt-frame"><img src="assets/intel/dailyreport.png" alt="Global Industry News — daily brief"></div>
       </div>
     </div>
   </div>
@@ -505,7 +603,34 @@ img{ display:block; max-width:100%; }
       <div class="section-index" data-i18n="voice.eyebrow">The voice</div>
       <h2 class="section-title" data-i18n="voice.title">China in depth, the world in breadth</h2>
     </div>
-    <div class="channels reveal">
+    <div class="voice-grid">
+      <div class="device-phone reveal">
+        <div class="dp-frame">
+          <span class="dp-island"></span>
+          <div class="dp-screen">
+            <div class="dp-top">
+              <img class="dp-logo" src="assets/logo-reflections.png" alt="Aesthetic Reflections 研美思维">
+            </div>
+            <div class="dp-feed">
+              <div class="dp-track">
+                <figure class="feed-card"><span class="feed-badge num">15,000+</span><img src="assets/intel/article1.png" alt="Featured article"></figure>
+                <figure class="feed-card"><span class="feed-badge num">10,000+</span><img src="assets/intel/article2.png" alt="Featured article"></figure>
+                <figure class="feed-card"><span class="feed-badge num">9,321</span><img src="assets/intel/article3.png" alt="Featured article"></figure>
+                <figure class="feed-card"><span class="feed-badge num">4,871</span><img src="assets/intel/article4.png" alt="Featured article"></figure>
+                <figure class="feed-card"><span class="feed-badge num">3,942</span><img src="assets/intel/article5.png" alt="Featured article"></figure>
+                <!-- duplicate set for a seamless loop -->
+                <figure class="feed-card" aria-hidden="true"><span class="feed-badge num">15,000+</span><img src="assets/intel/article1.png" alt=""></figure>
+                <figure class="feed-card" aria-hidden="true"><span class="feed-badge num">10,000+</span><img src="assets/intel/article2.png" alt=""></figure>
+                <figure class="feed-card" aria-hidden="true"><span class="feed-badge num">9,321</span><img src="assets/intel/article3.png" alt=""></figure>
+                <figure class="feed-card" aria-hidden="true"><span class="feed-badge num">4,871</span><img src="assets/intel/article4.png" alt=""></figure>
+                <figure class="feed-card" aria-hidden="true"><span class="feed-badge num">3,942</span><img src="assets/intel/article5.png" alt=""></figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dp-cap" data-i18n="voice.featured">Aesthetic Reflections · featured articles</div>
+      </div>
+      <div class="channels reveal">
       <!-- Aesthetic Reflections -->
       <div class="channel">
         <div class="tag" data-i18n="ch1.tag"><span class="seal-sq"></span> Original · In-depth · Insight</div>
@@ -538,16 +663,8 @@ img{ display:block; max-width:100%; }
         </div>
       </div>
     </div>
-    <div class="featured reveal">
-      <div class="featured-head" data-i18n="voice.featured">Aesthetic Reflections · featured articles</div>
-      <div class="featured-grid">
-        <figure class="fa"><img src="assets/intel/article1.png" alt="Featured article"><figcaption><b>15,000+</b><span data-i18n="reads">reads</span></figcaption></figure>
-        <figure class="fa"><img src="assets/intel/article2.png" alt="Featured article"><figcaption><b>10,000+</b><span data-i18n="reads">reads</span></figcaption></figure>
-        <figure class="fa"><img src="assets/intel/article3.png" alt="Featured article"><figcaption><b>9,321</b><span data-i18n="reads">reads</span></figcaption></figure>
-        <figure class="fa"><img src="assets/intel/article4.png" alt="Featured article"><figcaption><b>4,871</b><span data-i18n="reads">reads</span></figcaption></figure>
-        <figure class="fa"><img src="assets/intel/article5.png" alt="Featured article"><figcaption><b>3,942</b><span data-i18n="reads">reads</span></figcaption></figure>
-      </div>
     </div>
+    <div class="data-asof" data-i18n="data.asof">Data current as of 30 May 2026</div>
   </div>
 </section>
 
@@ -606,7 +723,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 <script>
-(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"hero.pos": "专注中国医美 · 精品战略咨询", "hero.note": "仅为示意展示，非完整数据源", "nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "hero.slogan": "<span style=\"font-family:var(--fengya);letter-spacing:.28em\">研于至深　美以致远</span>", "intel.eyebrow": "自研数据底座 · 专注医美", "intel.title": "自研全球医美数据库，让每一次决策有理有据、逻辑严谨。", "db1.tag": "看见产品、注册、渠道与资本变化", "db1.name": "全球医美上游产业图谱", "db1.desc": "面向医美产业决策的全球上游情报系统——把分散、零碎的产业动态，结构化为可查询、可比较、可判断的情报视野。", "db1.s1": "上游企业", "db1.s2": "国家与地区", "db1.s3": "城市", "db1.s4": "产品线", "db1.s5": "上市主体", "db1.s6": "注册证据", "db2.tag": "看清中国医美准入与竞争格局", "db2.name": "中国医美市场全景地图", "db2.desc": "聚焦准入版图、赛道机会、产品布局与竞争演变，帮助品牌、投资人和产业决策者更快识别增长方向、判断市场位置、捕捉下一步机会。", "db2.s1": "注册企业集团", "db2.s2": "战略子赛道", "db2.s3": "核心赛道", "db2.s4": "准入产品", "db2.s5": "适应症与部位", "db3.tag": "每日更新，总览全球医美大事件", "db3.name": "全球医美行业情报系统", "db3.desc": "梳理全球医美前沿技术、科研进展、市场准入、区域热点、上市公司、品牌动态与社媒趋势，帮助品牌方、投资人和产业决策者更快抓住值得关注的行业信号。", "db3.v1": "每日", "db3.s1": "更新频率", "db3.s2": "追踪关键词", "db3.s3": "覆盖企业", "db3.s4": "覆盖品牌", "voice.eyebrow": "行业影响力", "voice.title": "中国深度，全球广度", "ch1.tag": "<span class=\"seal-sq\"></span> 原创 · 深度 · 观察", "ch1.desc": "《研美思维》是研美咨询旗下的内容 IP，<span class=\"accent\">由创始人主笔</span>，是医美行业观察和全球行业趋势的解读平台。它的读者，正是主导行业的人——C-level 决策者、机构与渠道负责人、医学与市场负责人，是行业最具影响力的战略声音之一。", "ch1.cred": "中国媒体合作伙伴", "ch1.m1": "行业资深从业者", "ch1.m2": "上游高管触达", "ch1.m3": "篇均阅读", "ch1.m4": "互动率", "ch2.tag": "<span class=\"seal-sq\"></span> 精选 · 资讯 · 每日", "ch2.desc": "每日追踪全球最新最精的医美产业信号：医美企业与产品的动态与战略、市场准入与监管、科研文献与临床前沿，及当下最值得关注的趋势热点。<span class=\"accent\">给医美决策者看的晨间日报。</span>", "ch2.a1b": "全球实时快讯", "ch2.a1s": "全球突发新闻、各国动态趋势与社媒热点。", "ch2.a2b": "企业、市场与监管", "ch2.a2s": "品牌动态、产品事件、上市公司走势与法规变更。", "ch2.a3b": "科研、文献与抗衰", "ch2.a3s": "临床研究、研发与最新文献及专家解读。", "voice.featured": "研美思维 · 热门文章", "reads": "阅读", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。", "db2.s6": "合规注册证", "db3.c1": "前沿技术与产品动向", "db3.c2": "科研与临床观察", "db3.c3": "准入与监管进展", "db3.c4": "重点国家市场热点", "db3.c5": "上市公司与资本信号", "db3.c6": "品牌与传播趋势", "ch2.a4b": "企业科普介绍", "ch2.a4s": "覆盖全球 362 家医美企业，梳理品牌和产品优势等商业信息。"};
+(function(){var KEY="aestrat-lang",root=document.documentElement;var I18N={"hero.pos": "专注中国医美 · 精品战略咨询", "hero.note": "仅为示意展示，非完整数据源", "nav.home": "首页", "nav.services": "服务", "nav.blog": "洞察", "nav.contact": "联系", "hero.slogan": "<span style=\"font-family:var(--fengya);letter-spacing:.28em\">研于至深　美以致远</span>", "intel.eyebrow": "自研数据底座 · 专注医美", "intel.title": "自研全球医美数据库，让每一次决策有理有据、逻辑严谨。", "db1.tag": "看见产品、注册、渠道与资本变化", "db1.name": "全球医美上游产业图谱", "db1.desc": "面向医美产业决策的全球上游情报系统——把分散、零碎的产业动态，结构化为可查询、可比较、可判断的情报视野。", "db1.s1": "上游企业", "db1.s2": "国家与地区", "db1.s3": "城市", "db1.s4": "产品线", "db1.s5": "上市主体", "db1.s6": "注册证据", "db2.tag": "看清中国医美准入与竞争格局", "db2.name": "中国医美市场全景地图", "db2.desc": "聚焦准入版图、赛道机会、产品布局与竞争演变，帮助品牌、投资人和产业决策者更快识别增长方向、判断市场位置、捕捉下一步机会。", "db2.s1": "注册企业集团", "db2.s2": "战略子赛道", "db2.s3": "核心赛道", "db2.s4": "准入产品", "db2.s5": "适应症与部位", "db3.tag": "每日更新，总览全球医美大事件", "db3.name": "全球医美行业情报系统", "db3.desc": "梳理全球医美前沿技术、科研进展、市场准入、区域热点、上市公司、品牌动态与社媒趋势，帮助品牌方、投资人和产业决策者更快抓住值得关注的行业信号。", "db3.v1": "每日", "db3.s1": "更新频率", "db3.s2": "追踪关键词", "db3.s3": "覆盖企业", "db3.s4": "覆盖品牌", "voice.eyebrow": "行业影响力", "voice.title": "中国深度，全球广度", "ch1.tag": "<span class=\"seal-sq\"></span> 原创 · 深度 · 观察", "ch1.desc": "《研美思维》是研美咨询旗下的内容 IP，<span class=\"accent\">由创始人主笔</span>，是医美行业观察和全球行业趋势的解读平台。它的读者，正是主导行业的人——C-level 决策者、机构与渠道负责人、医学与市场负责人，是行业最具影响力的战略声音之一。", "ch1.cred": "中国媒体合作伙伴", "ch1.m1": "行业资深从业者", "ch1.m2": "上游高管触达", "ch1.m3": "篇均阅读", "ch1.m4": "互动率", "ch2.tag": "<span class=\"seal-sq\"></span> 精选 · 资讯 · 每日", "ch2.desc": "每日追踪全球最新最精的医美产业信号：医美企业与产品的动态与战略、市场准入与监管、科研文献与临床前沿，及当下最值得关注的趋势热点。<span class=\"accent\">给医美决策者看的晨间日报。</span>", "ch2.a1b": "全球实时快讯", "ch2.a1s": "全球突发新闻、各国动态趋势与社媒热点。", "ch2.a2b": "企业、市场与监管", "ch2.a2s": "品牌动态、产品事件、上市公司走势与法规变更。", "ch2.a3b": "科研、文献与抗衰", "ch2.a3s": "临床研究、研发与最新文献及专家解读。", "voice.featured": "研美思维 · 热门文章", "voice.featuredLede": "热门篇章阅读轻松破万——而读者，正是主导行业的窄众资深决策层。", "data.asof": "数据更新截止 2026年5月30日", "reads": "阅读", "f.connect": "联系我们", "f.loc": "中国 · 上海", "f.copy": "© 2026 AESTRAT Consulting 研美咨询 · 保留所有权利。", "db2.s6": "合规注册证", "db3.c1": "前沿技术与产品动向", "db3.c2": "科研与临床观察", "db3.c3": "准入与监管进展", "db3.c4": "重点国家市场热点", "db3.c5": "上市公司与资本信号", "db3.c6": "品牌与传播趋势", "ch2.a4b": "企业科普介绍", "ch2.a4s": "覆盖全球 362 家医美企业，梳理品牌和产品优势等商业信息。"};
 var nodes=[].slice.call(document.querySelectorAll("[data-i18n]"));var en=nodes.map(function(n){return n.innerHTML;});
 function apply(lang){root.setAttribute("data-lang",lang);nodes.forEach(function(n,i){var z=I18N[n.getAttribute("data-i18n")];n.innerHTML=(lang==="zh"&&z!=null)?z:en[i];});try{localStorage.setItem(KEY,lang);}catch(e){}[].forEach.call(document.querySelectorAll(".lang-toggle"),function(b){b.textContent=lang==="zh"?"EN":"中文";});}
 var saved="en";try{saved=localStorage.getItem(KEY)||"en";}catch(e){}apply(saved);
