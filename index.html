@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="format-detection" content="telephone=no"><meta name="description" content="AESTRAT Consulting — a boutique strategic advisory firm working exclusively with upstream medical-aesthetics brands in China. From insight to impact.">
-<meta property="og:title" content="AESTRAT Consulting">
-<meta property="og:description" content="Strategic advisory for aesthetic medicine. Where clinical evidence meets brand.">
+<meta name="format-detection" content="telephone=no"><meta name="description" content="研美咨询（AESTRAT Consulting）是专注中国医美上游品牌的精品战略咨询公司，旗下内容 IP《研美思维》。A boutique strategic advisory for China's upstream medical aesthetics — from insight to impact｜研于至深，美以致远。">
+<meta property="og:title" content="AESTRAT Consulting 研美咨询">
+<meta property="og:description" content="研美咨询（AESTRAT Consulting）——专注中国医美上游的精品战略咨询，旗下内容 IP《研美思维》。Strategic advisory for aesthetic medicine.">
 <meta property="og:type" content="website">
-<title>AESTRAT Consulting</title>
+<title>AESTRAT Consulting 研美咨询 | 医美战略咨询</title>
 <link rel="icon" href="assets/aestrat-wordmark-on-light.png">
 
 <!-- Foundation tokens (five brand colors, type scale, spacing) -->
@@ -149,6 +149,9 @@ img{ display:block; max-width:100%; }
   color:var(--c-bone); opacity:.4; white-space:nowrap; text-align:center; pointer-events:none; }
 /* White wordmark (PNG) above the cream-gold slogan — kept distinct on purpose */
 .hero-logo{ display:block; width:clamp(280px,42vw,560px); height:auto; }
+/* h1 carries the brand name as real text for SEO/screen readers; the logo is the visual */
+.hero-h1{ margin:0; padding:0; font:inherit; line-height:0; }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
 .hero-slogan{ width:100%; margin-top:clamp(20px,2.6vw,34px); }
 .hero-slogan .en{
@@ -494,7 +497,7 @@ img{ display:block; max-width:100%; }
   </div>
   <div class="hero-inner">
     <div class="hero-stack">
-      <img class="hero-logo" src="assets/aestrat-wordmark-on-dark.png" alt="AESTRAT Consulting">
+      <h1 class="hero-h1"><img class="hero-logo" src="assets/aestrat-wordmark-on-dark.png" alt=""><span class="sr-only">AESTRAT Consulting 研美咨询 · 中国医美战略咨询</span></h1>
       <div class="hero-slogan">
         <div class="en" data-i18n="hero.slogan">From insight to impact</div>
         <div class="hero-pos" data-i18n="hero.pos">Medical aesthetics · strategic advisory</div>
