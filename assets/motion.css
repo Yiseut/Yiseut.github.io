@@ -57,8 +57,32 @@
 .matrix tbody tr:hover .cell-list li::before{ background:var(--c-oxblood); }
 
 /* Voice / content-IP cards lift, if present */
-.channels .ch-card{ transition:transform var(--t-base) var(--m-ease), box-shadow var(--t-base) var(--m-ease); }
-.channels .ch-card:hover{ transform:translateY(var(--m-lift)); }
+.channels .ch-card{ transition:transform var(--t-base) var(--m-spring), box-shadow var(--t-base) var(--m-ease); }
+.channels .ch-card:hover{ transform:translateY(-10px) scale(1.025); box-shadow:0 44px 84px -34px rgba(8,12,20,.6); }
+
+/* Device-mockup cards (laptop / tablet / phone) — enhanced 3D hover:
+   the whole device smoothly zooms (~1.04) + lifts, and its frame casts a
+   deeper, softer shadow for an obvious sense of depth. Tune via the two vars. */
+:root{ --m-card-zoom:1.04; --m-card-lift:-14px; }
+.device-laptop, .device-tablet, .device-phone{
+  transition:transform .5s var(--m-ease); will-change:transform;
+}
+.dl-lid, .dt-frame, .dp-frame{ transition:box-shadow .5s var(--m-ease); }
+.device-laptop:hover, .device-tablet:hover, .device-phone:hover{
+  transform:translateY(var(--m-card-lift)) scale(var(--m-card-zoom));
+  position:relative; z-index:5;
+}
+.device-laptop:hover .dl-lid{
+  box-shadow:0 80px 140px -34px rgba(4,7,13,.92),
+             0 30px 60px -24px rgba(4,7,13,.7),
+             inset 0 0 0 1px rgba(206,181,156,.18);
+}
+.device-tablet:hover .dt-frame,
+.device-phone:hover .dp-frame{
+  box-shadow:0 84px 150px -34px rgba(4,7,13,.92),
+             0 30px 64px -24px rgba(4,7,13,.6),
+             inset 0 0 0 1px rgba(206,181,156,.18);
+}
 
 /* ─────────────────────────────────────────────────────────────────────────
    2) ENTRANCE — staggered cascade (opt-in via [data-stagger]; JS sets --si)
