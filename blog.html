@@ -118,8 +118,22 @@ img{ display:block; max-width:100%; }
   letter-spacing:.01em; color:var(--c-bone);
 }
 .blog-title .cn{ display:block; font-family:var(--fengya); font-size:.4em; letter-spacing:.32em; color:var(--c-sand-2); margin-top:18px; padding-left:.32em; }
-/* Aesthetic Reflections lockup — light PNG so it renders everywhere (incl. file://) */
-.blog-logo{ display:block; margin:0 auto; width:min(320px,78%); height:auto; }
+/* Aesthetic Reflections lockup — split into mark + wordmark so the brain
+   "butterfly" can gently flutter on its own (blog page only). Both pieces were
+   cropped from logo-reflections-cream.png at the same height, so 21.3% + 78.7%
+   reconstructs the original lockup exactly. */
+.blog-logo{ display:flex; align-items:center; justify-content:center; margin:0 auto; width:min(320px,78%); perspective:620px; }
+.blog-wordmark{ width:78.7%; height:auto; display:block; }
+.blog-mark{ width:21.3%; height:auto; display:block; transform-origin:center; transform-style:preserve-3d;
+  animation:blogFlutter 3.6s ease-in-out infinite; will-change:transform; }
+@keyframes blogFlutter{
+  0%   { transform:translateY(0)    rotateY(-15deg) scale(1);     }
+  25%  { transform:translateY(-3px) rotateY(0deg)   scale(1.035); }
+  50%  { transform:translateY(0)    rotateY(15deg)  scale(1);     }
+  75%  { transform:translateY(-3px) rotateY(0deg)   scale(1.035); }
+  100% { transform:translateY(0)    rotateY(-15deg) scale(1);     }
+}
+@media(prefers-reduced-motion:reduce){ .blog-mark{ animation:none; } }
 .blog-slogan{ margin-top:clamp(30px,4vw,48px); }
 .blog-slogan .en{ display:block; font-family:var(--script); font-weight:400; font-size:clamp(32px,5vw,56px); color:var(--c-bone); line-height:1.05; }
 .blog-slogan .cn{ display:block; font-family:var(--fengya); font-weight:400; font-size:clamp(28px,4vw,46px);
@@ -195,7 +209,10 @@ img{ display:block; max-width:100%; }
 <!-- ── Blog (empty state — content coming) ──────────────────────────────── -->
 <main class="blog">
   <div class="blog-inner">
-    <img class="blog-logo" src="assets/logo-reflections-cream.png" alt="Aesthetic Reflections 研美思维">
+    <div class="blog-logo" role="img" aria-label="Aesthetic Reflections 研美思维">
+      <img class="blog-mark" src="assets/logo-reflections-mark-cream.png" alt="">
+      <img class="blog-wordmark" src="assets/logo-reflections-text-cream.png" alt="">
+    </div>
     <div class="blog-status" data-i18n="blog.soon">Coming soon</div>
     <h1 class="blog-slogan">
       <span class="en">From insight to impact</span>
