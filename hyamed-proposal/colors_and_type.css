@@ -1,0 +1,304 @@
+/* =========================================================================
+   Aestra Reflection — Foundations
+   Colors, typography, spacing, radii, shadows.
+   Import this once at the root of any surface.
+   ========================================================================= */
+
+/* -------- Web fonts (Google Fonts substitutes, see README for originals) -- */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Special+Elite&family=Space+Mono:wght@400;700&display=swap');
+
+/* -------- Real brand fonts (in fonts/) --------------------------------- */
+
+@font-face {
+  font-family: 'AestrSlogan';                          /* Above the Beyond Script */
+  src: url('fonts/AboveTheBeyondScript-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AestrSloganCN';                        /* 点字风雅 Dian Zi Feng Ya */
+  src: url('fonts/DianZiFengYa.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -------- Original brand @font-face declarations (kept as documentation) --
+   These reference local files that were not provided. When you supply the
+   real OTFs/TTFs, drop them in fonts/ and uncomment.
+
+@font-face {
+  font-family: 'AestraTitle';
+  src: url('fonts/SourceHanSerifCN-ExtraLight.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AestraSubtitle';
+  src: url('fonts/Chainprinter.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AestraBody';
+  src: url('fonts/SourceHanSansCN-Bold.otf') format('opentype');
+  font-display: swap;
+}
+*/
+
+/* =========================================================================
+   :root tokens
+   ========================================================================= */
+
+:root {
+  /* ---- Typography stacks ----------------------------------------------- */
+  /* Original brand family names retained as the FIRST entry so swapping
+     local files in works without touching every consumer.                  */
+
+  --font-title: 'AestraTitle', 'Noto Serif SC', 'Songti SC', 'SimSun', 'Source Han Serif SC', serif;
+  --font-subtitle: 'AestraSubtitle', 'Special Elite', 'Courier Prime', 'Courier New', monospace;
+  --font-body: 'AestraBody', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', sans-serif;
+  --font-number: 'AestraSubtitle', 'Space Mono', 'JetBrains Mono', 'Menlo', monospace;
+  --font-punctuation: 'AestraTitle', 'Noto Serif SC', 'Songti SC', serif;
+
+  /* ---- Type scale (rem-based, root 16px) ------------------------------- */
+  --type-display:  clamp(56px, 8.5vw, 128px);   /* hero serif moments       */
+  --type-h1:       clamp(40px, 4.5vw, 64px);
+  --type-h2:       clamp(28px, 2.6vw, 36px);
+  --type-h3:       22px;
+  --type-h4:       18px;
+  --type-body:     15px;
+  --type-small:    13px;
+  --type-caption:  11px;
+  --type-stamp:    10px;                        /* Chainprinter labels      */
+
+  /* ---- Color: the five brand hues -------------------------------------- */
+  /* Aestra's palette is five hand-picked colors. Everything else is a     *
+   * tint, mix, or transparent variant of these.                           */
+
+  --c-oxblood:     #520E0D;   /* the seal mark — dramatic, sparing         */
+  --c-slate:       #233245;   /* deep dusk blue — primary "ink" / surface  */
+  --c-slate-2:     #303F54;   /* dusk one step up — sections, fills        */
+  --c-sand:        #CEB59C;   /* warm taupe — borders, mid surfaces        */
+  --c-bone:        #E0D6CA;   /* cream — the paper                         */
+
+  /* ---- Derived neutral scales ----------------------------------------- */
+  /* Generated from slate + bone so the whole system stays in the family. */
+
+  --c-paper:       #E0D6CA;                       /* = bone               */
+  --c-paper-light: #EBE3D8;                       /* lifted               */
+  --c-paper-dark:  #D3C7B7;                       /* recessed             */
+
+  --c-ink:         #233245;                       /* = slate              */
+  --c-ink-2:       #303F54;                       /* = slate-2            */
+  --c-ink-3:       #5A6678;                       /* muted                */
+  --c-ink-4:       #8A93A1;                       /* placeholder          */
+
+  --c-sand-1:      #BCA078;                       /* deepened sand        */
+  --c-sand-2:      #CEB59C;                       /* = sand               */
+  --c-sand-3:      #DCC8B2;                       /* lifted sand          */
+
+  /* Slate scale for dark surfaces */
+  --c-slate-1:     #1A2738;                       /* darker than slate    */
+  --c-slate-3:     #485670;                       /* lifted slate         */
+  --c-slate-4:     #6F7C92;                       /* muted on slate       */
+
+  /* Oxblood derivatives */
+  --c-oxblood-2:   #3C0A09;                       /* pressed              */
+  --c-oxblood-soft:#9B5856;                       /* desaturated for bg   */
+
+  /* ---- Semantic — light surface (default) ----------------------------- */
+  --c-bg:          var(--c-paper);
+  --c-bg-elevated: var(--c-paper-light);
+  --c-bg-sunken:   var(--c-paper-dark);
+  --c-bg-inverse:  var(--c-slate);
+  --c-fg:          var(--c-slate);
+  --c-fg-muted:    var(--c-ink-3);
+  --c-fg-subtle:   var(--c-ink-4);
+  --c-fg-inverse:  var(--c-bone);
+  --c-border:      var(--c-sand-2);
+  --c-border-strong: var(--c-sand-1);
+  --c-hairline:    rgba(35, 50, 69, 0.20);
+  --c-accent:      var(--c-oxblood);
+  --c-accent-fg:   var(--c-bone);
+  --c-link:        var(--c-oxblood);
+  --c-success:     var(--c-slate-2);              /* no green — slate     */
+  --c-warning:     var(--c-sand-1);
+  --c-danger:      var(--c-oxblood);
+
+  /* Backwards-compat aliases (old name → new token) */
+  --c-stone-1:     var(--c-sand-1);
+  --c-stone-2:     var(--c-sand-2);
+  --c-stone-3:     var(--c-sand-3);
+  --c-stone-4:     var(--c-paper-light);
+  --c-cinnabar:    var(--c-oxblood);
+  --c-cinnabar-2:  var(--c-oxblood-2);
+  --c-cinnabar-soft: var(--c-oxblood-soft);
+  --c-jade:        var(--c-slate-2);
+  --c-gold:        var(--c-sand-1);
+  --c-mist:        var(--c-slate-3);
+
+  /* ---- Spacing scale (4px base) ---------------------------------------- */
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-5:   24px;
+  --s-6:   32px;
+  --s-7:   48px;
+  --s-8:   64px;
+  --s-9:   96px;
+  --s-10: 128px;
+  --s-11: 160px;
+  --s-12: 240px;
+
+  /* ---- Radii — predominantly sharp; small chips can soften slightly --- */
+  --r-0:   0px;
+  --r-1:   2px;     /* chips, small buttons                                */
+  --r-2:   4px;     /* inputs                                              */
+  --r-3:   8px;     /* cards (rare)                                        */
+  --r-pill: 999px;  /* tags (very rare)                                    */
+
+  /* ---- Borders --------------------------------------------------------- */
+  --b-hair:    1px solid var(--c-hairline);
+  --b-rule:    1px solid var(--c-stone-2);
+  --b-strong:  1px solid var(--c-slate);
+  --b-accent:  1px solid var(--c-oxblood);
+
+  /* ---- Shadows — almost never used; offered for rare elevation -------- */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(35, 50, 69, 0.08);
+  --shadow-2: 0 12px 32px -16px rgba(35, 50, 69, 0.22);
+  --shadow-3: 0 28px 60px -24px rgba(35, 50, 69, 0.30);
+
+  /* ---- Motion ---------------------------------------------------------- */
+  --ease-quiet: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-soft:  cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 160ms;
+  --t-base: 320ms;
+  --t-slow: 600ms;
+}
+
+/* =========================================================================
+   Type kits (utility classes — match the original spec)
+   ========================================================================= */
+
+.font-kit-title       { font-family: var(--font-title);       font-weight: 200; letter-spacing: 0.01em; line-height: 1.12; }
+.font-kit-subtitle    { font-family: var(--font-subtitle);    font-weight: 400; letter-spacing: 0.08em; line-height: 1.3;  text-transform: uppercase; }
+.font-kit-body        { font-family: var(--font-body);        font-weight: 400; letter-spacing: 0;     line-height: 1.7;  }
+.font-kit-number      { font-family: var(--font-number);      font-weight: 700; letter-spacing: -0.02em; line-height: 0.95; }
+.font-kit-punctuation { font-family: var(--font-punctuation); font-weight: 200; letter-spacing: 0;     line-height: 0.9;  }
+
+/* =========================================================================
+   Semantic element styles
+   ========================================================================= */
+
+html {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  font-weight: 200;
+  color: var(--c-ink);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+h1 { font-size: var(--type-h1); line-height: 1.08; }
+h2 { font-size: var(--type-h2); line-height: 1.16; }
+h3 { font-size: var(--type-h3); line-height: 1.3; font-weight: 300; }
+h4 { font-size: var(--type-h4); line-height: 1.4; font-weight: 400; }
+
+.eyebrow,
+.subtitle-stamp {
+  font-family: var(--font-subtitle);
+  font-size: var(--type-stamp);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-ink-3);
+  font-weight: 400;
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: 1.75;
+  color: var(--c-ink-2);
+  margin: 0;
+}
+p + p { margin-top: var(--s-4); }
+
+small, .caption {
+  font-size: var(--type-small);
+  color: var(--c-ink-3);
+  line-height: 1.5;
+}
+
+.num,
+.numeric {
+  font-family: var(--font-number);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: var(--c-link);
+  text-decoration: none;
+  border-bottom: 1px solid var(--c-cinnabar-soft);
+  transition: opacity var(--t-fast) var(--ease-quiet);
+}
+a:hover { opacity: 0.7; }
+
+code, pre {
+  font-family: var(--font-number);
+  font-size: 0.92em;
+  background: var(--c-paper-dark);
+  padding: 0.15em 0.4em;
+}
+
+hr {
+  border: none;
+  border-top: var(--b-hair);
+  margin: var(--s-6) 0;
+}
+
+/* Vertical Chinese typographic accent — a brand motif */
+.vertical-mark {
+  writing-mode: vertical-rl;
+  font-family: var(--font-title);
+  font-weight: 200;
+  letter-spacing: 0.5em;
+  color: var(--c-ink-3);
+}
+
+/* The seal stamp — used as a sparse decorative accent */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  background: var(--c-oxblood);
+  color: var(--c-bone);
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+/* Inverse surface — for dark-slate sections used in editorial layouts */
+.surface-dark {
+  background: var(--c-slate);
+  color: var(--c-bone);
+}
+.surface-dark h1, .surface-dark h2, .surface-dark h3, .surface-dark h4 { color: var(--c-bone); }
+.surface-dark p { color: var(--c-paper-light); }
+.surface-dark .eyebrow, .surface-dark .subtitle-stamp { color: var(--c-sand-2); }
+.surface-dark .num { color: var(--c-sand-2); }
+.surface-dark hr { border-top-color: rgba(224, 214, 202, 0.18); }
